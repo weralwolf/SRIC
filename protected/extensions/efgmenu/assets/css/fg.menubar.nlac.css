@@ -1,0 +1,65 @@
+.fg-menu ul {
+	height:auto !important;
+}
+
+
+
+ul.fg-menubar {
+	
+}
+
+ul.fg-menubar.fg-menubar-vert {
+	list-style : none;
+	clear:both;
+	display:table
+}
+
+
+
+
+
+
+ul.fg-menubar > li {
+
+}
+
+ul.fg-menubar.fg-menubar-vert > li {
+	display: list-item;
+	margin: 2px 0;
+}
+
+
+
+
+
+ul.fg-menubar > li > a > span.ui-icon {
+	float: right;
+}
+
+ul.fg-menubar.fg-menubar-vert > li > a > span.ui-icon {
+
+}
+
+
+
+
+
+
+ul.fg-menubar > li ul {
+
+}
+
+ul.fg-menubar.fg-menubar-vert > li ul {
+
+}
+
+
+
+
+ul.fg-menubar > li li {
+
+}
+
+ul.fg-menubar.fg-menubar-vert > li li {
+
+}
