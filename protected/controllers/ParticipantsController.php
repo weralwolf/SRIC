@@ -68,12 +68,15 @@ class ParticipantsController extends Controller
 	public function actionCreate()
 	{
 		$model=new Participants;
-
+		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Participants']))
 		{
+			print "<pre>";
+			var_dump($_POST);
+			die;
 			$model->attributes=$_POST['Participants'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));

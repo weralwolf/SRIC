@@ -25,9 +25,9 @@ $form=$this->beginWidget('CActiveForm', array(
 		<?php //echo $form->textField($model,'contries_id',array('size'=>10,'maxlength'=>10)); ?>
 		<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
 			//'model'=>$model,
-			//'attribute'=>'name',
-			'id'=>'country-single',
-			'name'=>'country_single',
+			//'attribute'=>'id',
+			'id'=>'countryName',
+			'name'=>'countryName',
 			'source'=>$this->createUrl('request/suggestCountry'),
 			'htmlOptions'=>array(
 				'size'=>'40'
