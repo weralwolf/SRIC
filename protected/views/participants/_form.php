@@ -38,8 +38,34 @@ $form=$this->beginWidget('CActiveForm', array(
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'cities_id'); ?>
-		<?php echo $form->textField($model,'cities_id',array('size'=>10,'maxlength'=>10)); ?>
+		<?php //echo $form->textField($model,'cities_id',array('size'=>10,'maxlength'=>10)); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+			//'model'=>$model,
+			//'attribute'=>'id',
+			'id'=>'cityName',
+			'name'=>'cityName',
+			'source'=>$this->createUrl('request/suggestCity'),
+			'htmlOptions'=>array(
+				'size'=>'40'
+			),
+		));?>
 		<?php echo $form->error($model,'cities_id'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'organizations_id'); ?>
+		<?php //echo $form->textField($model,'organizations_id',array('size'=>10,'maxlength'=>10)); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+			//'model'=>$model,
+			//'attribute'=>'id',
+			'id'=>'organizationName',
+			'name'=>'organizationName',
+			'source'=>$this->createUrl('request/suggestOrganization'),
+			'htmlOptions'=>array(
+				'size'=>'40'
+			),
+		));?>
+		<?php echo $form->error($model,'organizations_id'); ?>
 	</div>
 
 	<div class="row">
@@ -88,12 +114,6 @@ $form=$this->beginWidget('CActiveForm', array(
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'organizations_id'); ?>
-		<?php echo $form->textField($model,'organizations_id',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'organizations_id'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'post'); ?>
 		<?php echo $form->textField($model,'post',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'post'); ?>
@@ -113,22 +133,24 @@ $form=$this->beginWidget('CActiveForm', array(
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'participation_type'); ?>
-		<?php echo $form->textField($model,'participation_type',array('size'=>8,'maxlength'=>8)); ?>
+		<?php echo $form->dropDownList($model, 'participation_type', array("lecturer" => "Lecturer", "listner" => "Listner")); ?>
 		<?php echo $form->error($model,'participation_type'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'report_type'); ?>
-		<?php echo $form->textField($model,'report_type',array('size'=>9,'maxlength'=>9)); ?>
+		<?php echo $form->dropDownList($model, 'report_type', array("plenary" => "Plenary", "sessional" => "Sessional", "poster" => "Poster")); ?>
 		<?php echo $form->error($model,'report_type'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'sections_id'); ?>
+		<!-- @TODO: Generated drop down list due to sections table -->
 		<?php echo $form->textField($model,'sections_id',array('size'=>10,'maxlength'=>10)); ?>
 		<?php echo $form->error($model,'sections_id'); ?>
 	</div>
 
+<!-- 
 	<div class="row">
 		<?php echo $form->labelEx($model,'accommodation_places_id'); ?>
 		<?php echo $form->textField($model,'accommodation_places_id',array('size'=>10,'maxlength'=>10)); ?>
@@ -140,7 +162,7 @@ $form=$this->beginWidget('CActiveForm', array(
 		<?php echo $form->textField($model,'accommodation_places_rooms_types_id',array('size'=>10,'maxlength'=>10)); ?>
 		<?php echo $form->error($model,'accommodation_places_rooms_types_id'); ?>
 	</div>
-
+-->
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

@@ -83,6 +83,8 @@ return array(
 			'username' => 'root',
 			'password' => 'littlelover',
 			'charset' => 'utf8',
+//			'enableParamLogging' => true,
+//			'enableProfiling' => true,
 		),
 		
 		'errorHandler'=>array(
@@ -94,13 +96,18 @@ return array(
 			'routes'=>array(
 				array(
 					'class'=>'CFileLogRoute',
-					'levels'=>'error, warning',
+					'levels'=>'error, warning, info',
 				),
-				// uncomment the following to show log messages on web pages
-				array(
+/*				array(
 					'class'=>'CWebLogRoute',
+					'enabled' => YII_DEBUG
 				),
-				
+*/
+				array(
+		            'class' => 'CProfileLogRoute',
+		            'enabled' => YII_DEBUG,
+		            //'showInFireBug' => true,
+		        ),
 			),
 		),
 	),

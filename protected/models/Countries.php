@@ -24,7 +24,7 @@ class Countries extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'tbl_country';
+		return 'countries';
 	}
 
 	/**
@@ -58,7 +58,6 @@ class Countries extends CActiveRecord
 			'limit' => $limit,
 			'params' => array(':keyword' => "%$keyword%")
 		));
-		//Yii::Log("I'm looking for suggestion");
 		$suggest = array();
 		foreach($models as $model) {
 			$suggest[] = array(

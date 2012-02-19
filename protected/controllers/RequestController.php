@@ -12,6 +12,16 @@ class RequestController extends Controller
 				'modelName'=>'Countries',
 				'methodName'=>'suggest',
 			),
+			'suggestCity'=>array(
+				'class'=>'ext.actions.XSuggestAction',
+				'modelName'=>'Cities',
+				'methodName'=>'suggest',
+			),
+			'suggestOrganization'=>array(
+				'class'=>'ext.actions.XSuggestAction',
+				'modelName'=>'Organizations',
+				'methodName'=>'suggest',
+			),
 			'fillTree'=>array(
 				'class'=>'ext.actions.XFillTreeAction',
 				'modelName'=>'Menu',
@@ -87,7 +97,7 @@ class RequestController extends Controller
 		return array(
 			array('allow',
 				'actions'=>array(
-					'suggestCountry','legacySuggestCountry','fillTree','treePath','loadContent',
+					'suggestCountry', 'suggestCity', 'suggestOrganization','legacySuggestCountry','fillTree','treePath','loadContent',
 					'suggestAuPlaces','suggestAuHierarchy','fillAuTree','viewUnitPath','viewUnitLabel'
 				),
 				'users'=>array('*'),

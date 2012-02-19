@@ -36,13 +36,13 @@ class Organizations extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cities_id, title', 'required'),
-			array('approved', 'numerical', 'integerOnly'=>true),
-			array('cities_id', 'length', 'max'=>10),
-			array('title', 'length', 'max'=>255),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, cities_id, title, approved', 'safe', 'on'=>'search'),
+		array('cities_id, title', 'required'),
+		array('approved', 'numerical', 'integerOnly'=>true),
+		array('cities_id', 'length', 'max'=>10),
+		array('title', 'length', 'max'=>255),
+		// The following rule is used by search().
+		// Please remove those attributes that should not be searched.
+		array('id, cities_id, title, approved', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -72,6 +72,32 @@ class Organizations extends CActiveRecord
 	}
 
 	/**
+	 * Suggests a list of existing values matching the specified keyword.
+	 * @param string the keyword to be matched
+	 * @param integer maximum number of names to be returned
+	 * @return array list of matching lastnames
+	 * @TODO Should take in account selceted city
+	 */
+	public function suggest($keyword, $limit = 20)
+	{
+		$models = $this->findAll(array(
+			'condition' => 'title LIKE :keyword',
+			'order' => 'title',
+			'limit' => $limit,
+			'params' => array(':keyword' => "%$keyword%")
+		));
+		$suggest = array();
+		foreach($models as $model) {
+			$suggest[] = array(
+				'label' => $model->title, //.' - '.$model->code.' - '.$model->call_code,  // label for dropdown list
+				'value' => $model->title,  // value for input field
+				'id' => $model->id,       // return values from autocomplete
+			);
+		}
+		return $suggest;
+	}
+
+	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
@@ -81,15 +107,10 @@ class Organizations extends CActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
-
 		$criteria->compare('id',$this->id,true);
-
 		$criteria->compare('cities_id',$this->cities_id,true);
-
 		$criteria->compare('title',$this->title,true);
-
 		$criteria->compare('approved',$this->approved);
-
 		return new CActiveDataProvider('Organizations', array(
 			'criteria'=>$criteria,
 		));
