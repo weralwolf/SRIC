@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+p.title {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size:larger;
+};
+
+div.registrationBlock {
+    border-width: 1px;
+    border-color: #CCC;
+};
