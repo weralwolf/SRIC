@@ -65,25 +65,74 @@ class ParticipantsController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
-	{
-		$model=new Participants;
+	public function actionCreate() {
+		$model = new Participants;
 		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Participants']))
-		{
+		if(isset($_POST['Participants'])) {
+		    /**
+		     * @todo: conferences id should be takn from globala params
+		     * @todo: move this parts into model beforeValidate function
+		     */
+		    $model->conferences_id = 1;
+		    $model->country = $_POST['countryName'];
+		    $model->contries_id = Countries::model()->resolveID($model->country);
+		    if ($model->contries_id == -1) {
+		        $countrie = new Countries();
+		        $countrie->name = $model->country;
+		        if ($countrie->save()) {
+		            $model->contries_id = $countrie->id;
+		        } else {
+		            Yii::trace($countrie->getErrors());
+		        }
+		    }
+
+		    $model->city = $_POST['cityName'];
+		    $model->cities_id = Cities::model()->resolveID($model->city);
+		    if ($model->cities_id == -1) {
+		        $city = new Cities();
+		        $city->name = $model->city;
+		        $city->countries_id = $model->contries_id;
+		        if ($city->save()) {
+		            $model->cities_id = $city->id;
+		        } else {
+		            Yii::trace($city->getErrors());
+		        }
+		    }
+
+		    $model->organization = $_POST['organizationName'];
+		    $model->organizations_id = Organizations::model()->resolveID($model->organization);
+		    if ($model->organizations_id == -1) {
+		        $org = new Organizations();
+		        $org->title = $model->organization;
+		        $org->cities_id = $model->cities_id;
+		        if ($org->save()) {
+    		        $model->organizations_id = $org->id;
+		        } else {
+		            print Yii::trace($org->getErrors());
+		        }
+		    }
+/*
 			print "<pre>";
+			print $model->cities_id . "\n";
+			print $model->contries_id . "\n";
+			print $model->organizations_id . "\n";
+			print "\n";
 			var_dump($_POST);
-			die;
-			$model->attributes=$_POST['Participants'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			print "</pre>";
+			//die;
+*/
+			$model->attributes = $_POST['Participants'];
+			print $model->country . "\n";
+			if ($model->save()) {
+				$this->redirect(array('view', 'id' => $model->id));
+			}
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model' => $model,
 		));
 	}
 
@@ -177,7 +226,7 @@ class ParticipantsController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='participants-form')
+		if(isset($_POST['ajax']) && $_POST['ajax'] === 'participants-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

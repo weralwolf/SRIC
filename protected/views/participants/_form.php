@@ -1,7 +1,7 @@
 <div class="form">
 
 <?php
-$form=$this->beginWidget('CActiveForm', array(
+$form = $this->beginWidget('CActiveForm', array(
 	'id'=>'participants-form',
 	'enableAjaxValidation'=>false,
 ));
@@ -27,9 +27,10 @@ $form=$this->beginWidget('CActiveForm', array(
     		<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
     			//'model'=>$model,
     			//'attribute'=>'id',
-    			'id'=>'countryName',
-    			'name'=>'countryName',
-    			'source'=>$this->createUrl('request/suggestCountry'),
+    			'id' => 'countryName',
+    			'name' => 'countryName',
+    			'source' => $this->createUrl('request/suggestCountry'),
+    		    'value' => $model->country,
     			'htmlOptions'=>array(
     //				'size'=>'40'
                     'style'=>"width: 95%;"
@@ -46,6 +47,7 @@ $form=$this->beginWidget('CActiveForm', array(
     			//'attribute'=>'id',
     			'id'=>'cityName',
     			'name'=>'cityName',
+    			'value' => $model->city,
     			'source'=>$this->createUrl('request/suggestCity'),
     			'htmlOptions'=>array(
     //				'size'=>'40'
@@ -108,6 +110,7 @@ $form=$this->beginWidget('CActiveForm', array(
     			//'attribute'=>'id',
     			'id'=>'organizationName',
     			'name'=>'organizationName',
+    		    'value' => $model->organization,
     			'source'=>$this->createUrl('request/suggestOrganization'),
     			'htmlOptions'=>array(
     //				'size'=>'40'

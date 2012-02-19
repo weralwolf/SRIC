@@ -5,7 +5,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('approved')); ?>:</b>
-	<?php echo CHtml::encode($data->approved); ?>
+	<?php echo CHtml::encode($data->approved ? 'Yes' : 'No'); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('conferences_id')); ?>:</b>

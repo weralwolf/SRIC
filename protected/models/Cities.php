@@ -99,6 +99,20 @@ class Cities extends CActiveRecord
 	}
 
 	/**
+	 * Resolve city id by country name
+	 * @param city name
+	 * @return city id if it exists or -1 if no
+	 */
+	public function resolveID($name) {
+	    $model = $this->find(array(
+	        'condition' => 'name=:keyword',
+	        'select' => 'id',
+	        'params' => array(':keyword' => $name)
+	    ));
+	    return $model ? $model->id : -1;
+	}
+
+	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */

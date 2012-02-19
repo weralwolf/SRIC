@@ -96,6 +96,20 @@ class Organizations extends CActiveRecord
 		}
 		return $suggest;
 	}
+	
+	/**
+	 * Resolve organization id by country name
+	 * @param organization name
+	 * @return organization id if it exists or -1 if no
+	 */
+	public function resolveID($name) {
+	    $model = $this->find(array(
+	        'condition' => 'title=:keyword',
+	        'select' => 'id',
+	        'params' => array(':keyword' => $name)
+	    ));
+	    return $model ? $model->id : -1;
+	}
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.

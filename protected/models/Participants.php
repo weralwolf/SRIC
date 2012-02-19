@@ -24,42 +24,55 @@
  * @property string $accommodation_places_id
  * @property string $accommodation_places_rooms_types_id
  */
-class Participants extends CActiveRecord
-{
+class Participants extends CActiveRecord {
+    public $country;
+    public $city;
+    public $organization;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return Participants the static model class
 	 */
-	public static function model($className=__CLASS__)
-	{
+	public static function model($className=__CLASS__) {
 		return parent::model($className);
 	}
 
 	/**
 	 * @return string the associated database table name
 	 */
-	public function tableName()
-	{
+	public function tableName() {
 		return 'participants';
 	}
 
 	/**
 	 * @return array validation rules for model attributes.
 	 */
-	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
+	public function rules() {
 		return array(
-			array('conferences_id, contries_id, cities_id, name, second_name, last_name, birthdate, organizations_id, post, email, phone, participation_type, report_type, sections_id, accommodation_places_id, accommodation_places_rooms_types_id', 'required'),
+			array('conferences_id, contries_id, cities_id, name, second_name, 
+			last_name, birthdate, organizations_id, post, email, phone, 
+			participation_type, report_type, sections_id', 'required'),
+			/* , accommodation_places_id, accommodation_places_rooms_types_id */
 			array('approved, gender', 'numerical', 'integerOnly'=>true),
-			array('conferences_id, contries_id, cities_id, organizations_id, sections_id, accommodation_places_id, accommodation_places_rooms_types_id', 'length', 'max'=>10),
+			array('conferences_id, contries_id, cities_id, organizations_id, 
+			sections_id, accommodation_places_id, accommodation_places_rooms_types_id', 
+			'length', 'max'=>10),
 			array('name, second_name, last_name, post, email, phone', 'length', 'max'=>255),
-			array('participation_type', 'length', 'max'=>8),
+			array('participation_type', 'in', 'range' => array('lecturer', 'listner')),
+			array('report_type', 'in', 'range' => array('plenary', 'sessional', 'poster')),
+			array('email', 'email'),
+/*
+			array('phone', 'match', 'pattern'=>'/^(\+[0-9]{2}[\s]{0,1}[\-]{0,1}[\s]{0,1}1|0)50[\s]{0,1}[\-]{0,1}[\s]{0,1}[1-9]{1}[0-9]{6}$/',
+            'message'=>'Number format is +NN NNN NN-NN-NNN, with or without spaces and dashes.'),
+*/
 			array('report_type', 'length', 'max'=>9),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, approved, conferences_id, contries_id, cities_id, name, second_name, last_name, gender, birthdate, organizations_id, post, email, phone, participation_type, report_type, sections_id, accommodation_places_id, accommodation_places_rooms_types_id', 'safe', 'on'=>'search'),
+/*
+			array('birthdate', 'date'),
+*/
+			array('id, approved, conferences_id, contries_id, cities_id, name, 
+			second_name, last_name, gender, birthdate, organizations_id, post, 
+			email, phone, participation_type, report_type, sections_id, 
+			accommodation_places_id, accommodation_places_rooms_types_id', 
+			'safe', 'on'=>'search'),
 		);
 	}
 

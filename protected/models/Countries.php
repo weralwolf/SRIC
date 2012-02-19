@@ -68,6 +68,20 @@ class Countries extends CActiveRecord
 		}
 		return $suggest;
 	}
+
+	/**
+	 * Resolve country id by country name
+	 * @param country name
+	 * @return country id if it exists or -1 if no
+	 */
+	public function resolveID($name) {
+	    $model = $this->find(array(
+	        'condition' => 'name=:keyword',
+	        'select' => 'id',
+	        'params' => array(':keyword' => $name)
+	    ));
+	    return $model ? $model->id : -1;
+	}
 	
 	/**
 	 * @return array relational rules.
