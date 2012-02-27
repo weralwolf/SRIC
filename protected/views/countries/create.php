@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	'Countries'=>array('index'),
+	'Countries'=>array('admin'),
 	'Create',
 );
 

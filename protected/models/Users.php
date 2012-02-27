@@ -29,6 +29,22 @@ class Users extends CActiveRecord
 		return 'users';
 	}
 
+    public function validatePassword($password) {
+        return md5($password) === $this->password;
+    }
+ 
+    public function hashPassword($password, $salt) {
+        return md5($salt.$password);
+    }
+	
+    /**
+     * Generates a salt that can be used to generate a password hash.
+     * @return string the salt
+     */
+    protected function generateSalt() {
+        return uniqid('',true);
+    }
+    
 	/**
 	 * @return array validation rules for model attributes.
 	 */

@@ -30,6 +30,7 @@ class CountriesController extends Controller
 	 */
 	public function accessRules()
 	{
+	    return array();
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
@@ -41,7 +42,7 @@ class CountriesController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('root'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),

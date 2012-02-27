@@ -17,7 +17,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'approved'); ?>
-		<?php echo $form->textField($model,'approved'); ?>
+		<?php echo $form->checkbox($model,'approved'); ?>
 		<?php echo $form->error($model,'approved'); ?>
 	</div>
 

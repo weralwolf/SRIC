@@ -23,7 +23,6 @@ if(!Yii::app()->request->isAjaxRequest)
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/extra.css" />
-
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
@@ -37,15 +36,21 @@ if(!Yii::app()->request->isAjaxRequest)
 
 	<div id="mainmenu">
 		<?php 
-		
-		$this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
+		$items = array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-			),
+				array('label' => 'Participants', 'url' => array('/participants/admin')),
+				array('label' => 'Countries', 'url' => array('/countries/admin')),
+				array('label' => 'Cities', 'url' => array('/cities/admin')),
+				array('label' => 'Organizations', 'url' => array('/organizations/admin')),
+				array('label' => 'Sections', 'url' => array('/sections/admin')),
+//				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
+//				array('label'=>'Contact', 'url'=>array('/site/contact')),
+//				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+//				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+				
+			);
+		$this->widget('zii.widgets.CMenu',array(
+			'items' => $items
 		));
 		/*
 		$items = array(

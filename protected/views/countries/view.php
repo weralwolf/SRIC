@@ -1,9 +1,9 @@
 <?php
 $this->breadcrumbs=array(
-	'Countries'=>array('index'),
+	'Countries'=>array('admin'),
 	$model->name,
 );
-
+/*
 $this->menu=array(
 	array('label'=>'List Countries', 'url'=>array('index')),
 	array('label'=>'Create Countries', 'url'=>array('create')),
@@ -11,15 +11,21 @@ $this->menu=array(
 	array('label'=>'Delete Countries', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Countries', 'url'=>array('admin')),
 );
+*/
 ?>
 
-<h1>View Countries #<?php echo $model->id; ?></h1>
+<h1><i><?php echo $model->name; ?></i></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
-		'name',
-		'approved',
+		array(
+		    'name' => 'name',
+		    'value' => "[{$model->id}] {$model->name}"
+		),
+		array(
+		    'name' => 'approved',
+		    'value' => $model->approved ? "Yes" : "No"
+		),
 	),
 )); ?>

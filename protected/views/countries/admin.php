@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	'Countries'=>array('index'),
+	'Countries'=>array('admin'),
 	'Manage',
 );
 
@@ -38,13 +38,18 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'countries-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'id',
-		'name',
-		'approved',
+	'id' => 'countries-grid',
+	'dataProvider' => $model->search(),
+	'filter' => $model,
+	'columns' => array(
+		array(
+		    'name' => 'name',
+		    'value' => '"[{$data->id}] {$data->name}"'
+		),
+		array(
+		    'name' => 'approved',
+		    'value' => '$data->approved ? "Yes" : "No"'
+		),
 		array(
 			'class'=>'CButtonColumn',
 		),
