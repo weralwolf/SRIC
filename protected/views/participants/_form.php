@@ -162,25 +162,24 @@ $form = $this->beginWidget('CActiveForm', array(
     
     	<div class="row">
     		<?php echo $form->labelEx($model,'sections_id'); ?>
-    		<!-- @TODO: Generated drop down list due to sections table -->
-    		<?php echo $form->textField($model,'sections_id',array('size'=>10,'maxlength'=>10)); ?>
+    		<?php echo $form->dropDownList($model,'sections_id', Sections::model()->dropDown()); ?>
     		<?php echo $form->error($model,'sections_id'); ?>
     	</div>
 	</div>
 
-<!-- 
-	<div class="row">
+	<div class="row" style="float: left; width: 50%;">
 		<?php echo $form->labelEx($model,'accommodation_places_id'); ?>
-		<?php echo $form->textField($model,'accommodation_places_id',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->dropDownList($model,'accommodation_places_id', Sections::model()->dropDown()); ?>
+		<!-- ?php echo $form->textField($model,'accommodation_places_id',array('size'=>10,'maxlength'=>10)); ? -->
 		<?php echo $form->error($model,'accommodation_places_id'); ?>
 	</div>
 
-	<div class="row">
+	<div class="row" style="float: right; width: 50%;">
 		<?php echo $form->labelEx($model,'accommodation_places_rooms_types_id'); ?>
-		<?php echo $form->textField($model,'accommodation_places_rooms_types_id',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->dropDownList($model,'accommodation_places_rooms_types_id', Sections::model()->dropDown()); ?>
+		<!-- ?php echo $form->textField($model,'accommodation_places_rooms_types_id',array('size'=>10,'maxlength'=>10)); ? -->
 		<?php echo $form->error($model,'accommodation_places_rooms_types_id'); ?>
 	</div>
--->
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

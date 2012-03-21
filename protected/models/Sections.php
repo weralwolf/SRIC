@@ -45,6 +45,15 @@ class Sections extends CActiveRecord
 		);
 	}
 
+	public function dropDown() {
+	    $rows = $this->findAll(/*Should be condition for exact conference*/);
+	    $dropDown = array();
+	    foreach($rows as $row) {
+	        $dropDown[$row->id] = $row->title;
+	    }
+	    return $dropDown;
+	}
+
 	/**
 	 * @return array relational rules.
 	 */

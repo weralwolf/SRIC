@@ -37,7 +37,7 @@ if(!Yii::app()->request->isAjaxRequest)
 	<div id="mainmenu">
 		<?php 
 		$items = array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
+				array('label'=>'Про нас', 'url'=>array('/site/index')),
 				array('label' => 'Participants', 'url' => array('/participants/admin')),
 				array('label' => 'Countries', 'url' => array('/countries/admin')),
 				array('label' => 'Cities', 'url' => array('/cities/admin')),

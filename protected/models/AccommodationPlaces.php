@@ -57,6 +57,15 @@ class AccommodationPlaces extends CActiveRecord
 			'participants' => array(self::HAS_MANY, 'Participants', 'accommodation_places_id'),
 		);
 	}
+	
+    public function dropDown() {
+	    $rows = $this->findAll(/*Should be condition for exact conference*/);
+	    $dropDown = array();
+	    foreach($rows as $row) {
+	        $dropDown[$row->id] = $row->title;
+	    }
+	    return $dropDown;
+	}
 
 	/**
 	 * @return array customized attribute labels (name=>label)

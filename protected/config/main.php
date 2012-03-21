@@ -8,6 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Web Application',
+    'defaultController' => 'conferences',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -62,15 +63,16 @@ return array(
 		),
 		// uncomment the following to enable URLs in path-format
 		/*
-		'urlManager'=>array(
-			'urlFormat'=>'path',
-			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-			),
-		),
-		*/
+        'urlManager' => array(
+            'urlFormat'=>'path',
+            'rules' => array(
+              '' => 'conferences/index',
+              '<controller:\w+>/<id:\d+>'=>'<controller>/view',
+              '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+              '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+            ),
+        ),
+        */
 		/*
 		'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
