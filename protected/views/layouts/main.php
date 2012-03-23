@@ -37,12 +37,14 @@ if(!Yii::app()->request->isAjaxRequest)
 	<div id="mainmenu">
 		<?php 
 		$items = array(
-				array('label'=>'Про нас', 'url'=>array('/site/index')),
-				array('label' => 'Participants', 'url' => array('/participants/admin')),
-				array('label' => 'Countries', 'url' => array('/countries/admin')),
-				array('label' => 'Cities', 'url' => array('/cities/admin')),
-				array('label' => 'Organizations', 'url' => array('/organizations/admin')),
-				array('label' => 'Sections', 'url' => array('/sections/admin')),
+				array('label' => Yii::t("MenuLinks", "about_us"), 'url'=>array('/conferences/about')),
+				array('label' => Conferences::model()->currentConference() . Yii::t("MenuLinks", "th_conference"), 'url'=>array('/conferences/current')),
+				array('label' => Yii::t("MenuLinks", "archive"), 'url'=>array('/conferences/archive')),
+//				array('label' => 'Participants', 'url' => array('/participants/admin')),
+//				array('label' => 'Countries', 'url' => array('/countries/admin')),
+//				array('label' => 'Cities', 'url' => array('/cities/admin')),
+//				array('label' => 'Organizations', 'url' => array('/organizations/admin')),
+//				array('label' => 'Sections', 'url' => array('/sections/admin')),
 //				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 //				array('label'=>'Contact', 'url'=>array('/site/contact')),
 //				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),

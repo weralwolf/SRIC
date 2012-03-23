@@ -32,7 +32,7 @@ class ConferencesController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','about', 'archive', 'current'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -104,7 +104,19 @@ class ConferencesController extends Controller
 			'model'=>$model,
 		));
 	}
+	
+	public function actionAbout() {
+	    $this->render('about');
+	}
 
+	public function actionCurrent() {
+	    $this->render('current');
+	}
+	
+    public function actionArchive() {
+	    $this->render('archive');
+	}
+	
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'index' page.
