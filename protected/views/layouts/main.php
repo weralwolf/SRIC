@@ -51,6 +51,7 @@ if (!Yii::app()->request->isAjaxRequest)
   <div class="fixed_row">
   <div class="satelite"><img src="images/satelite.png" width="176" height="213" alt="" /></div>
   <?php 
+    Yii::log(Languages::actualLanguage());
 	$items = array(
 			array('label' => Yii::t("MenuLinks", "about_us"), 'url'=>array('/conferences/about')),
 			array('label' => Conferences::model()->currentConference() . Yii::t("MenuLinks", "th_conference"), 'url'=>array('/conferences/current')),
@@ -68,9 +69,9 @@ if (!Yii::app()->request->isAjaxRequest)
   	<input class="search_in" type="text" value="найти на сайте" onfocus="this.value='';" onblur="if (this.value != '') {this.onfocus = function() {this.style.backgroundColor='#f3fdff';};} else this.value='найти на сайте';">
   </div>
   <div class="langs">
-  <a href="#" class="ukr">ukr</a>
-  <a href="#" class="rus">ru</a>
-  <a href="#" class="en">en</a>
+  <a href="<?php echo Yii::app()->createUrl('languages/switch', array('lang' => Yii::app()->params['languages'][0])); ?>" class="ukr">ukr</a>
+  <a href="<?php echo Yii::app()->createUrl('languages/switch', array('lang' => Yii::app()->params['languages'][1])); ?>" class="rus">ru</a>
+  <a href="<?php echo Yii::app()->createUrl('languages/switch', array('lang' => Yii::app()->params['languages'][2])); ?>" class="en">en</a>
   </div>
   </div>
   <div class="top_blur"></div>

@@ -83,6 +83,13 @@ return array(
 		    'class'=>'CPhpMessageSource',
 		    'basePath' => dirname(__FILE__) . '/../../messages/',
 		),
+		'session' => array (
+            'class' => 'system.web.CDbHttpSession',
+            'connectionID' => 'db',
+            'sessionTableName' => 'YiiSession',
+		    'autoStart' => true,
+		    'sessionName' => 'SRIConferenceSite'
+		),
 		// uncomment the following to use a MySQL database
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=sri_conference',
@@ -92,6 +99,9 @@ return array(
 			'charset' => 'utf8',
 //			'enableParamLogging' => true,
 //			'enableProfiling' => true,
+		),
+		'httpRequest' => array(
+		    'class' => 'CHttpRequest',
 		),
 		
 		'errorHandler'=>array(
