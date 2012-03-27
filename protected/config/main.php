@@ -83,6 +83,10 @@ return array(
 		    'class'=>'CPhpMessageSource',
 		    'basePath' => dirname(__FILE__) . '/../../messages/',
 		),
+		'dbMessages' => array(
+		    'class' => 'CDbMessageSource',
+		    'connectionID' => 'db',
+		),
 		'session' => array (
             'class' => 'system.web.CDbHttpSession',
             'connectionID' => 'db',
