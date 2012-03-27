@@ -1,1 +1,0 @@
-<center>Conference information</center>

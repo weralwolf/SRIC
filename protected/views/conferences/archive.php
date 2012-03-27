@@ -1,1 +1,0 @@
-<center>Conferences archive</center>

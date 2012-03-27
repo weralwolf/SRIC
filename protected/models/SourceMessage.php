@@ -8,30 +8,26 @@
  * @property string $category
  * @property string $message
  */
-class SourceMessage extends CActiveRecord
-{
+class SourceMessage extends CActiveRecord {
     /**
      * Returns the static model of the specified AR class.
      * @return SourceMessage the static model class
      */
-    public static function model($className = __CLASS__)
-    {
+    public static function model($className = __CLASS__) {
         return parent::model($className);
     }
 
     /**
      * @return string the associated database table name
      */
-    public function tableName()
-    {
+    public function tableName() {
         return 'SourceMessage';
     }
 
     /**
      * @return array validation rules for model attributes.
      */
-    public function rules()
-    {
+    public function rules() {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
@@ -46,22 +42,37 @@ class SourceMessage extends CActiveRecord
     /**
      * @return array relational rules.
      */
-    public function relations()
-    {
+    public function relations() {
         return array(
             'messages' => array(self::HAS_MANY, 'Message', 'id'),
         );
     }
 
+    public static function saveFromPOST($identifier = '') {
+        $messagesContainer = $identifier != '' ? $_POST['Message'][$identifier] : $_POST['Message'];
+        $model = new SourceMessage;
+        $model->attributes = $identifier != '' ? $_POST['SourceMessage'][$identifier] : $_POST['SourceMessage'];
+        if ($model->save()) {
+            foreach ($messagesContainer as $lang => $data) {
+                $message = new Message;
+                $message->language = $data['language'];
+                $message->translation = $data['translation'];
+                $message->id = $model->id;
+                $message->save();
+            }
+            return $model->id;
+        }
+        return NULL;
+    }
+
     /**
      * @return array customized attribute labels (name=>label)
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return array(
-            'id'       => 'Id',
+            'id' => 'Id',
             'category' => 'Category',
-            'message'  => 'Message',
+            'message' => 'Code shortcut',
         );
     }
 
@@ -69,8 +80,7 @@ class SourceMessage extends CActiveRecord
      * Retrieves a list of models based on the current search/filter conditions.
      * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
      */
-    public function search()
-    {
+    public function search() {
         // Warning: Please modify the following code to remove attributes that
         // should not be searched.
 

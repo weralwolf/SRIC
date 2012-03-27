@@ -19,9 +19,6 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'conferences_id',
-		'menu_title',
 		'order',
-		'texts_id',
 	),
 )); ?>

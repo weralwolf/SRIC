@@ -53,7 +53,7 @@ if (!Yii::app()->request->isAjaxRequest) {
   <?php 
 	$items = array(
 			array('label' => Yii::t("MenuLinks", "about_us"), 'url'=>array('/conferences/about')),
-			array('label' => Conferences::model()->currentConference() . Yii::t("MenuLinks", "th_conference"), 'url'=>array('/conferences/current')),
+			array('label' => "12" . Yii::t("MenuLinks", "th_conference"), 'url'=>array('/conferences/current')),
 			array('label' => Yii::t("MenuLinks", "archive"), 'url'=>array('/conferences/archive')),
 			
 		);
