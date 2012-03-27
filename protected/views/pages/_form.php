@@ -1,9 +1,13 @@
 <div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php 
+    Yii::import('application.extensions.jqClEditor');
+    $form = $this->beginWidget('CActiveForm', array(
 	'id'=>'pages-form',
 	'enableAjaxValidation'=>false,
-)); ?>
+));
+jqClEditor::clEditor('#Pages_texts_id', Yii::app()->params['jqClEditor']); 
+?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
@@ -29,7 +33,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'texts_id'); ?>
-		<?php echo $form->textField($model,'texts_id',array('size'=>10,'maxlength'=>10)); ?>
+		<?php echo $form->textArea($model,'texts_id'); ?>
 		<?php echo $form->error($model,'texts_id'); ?>
 	</div>
 
