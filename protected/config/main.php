@@ -67,7 +67,6 @@ return array(
         'urlManager' => array(
             'urlFormat'=>'path',
             'rules' => array(
-              '' => 'conferences/index',
               '<controller:\w+>/<id:\d+>'=>'<controller>/view',
               '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
               '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
@@ -81,7 +80,6 @@ return array(
 		*/
 		'messages' => array(
 		    'class'=>'CPhpMessageSource',
-		    'basePath' => dirname(__FILE__) . '/../../messages/',
 		),
 		'dbMessages' => array(
 		    'class' => 'CDbMessageSource',

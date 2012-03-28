@@ -1,0 +1,21 @@
+<?php
+return array(
+    'id' => 'Id',
+    'approved' => 'Approve',
+    'contries_id' => 'Contrie',
+    'cities_id' => 'Citie',
+    'name' => 'Name',
+    'second_name' => 'Second Name',
+    'last_name' => 'Last Name',
+    'gender' => 'Gender',
+    'birthdate' => 'Birthdate',
+    'organizations_id' => 'Organization',
+    'post' => 'Post',
+    'email' => 'E-mail',
+    'phone' => 'Phone',
+    'participation_type' => 'Participation Type',
+    'report_type' => 'Report Type',
+    'sections_id' => 'Section',
+    'accommodation_places_id' => 'Accommodation Place',
+    'accommodation_places_rooms_types_id' => 'Room Type',
+);

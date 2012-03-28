@@ -1,0 +1,21 @@
+<?php
+return array(
+    'id' => 'Id',
+    'approved' => 'Підтверджено',
+    'contries_id' => 'Країна',
+    'cities_id' => 'Місто',
+    'name' => 'Ім’я',
+    'second_name' => 'По батькові',
+    'last_name' => 'Прізвище',
+    'gender' => 'Стать',
+    'birthdate' => 'Дата народження',
+    'organizations_id' => 'Організація',
+    'post' => 'Поштова адреса',
+    'email' => 'E-mail',
+    'phone' => 'Телефон',
+    'participation_type' => 'Тип участі',
+    'report_type' => 'Тип доповіді',
+    'sections_id' => 'Секція',
+    'accommodation_places_id' => 'Місце проживання',
+    'accommodation_places_rooms_types_id' => 'Тип кімнати',
+);

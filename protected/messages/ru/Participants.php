@@ -1,0 +1,21 @@
+<?php
+return array(
+    'id' => 'Id',
+    'approved' => 'Подтверждено',
+    'contries_id' => 'Страна',
+    'cities_id' => 'Город',
+    'name' => 'Имя',
+    'second_name' => 'Отчество',
+    'last_name' => 'Фамилия',
+    'gender' => 'Пол',
+    'birthdate' => 'Дата рождения',
+    'organizations_id' => 'Организация',
+    'post' => 'Почтовый адрес',
+    'email' => 'E-mail',
+    'phone' => 'Телефон',
+    'participation_type' => 'Тип участия',
+    'report_type' => 'Тип доклада',
+    'sections_id' => 'Секция',
+    'accommodation_places_id' => 'Место проживания',
+    'accommodation_places_rooms_types_id' => 'Тип комнаты',
+);
