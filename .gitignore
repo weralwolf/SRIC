@@ -1,0 +1,7 @@
+assets/
+protected/runtime
+protected/tests
+.settings/
+.buildpath
+.project
+index-test.php
