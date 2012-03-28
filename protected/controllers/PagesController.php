@@ -2,9 +2,6 @@
 
 class PagesController extends Controller {
     /**
-     * @TODO: add ability to add some prepared php pages from file
-     */
-    /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
@@ -32,7 +29,7 @@ class PagesController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-            'actions' => array('index', 'view'),
+            'actions' => array('index', 'view', 'notImplemented'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -125,11 +122,23 @@ class PagesController extends Controller {
 
     /**
      * Lists all models.
+
+     public function actionIndex() {
+     $dataProvider = new CActiveDataProvider('Pages');
+     $this->render('index', array(
+     'dataProvider' => $dataProvider,
+     ));
+     }
      */
     public function actionIndex() {
-        $dataProvider = new CActiveDataProvider('Pages');
-        $this->render('index', array(
-            'dataProvider' => $dataProvider,
+        $this->render('view', array(
+            'model' => Pages::model()->with('title')->find('`title`.message = "about_us_title"'),
+        ));
+    }
+    
+    public function actionNotImplemented() {
+        $this->render('view', array(
+            'model' => Pages::model()->with('title')->find('`title`.message = "notImplemented_title"'),
         ));
     }
 

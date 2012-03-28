@@ -17,6 +17,13 @@ return array(
     'googleApiKey' => 'ABQIAAAAjU0EJWnWPMv7oQ-jjS7dYxQGj0PqsCtxKvarsoS-iqLdqZSKfxRdmoPmGl7Y9335WLC36wIGYa6o5Q',
     //upload directory
     'uploadDir' => 'upload/',
+    'additionalSideMenuElements' => array(
+        array(
+            'order' => 2,
+            'title_sm_message' => array('MenuLinks', 'registration'),
+            'url' => array('participants/create'),
+        ),
+    ),
 
     'jqClEditor' => array(
         'width' => 500, // width not including margins, borders or padding

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 28, 2012 at 01:27 AM
+-- Generation Time: Mar 28, 2012 at 09:39 AM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.6-13ubuntu3.6
 
@@ -392,32 +392,68 @@ CREATE TABLE IF NOT EXISTS `Message` (
 
 INSERT INTO `Message` (`id`, `language`, `translation`) VALUES
 (1, 'ua', 'Про нас'),
-(3, 'ua', 'Content info content'),
 (1, 'ru', 'Про нас'),
-(1, 'en', 'About us'),
-(2, 'ua', ' конференція'),
-(2, 'ru', ' конференция'),
-(2, 'en', 'th conferenc'),
-(3, 'ru', 'Content info content'),
-(3, 'en', 'Content info content'),
-(4, 'ua', 'Інфо'),
-(4, 'ru', 'Инфо'),
-(4, 'en', 'Info'),
-(5, 'ua', 'Content info content'),
-(5, 'ru', 'Content info content'),
-(5, 'en', 'Content info content'),
-(6, 'ua', 'Інфо'),
-(6, 'ru', 'Инфо'),
-(6, 'en', 'Info'),
-(7, 'ua', '<font face="Arial, Verdana" size="2">registration</font>'),
-(7, 'ru', '<font face="Arial, Verdana" size="2">registration</font>'),
-(7, 'en', '<font face="Arial, Verdana" size="2">registration</font>'),
-(8, 'ua', 'registration'),
-(8, 'ru', 'registration'),
-(8, 'en', 'registration'),
-(9, 'ua', 'Ssalkjlkj'),
-(9, 'ru', 'asdfshkkj'),
-(9, 'en', 'asdasdasd');
+(1, 'en', 'About'),
+(2, 'ua', 'Контактна особа'),
+(2, 'ru', 'Контактное лицо'),
+(2, 'en', 'Contact person'),
+(3, 'ua', ' конференція'),
+(3, 'ru', ' конференция'),
+(3, 'en', 'th conference'),
+(4, 'ua', 'Скороход Тетяна'),
+(4, 'ru', 'Скороход Татьяна'),
+(4, 'en', 'Tanya Skhorohod'),
+(5, 'ua', 'Архів'),
+(5, 'ru', 'Архив'),
+(5, 'en', 'Archive'),
+(6, 'ua', 'Терміни'),
+(6, 'ru', 'Сроки'),
+(6, 'en', 'Deadlines'),
+(7, 'ua', 'пошук на сайті'),
+(7, 'ru', 'поиск по сайту'),
+(7, 'en', 'search on site'),
+(8, 'ua', 'Українська конференція з космічних досліджень'),
+(8, 'ru', 'Украинская конференция по космическим исследованиям'),
+(8, 'en', 'Ukrainian Conference on Space Research'),
+(9, 'ua', 'Інформація'),
+(9, 'ru', 'Информация'),
+(9, 'en', 'Information'),
+(10, 'ua', 'Реєстрація'),
+(10, 'ru', 'Регистрация'),
+(10, 'en', 'Registration'),
+(11, 'ua', 'Тези'),
+(11, 'ru', 'Тезисы'),
+(11, 'en', 'Abstracts'),
+(12, 'ua', 'Програма'),
+(12, 'ru', 'Програма'),
+(12, 'en', 'Program'),
+(13, 'ua', 'Місце проведення'),
+(13, 'ru', 'Место проведения'),
+(13, 'en', 'Location'),
+(14, 'ua', 'Проживання'),
+(14, 'ru', 'Проживание'),
+(14, 'en', 'Accommodation'),
+(15, 'ua', 'Комітети'),
+(15, 'ru', 'Комитеты'),
+(15, 'en', 'Committees'),
+(16, 'ua', 'Нема перекладу'),
+(16, 'ru', '  <h1>Уважаемые коллеги!</h1>\r\n	<p>Приглашаем Вас принять участие в работе 12-й Украинской конференции по космическим исследованиям, которая состоится с 3 по 7 сентября 2012 г. в Национальном центре управления и испытания космических средств (НЦУИКС), г. Евпатория.</p>\r\n<p>Тематическими секциями 12-й конференции являются:\r\n</p><ul class="numbers">\r\n<li><span>Исследование ближнего космоса (в том числе Солнца, \r\nсолнечно-земных связей, магнитосферы, ионосферы и т.д.)</span></li>\r\n<li><span>Космическая биология</span></li>\r\n<li><span>Науки о микрогравитации</span></li>\r\n<li><span>Приборы, материалы и технологии для космических исследований</span></li>\r\n<li><span>Астрофизика и космология</span></li></ul><p></p>\r\n<p>Будут проведены круглые столы:\r\n</p><ul class="dots">\r\n<li><span>Подготовка проекта «Ионосат-микро»;</span></li>\r\n<li><span>Обсуждение проекта Космической программы Украины на 2013-1017 гг.</span></li></ul><p></p>   \r\n<p>Параллельно с 3 по 7 сентября 2012 г. в г. Евпатория будут проходить <a href="#">IV Международный специализированный симпозиум «Космос и глобальная безопасность человечества»</a> и <a href="#">III Всеукраинская конференция «Аэрокосмические наблюдения в интересах устойчивого развития и безопасности»</a>.</p>\r\n<p><b>Регламент.</b> На конференции будут представлены приглашённые пленарные доклады длительностью 30-40 мин. и сессионные доклады длительностью 15 мин. Постерная сессия не предусмотрена. Один участник может выступить не более чем с двумя докладами. </p>\r\n<p><b>Рабочие языки:</b> английский, украинский, русский.</p>\r\n<p><b>Регистрация</b> участников конференции осуществляется онлайн на странице <a href="#">регистрация</a>. Последний срок регистрации: 3 июня 2012 года. Авторы принятых докладов будут извещены по электронной почте не позднее 2 июля 2012 года. </p>\r\n<p><b>Регистрационный взнос</b> участников конференции будет составлять 200 грн, для астпирантов и студентов - 100 грн. Взнос проплачивается во время регистрации.</p>\r\n<p><b>Правила оформления тезисов</b> указаны в меню <a href="#">тезисы.</a></p>\r\n<p><b>По всем возникающим вопросам смело обращайтесь к ученому секретарю конференции <a href="#">Татьяне Скороход</a>.</b> </p>'),
+(16, 'en', 'No translation'),
+(17, 'ua', 'Про нас'),
+(17, 'ru', 'Про нас'),
+(17, 'en', 'About us'),
+(18, 'ua', 'Багато тексту'),
+(18, 'ru', 'Много текста'),
+(18, 'en', 'A lot of text'),
+(19, 'ua', '12 конференція'),
+(19, 'ru', '12 конференция'),
+(19, 'en', '12th conference'),
+(20, 'ua', '<h1>Сторінку ще не ствонено</h1>'),
+(20, 'ru', '<h1>Страница ещё не создана</h1>'),
+(20, 'en', '<h1>Page not created yet</h1>'),
+(21, 'ua', 'Сторінка відсутня'),
+(21, 'ru', 'Страница отсутствует'),
+(21, 'en', 'Not found');
 
 -- --------------------------------------------------------
 
@@ -455,15 +491,16 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `content_sm_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `conferences_id` (`content_sm_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `pages`
 --
 
 INSERT INTO `pages` (`id`, `title_sm_id`, `order`, `content_sm_id`) VALUES
-(1, 6, 0, 5),
-(2, 8, 1, 7);
+(1, 17, 0, 16),
+(2, 19, 0, 18),
+(3, 21, 0, 20);
 
 -- --------------------------------------------------------
 
@@ -555,7 +592,7 @@ CREATE TABLE IF NOT EXISTS `SourceMessage` (
   `category` varchar(32) COLLATE utf8_bin DEFAULT NULL,
   `message` text COLLATE utf8_bin,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `SourceMessage`
@@ -563,14 +600,26 @@ CREATE TABLE IF NOT EXISTS `SourceMessage` (
 
 INSERT INTO `SourceMessage` (`id`, `category`, `message`) VALUES
 (1, 'MenuLinks', 'about_us'),
-(2, 'MenuLinks', 'th_conference'),
-(3, NULL, NULL),
-(4, NULL, NULL),
-(5, NULL, NULL),
-(6, NULL, NULL),
-(7, 'Pages', 'registration_content'),
-(8, 'Pages', 'registration_title'),
-(9, 'DDDD', 'dsdsd');
+(2, 'MenuLinks', 'contact_person'),
+(3, 'MenuLinks', 'th_conference'),
+(4, 'MenuLinks', 'tanik_skhorohodik'),
+(5, 'MenuLinks', 'archive'),
+(6, 'MenuLinks', 'deadlines'),
+(7, 'MenuLinks', 'search_query'),
+(8, 'MenuLinks', 'site_title'),
+(9, 'MenuLinks', 'info'),
+(10, 'MenuLinks', 'registration'),
+(11, 'MenuLinks', 'abstracts'),
+(12, 'MenuLinks', 'program'),
+(13, 'MenuLinks', 'location'),
+(14, 'MenuLinks', 'accommodation'),
+(15, 'MenuLinks', 'committees'),
+(16, 'Pages', 'about_us_content'),
+(17, 'Pages', 'about_us_title'),
+(18, 'Pages', 'conference_content'),
+(19, 'Pages', 'conference_title'),
+(20, 'Pages', 'notImplemented_content'),
+(21, 'Pages', 'notImplemented_title');
 
 -- --------------------------------------------------------
 
@@ -614,7 +663,7 @@ CREATE TABLE IF NOT EXISTS `YiiSession` (
 --
 
 INSERT INTO `YiiSession` (`id`, `expire`, `data`) VALUES
-('vnqjjb39lh4paldgkv391cd021', 1332888513, '834abe956272111ec003057c637bb04f__returnUrl|s:40:"/sri_conference/index.php?r=pages/create";834abe956272111ec003057c637bb04f__id|s:1:"1";834abe956272111ec003057c637bb04f__name|s:4:"root";834abe956272111ec003057c637bb04f__states|a:0:{}');
+('36lt8cmo8r5a5db7cs7slrcqr4', 1332918109, '834abe956272111ec003057c637bb04f__id|s:1:"1";834abe956272111ec003057c637bb04f__name|s:4:"root";834abe956272111ec003057c637bb04f__states|a:0:{}language|s:2:"ru";');
 
 --
 -- Constraints for dumped tables

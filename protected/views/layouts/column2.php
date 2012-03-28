@@ -3,16 +3,19 @@
 <div id="content">
 	<div class="left_col">
 	<?php 
+	/*
 	$items = array(
-			array('label' => Yii::t("MenuLinks", "info"), 'url'=>array('/conferences/info')),
-			array('label' => Yii::t("MenuLinks", "registration"), 'url'=>array('/conferences/reg')),
-			array('label' => Yii::t("MenuLinks", "abstracts"), 'url'=>array('/conferences/abs')),
-			array('label' => Yii::t("MenuLinks", "program"), 'url'=>array('/conferences/prog')),
-			array('label' => Yii::t("MenuLinks", "location"), 'url'=>array('/conferences/loc')),
-			array('label' => Yii::t("MenuLinks", "accommodation"), 'url'=>array('/conferences/acc')),
-			array('label' => Yii::t("MenuLinks", "committees"), 'url'=>array('/conferences/comm')),
+			array('label' => Yii::app()->dbMessages->translate("MenuLinks", "info"), 'url'=>array('/conferences/info')),
+			array('label' => Yii::app()->dbMessages->translate("MenuLinks", "registration"), 'url'=>array('/conferences/reg')),
+			array('label' => Yii::app()->dbMessages->translate("MenuLinks", "abstracts"), 'url'=>array('/conferences/abs')),
+			array('label' => Yii::app()->dbMessages->translate("MenuLinks", "program"), 'url'=>array('/conferences/prog')),
+			array('label' => Yii::app()->dbMessages->translate("MenuLinks", "location"), 'url'=>array('/conferences/loc')),
+			array('label' => Yii::app()->dbMessages->translate("MenuLinks", "accommodation"), 'url'=>array('/conferences/acc')),
+			array('label' => Yii::app()->dbMessages->translate("MenuLinks", "committees"), 'url'=>array('/conferences/comm')),
 			
-		);
+		);*/
+	$items = Pages::sideMenu();
+	Yii::log(CVarDumper::dumpAsString($items));
 	$this->widget('zii.widgets.CMenu',array(
 		'items' => $items,
 	    'activeCssClass' => 'active',

@@ -1,24 +1,15 @@
 <?php
-$this->breadcrumbs=array(
-	'Pages'=>array('index'),
-	$model->id,
-);
+$blind = !(isset($blind) && !$blind); 
+if (!$blind) {?>
+<div class="row">
+    (<i><?php echo CHtml::encode($model->getAttributeLabel('id')); ?>:</i>
+    <?php echo CHtml::link(CHtml::encode($model->id), array('view', 'id' => $model->id)); ?>; 
+    <i><?php echo CHtml::encode($model->getAttributeLabel('order')); ?>:</i>
+    <?php echo CHtml::encode($model->order); ?>)
+</div>
 
-$this->menu=array(
-	array('label'=>'List Pages', 'url'=>array('index')),
-	array('label'=>'Create Pages', 'url'=>array('create')),
-	array('label'=>'Update Pages', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Pages', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Pages', 'url'=>array('admin')),
-);
-?>
-
-<h1>View Pages #<?php echo $model->id; ?></h1>
-
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'order',
-	),
-)); ?>
+<h1><?php echo Yii::app()->dbMessages->translate("Pages", $model->title->message); ?></h1>
+<?php } ?>
+<div class="row">
+    <?php echo Yii::app()->dbMessages->translate("Pages", $model->content->message); ?>
+</div>

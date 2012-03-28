@@ -44,8 +44,8 @@ class Pages extends CActiveRecord {
      */
     public function relations() {
         return array(
-            'content' => array(self::HAS_ONE, 'SourceMessage', 'content_sm_id', 'with' => 'messages'),
-            'title' => array(self::HAS_ONE, 'SourceMessage', 'title_sm_id', 'with' => 'messages')
+            'content' => array(self::BELONGS_TO, 'SourceMessage', 'content_sm_id', 'with' => 'messages'),
+            'title' => array(self::BELONGS_TO, 'SourceMessage', 'title_sm_id', 'with' => 'messages')
         );
     }
 
@@ -56,8 +56,39 @@ class Pages extends CActiveRecord {
         return array(
             'id' => 'Id',
             'menu_title' => 'Menu Title',
-            'order' => 'Order',
+            'order' => 'Menu order',
         );
+    }
+
+    public static function sideMenu() {
+        $usedKeys = array();
+        $lines = self::model()->findAll('`order` > 0', array('order' => '`order` ASC'));
+        $items = array();
+        $key = 0;
+        foreach ($lines as $line) {
+            $key = self::orderKey($usedKeys, $line->order);
+            $usedKeys[] = $key;
+            $ordered[$key] = array(
+                'label' => Yii::app()->dbMessages->translate($line->title->category, $line->title->message),
+                'url' => array('pages/view', 'id' => intval($line->id)),
+            );
+        }
+        foreach (Yii::app()->params['additionalSideMenuElements'] as $index => $info) {
+            $key = self::orderKey($usedKeys, $info['order']);
+            $usedKeys[] = $key;
+            $ordered[$key] = array(
+                'label' => Yii::app()->dbMessages->translate($info['title_sm_message'][0], $info['title_sm_message'][1]),
+                'url' => $info['url'],
+            );
+        }
+        return $ordered;
+    }
+
+    protected static function orderKey($usedKeys, $proposedKey) {
+        $key = intval($proposedKey) * 100;
+        for (; in_array($key, $usedKeys); $key++)
+            ;
+        return $key;
     }
 
     /**

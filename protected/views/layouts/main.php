@@ -25,14 +25,14 @@ if (!Yii::app()->request->isAjaxRequest) {
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/extra.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/design.main.css" />
-	<title><?php echo Yii::t("MenuLinks", "site_title")?></title>
+	<title><?php echo Yii::app()->dbMessages->translate("MenuLinks", "site_title") ?></title>
 </head>
 
 <body>
 <div class="wrapper">
   <div class="header">
     <div class="conf_title">
-    	<img src="images/conf_title.png" width="573" height="113" alt="<?php echo Yii::t("MenuLinks", "site_title")?>" />
+    	<img src="images/conf_title.png" width="573" height="113" alt="<?php echo Yii::app()->dbMessages->translate("MenuLinks", "site_title")?>" />
     </div>
     <div class="logo">
     	<a href="#">
@@ -40,8 +40,8 @@ if (!Yii::app()->request->isAjaxRequest) {
     	</a>
     </div>
     <div class="header_cont">
-    <div class="title"><?php echo Yii::t("MenuLinks", "contact_person")?></div>
-    <span class="grey"><?php echo Yii::t("MenuLinks", "tanik_skhorohodik")?></span><br/>
+    <div class="title"><?php echo Yii::app()->dbMessages->translate("MenuLinks", "contact_person") ?></div>
+    <span class="grey"><?php echo Yii::app()->dbMessages->translate("MenuLinks", "tanik_skhorohodik") ?></span><br/>
     +38 044 2008207<br/>
     +38 063 4518270<br/>
     <a href="mailto:SpaceConf2012@gmail.com">SpaceConf2012@gmail.com</a><br/>
@@ -50,22 +50,22 @@ if (!Yii::app()->request->isAjaxRequest) {
   </div>
   <div class="fixed_row">
   <div class="satelite"><img src="images/satelite.png" width="176" height="213" alt="" /></div>
-  <?php 
-	$items = array(
-			array('label' => Yii::t("MenuLinks", "about_us"), 'url'=>array('/conferences/about')),
-			array('label' => "12" . Yii::t("MenuLinks", "th_conference"), 'url'=>array('/conferences/current')),
-			array('label' => Yii::t("MenuLinks", "archive"), 'url'=>array('/conferences/archive')),
-			
-		);
-	$this->widget('zii.widgets.CMenu',array(
-		'items' => $items,
-	    'activeCssClass' => 'active',
-		'htmlOptions' => array('class' => 'main_menu'),
-	));
-	?>
+  <?php
+$items = array(
+    array('label' => Yii::app()->dbMessages->translate("MenuLinks", "about_us"), 'url' => array('pages/view', 'id' => 1)),
+    array('label' => "12" . Yii::app()->dbMessages->translate("MenuLinks", "th_conference"), 'url' => array('pages/view', 'id' => 2)),
+    array('label' => Yii::app()->dbMessages->translate("MenuLinks", "archive"), 'url' => array('/pages/notImplemented')),
+
+);
+$this->widget('zii.widgets.CMenu', array(
+    'items' => $items,
+    'activeCssClass' => 'active',
+    'htmlOptions' => array('class' => 'main_menu'),
+));
+?>
   <div class="right_block">
   <div class="search">
-  	<input class="search_in" type="text" value="<?php echo Yii::t("MenuLinks", "search_query")?>" onfocus="this.value='';" onblur="if (this.value != '') {this.onfocus = function() {this.style.backgroundColor='#f3fdff';};} else this.value='найти на сайте';">
+  	<input class="search_in" type="text" value="<?php echo Yii::app()->dbMessages->translate("MenuLinks", "search_query")?>" onfocus="this.value='';" onblur="if (this.value != '') {this.onfocus = function() {this.style.backgroundColor='#f3fdff';};} else this.value='найти на сайте';" />
   </div>
   <div class="langs">
   <a href="<?php echo Yii::app()->createUrl('languages/switch', array('lang' => Yii::app()->params['languages'][0])); ?>" class="ukr">ukr</a>
@@ -76,7 +76,7 @@ if (!Yii::app()->request->isAjaxRequest) {
   <div class="top_blur"></div>
   </div>
   <div class="deadlines">
-  <div class="deadlines_head"><div class="arrow"></div><div class="vert_text"><?php echo Yii::t("MenuLinks", "deadlines")?></div></div>
+  <div class="deadlines_head"><div class="arrow"></div><div class="vert_text"><?php echo Yii::app()->dbMessages->translate("MenuLinks", "deadlines") ?></div></div>
   </div>
 <div class="content_block">
 <div class="content_block_in"> <?php echo $content; ?></div>
