@@ -45,7 +45,7 @@ class Pages extends CActiveRecord {
     public function relations() {
         return array(
             'content' => array(self::BELONGS_TO, 'SourceMessage', 'content_sm_id', 'with' => 'messages'),
-            'title' => array(self::BELONGS_TO, 'SourceMessage', 'title_sm_id', 'with' => 'messages')
+            'title' => array(self::BELONGS_TO, 'SourceMessage', 'title_sm_id')
         );
     }
 

@@ -24,7 +24,7 @@ echo $form->error($model, 'order');
 <?php
 echo $this->renderPartial('application.views.sourceMessage._formContent', array(
     'form' => $form,
-    'model' => new SourceMessage,
+    'model' => $model->isNewRecord ? new SourceMessage : $model->title,
     'textArea' => false,
     'attributeName' => 'title',
     'category' => 'Pages',
@@ -34,7 +34,7 @@ echo $this->renderPartial('application.views.sourceMessage._formContent', array(
 <?php
 echo $this->renderPartial('application.views.sourceMessage._formContent', array(
     'form' => $form,
-    'model' => new SourceMessage,
+    'model' => $model->isNewRecord ? new SourceMessage : $model->content,
     'textArea' => true,
     'attributeName' => 'content',
     'category' => 'Pages',

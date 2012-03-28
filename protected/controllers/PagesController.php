@@ -163,7 +163,7 @@ class PagesController extends Controller {
     public function loadModel() {
         if ($this->_model === null) {
             if (isset($_GET['id']))
-                $this->_model = Pages::model()->findbyPk($_GET['id']);
+                $this->_model = Pages::model()->with('title', 'content')->findbyPk($_GET['id']);
             if ($this->_model === null)
                 throw new CHttpException(404, 'The requested page does not exist.');
         }
