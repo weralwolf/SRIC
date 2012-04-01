@@ -5,86 +5,99 @@
  *
  * The followings are the available columns in table 'files':
  * @property string $id
+ * @property string $original_name
  * @property string $path
  * @property string $mimetype
  */
-class Files extends CActiveRecord
-{
-	/**
-	 * Returns the static model of the specified AR class.
-	 * @return Files the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
+class Files extends CActiveRecord {
+    private $file;
+    private $uploaded = false;
+    /**
+     * Returns the static model of the specified AR class.
+     * @return Files the static model class
+     */
+    public static function model($className = __CLASS__) {
+        return parent::model($className);
+    }
 
-	/**
-	 * @return string the associated database table name
-	 */
-	public function tableName()
-	{
-		return 'files';
-	}
+    /**
+     * @return string the associated database table name
+     */
+    public function tableName() {
+        return 'files';
+    }
 
-	/**
-	 * @return array validation rules for model attributes.
-	 */
-	public function rules()
-	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
-		return array(
-			array('path, mimetype', 'required'),
-			array('path, mimetype', 'length', 'max'=>255),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, path, mimetype', 'safe', 'on'=>'search'),
-		);
-	}
+    public function upload() {
+        $this->file = CUploadedFile::getInstance($this, 'file');
+        $this->uploaded = true;
+    }
 
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-		);
-	}
+    public function save($runValidation = true, $attributes = NULL) {
+        $this->original_name = $this->file->name;
+        $this->mimetype = $this->file->type;
+        $this->path = Yii::app()->basePath . Yii::app()->params['reportsSavePath'] . '/' . date('d.m.Y.H.i.s') . '_' .
+                $this->original_name;
+        $this->file->saveAs($this->path);
+        return parent::save($runValidation, $attributes);
+    }
 
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
-	public function attributeLabels()
-	{
-		return array(
-			'id' => 'Id',
-			'path' => 'Path',
-			'mimetype' => 'Mimetype',
-		);
-	}
+    /**
+     * @return array validation rules for model attributes.
+     */
+    public function rules() {
+        // NOTE: you should only define rules for those attributes that
+        // will receive user inputs.
+        return array(
+                array('path, mimetype', 'required'),
+                array('path, mimetype, orignal_name', 'length', 'max' => 255),
+                array('file', 'file'),
+                // The following rule is used by search().
+                // Please remove those attributes that should not be searched.
+                array('id, path, mimetype, orignal_name', 'safe', 'on' => 'search'),
+        );
+    }
 
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
-	 */
-	public function search()
-	{
-		// Warning: Please modify the following code to remove attributes that
-		// should not be searched.
+    /**
+     * @return array relational rules.
+     */
+    public function relations() {
+        // NOTE: you may need to adjust the relation name and the related
+        // class name for the relations automatically generated below.
+        return array(
+        );
+    }
 
-		$criteria=new CDbCriteria;
+    /**
+     * @return array customized attribute labels (name=>label)
+     */
+    public function attributeLabels() {
+        return array(
+                'id' => 'Id',
+                'orignal_name' => 'Original Name',
+                'path' => 'Path',
+                'file' => 'File',
+                'mimetype' => 'Mimetype',
+        );
+    }
 
-		$criteria->compare('id',$this->id,true);
+    /**
+     * Retrieves a list of models based on the current search/filter conditions.
+     * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
+     */
+    public function search() {
+        // Warning: Please modify the following code to remove attributes that
+        // should not be searched.
 
-		$criteria->compare('path',$this->path,true);
+        $criteria = new CDbCriteria;
 
-		$criteria->compare('mimetype',$this->mimetype,true);
+        $criteria->compare('id', $this->id, true);
 
-		return new CActiveDataProvider('Files', array(
-			'criteria'=>$criteria,
-		));
-	}
+        $criteria->compare('path', $this->path, true);
+
+        $criteria->compare('mimetype', $this->mimetype, true);
+
+        return new CActiveDataProvider('Files', array(
+                'criteria' => $criteria,
+        ));
+    }
 }

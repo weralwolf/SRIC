@@ -10,7 +10,7 @@ return array(
     'copyrightInfo' => 'Copyright &copy; 2011 Anatolii Koval',
     //pagesizes
     'pageSize' => 10,
-    'languages' => array('ua', 'ru', 'en'),
+        'languages' => array('ua', 'ru', 'en'),
     // google
     'googleAnalytics' => false,
     'googleAnalyticsTracker' => '',
@@ -24,6 +24,7 @@ return array(
             'url' => array('participants/create'),
         ),
     ),
+    'reportsSavePath' => '/upload/reports',
 
     'jqClEditor' => array(
         'width' => 500, // width not including margins, borders or padding

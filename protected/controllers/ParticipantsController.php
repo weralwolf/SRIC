@@ -110,6 +110,8 @@ class ParticipantsController extends Controller {
                     print Yii::trace($org->getErrors());
                 }
             }
+
+            $model->report = CUploadedFile::getInstance($model, 'report');
             /*
              print "<pre>";
              print $model->cities_id . "\n";
