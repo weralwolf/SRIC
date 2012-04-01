@@ -31,11 +31,11 @@ class SourceMessage extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('category', 'length', 'max' => 32),
-            array('message', 'safe'),
-            // The following rule is used by search().
-            // Please remove those attributes that should not be searched.
-            array('id, category, message', 'safe', 'on' => 'search'),
+                array('category', 'length', 'max' => 32),
+                array('message', 'safe'),
+                // The following rule is used by search().
+                // Please remove those attributes that should not be searched.
+                array('id, category, message', 'safe', 'on' => 'search'),
         );
     }
 
@@ -44,7 +44,7 @@ class SourceMessage extends CActiveRecord {
      */
     public function relations() {
         return array(
-            'messages' => array(self::HAS_MANY, 'Message', 'id'),
+                'messages' => array(self::HAS_MANY, 'Message', 'id'),
         );
     }
 
@@ -70,9 +70,9 @@ class SourceMessage extends CActiveRecord {
      */
     public function attributeLabels() {
         return array(
-            'id' => 'Id',
-            'category' => 'Category',
-            'message' => 'Code shortcut',
+                'id' => 'Id',
+                'category' => 'Category',
+                'message' => 'Code shortcut',
         );
     }
 
@@ -93,7 +93,7 @@ class SourceMessage extends CActiveRecord {
         $criteria->compare('message', $this->message, true);
 
         return new CActiveDataProvider('SourceMessage', array(
-            'criteria' => $criteria,
+                'criteria' => $criteria,
         ));
     }
 }

@@ -18,9 +18,9 @@ class ParticipantsController extends Controller {
     public function filters() {
         /*
          return array(
-         'accessControl', // perform access control for CRUD operations
+                 'accessControl', // perform access control for CRUD operations
          );
-         */
+        */
     }
 
     /**
@@ -30,21 +30,21 @@ class ParticipantsController extends Controller {
      */
     public function accessRules() {
         return array(
-            array('allow', // allow all users to perform 'index' and 'view' actions
-            'actions' => array('index', 'view', 'create'),
-                'users' => array('*'),
-            ),
-            array('allow', // allow authenticated user to perform 'create' and 'update' actions
-            'actions' => array('create', 'update'),
-                'users' => array('@'),
-            ),
-            array('allow', // allow admin user to perform 'admin' and 'delete' actions
-            'actions' => array('admin', 'delete'),
-                'users' => array('root'),
-            ),
-            array('deny', // deny all users
-            'users' => array('*'),
-            ),
+                array('allow', // allow all users to perform 'index' and 'view' actions
+                        'actions' => array('index', 'view', 'create'),
+                        'users' => array('*'),
+                ),
+                array('allow', // allow authenticated user to perform 'create' and 'update' actions
+                        'actions' => array('create', 'update'),
+                        'users' => array('@'),
+                ),
+                array('allow', // allow admin user to perform 'admin' and 'delete' actions
+                        'actions' => array('admin', 'delete'),
+                        'users' => array('root'),
+                ),
+                array('deny', // deny all users
+                        'users' => array('*'),
+                ),
         );
     }
 
@@ -53,7 +53,7 @@ class ParticipantsController extends Controller {
      */
     public function actionView() {
         $this->render('view', array(
-            'model' => $this->loadModel(),
+                'model' => $this->loadModel(),
         ));
     }
 
@@ -69,10 +69,8 @@ class ParticipantsController extends Controller {
 
         if (isset($_POST['Participants'])) {
             /**
-             * @todo: conferences id should be takn from globala params
              * @todo: move this parts into model beforeValidate function
              */
-            $model->conferences_id = 1;
             $model->country = $_POST['countryName'];
             $model->contries_id = Countries::model()->resolveID($model->country);
             if ($model->contries_id == - 1) {
@@ -111,26 +109,26 @@ class ParticipantsController extends Controller {
                 }
             }
 
+            $report_0 = Reports::saveFromPOST('0');
+            $report_1 = Reports::saveFromPOST('1');
+
             $model->report = CUploadedFile::getInstance($model, 'report');
-            /*
-             print "<pre>";
-             print $model->cities_id . "\n";
-             print $model->contries_id . "\n";
-             print $model->organizations_id . "\n";
-             print "\n";
-             var_dump($_POST);
-             print "</pre>";
-             //die;
-             */
             $model->attributes = $_POST['Participants'];
-            print $model->country . "\n";
             if ($model->save()) {
+                if (!is_null($report_0)) {
+                    $report_0->participants_id = $model->id;
+                    $report_0->save();
+                }
+                if (!is_null($report_1)) {
+                    $report_1->participants_id = $model->id;
+                    $report_1->save();
+                }
                 $this->redirect(array('view', 'id' => $model->id));
             }
         }
 
         $this->render('create', array(
-            'model' => $model,
+                'model' => $model,
         ));
     }
 
@@ -151,7 +149,7 @@ class ParticipantsController extends Controller {
         }
 
         $this->render('update', array(
-            'model' => $model,
+                'model' => $model,
         ));
     }
 
@@ -177,7 +175,7 @@ class ParticipantsController extends Controller {
     public function actionIndex() {
         $dataProvider = new CActiveDataProvider('Participants');
         $this->render('index', array(
-            'dataProvider' => $dataProvider,
+                'dataProvider' => $dataProvider,
         ));
     }
 
@@ -191,7 +189,7 @@ class ParticipantsController extends Controller {
             $model->attributes = $_GET['Participants'];
 
         $this->render('admin', array(
-            'model' => $model,
+                'model' => $model,
         ));
     }
 

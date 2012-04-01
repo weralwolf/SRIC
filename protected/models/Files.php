@@ -49,11 +49,11 @@ class Files extends CActiveRecord {
         // will receive user inputs.
         return array(
                 array('path, mimetype', 'required'),
-                array('path, mimetype, orignal_name', 'length', 'max' => 255),
-                array('file', 'file'),
+                array('path, mimetype, original_name', 'length', 'max' => 255),
+//                 array('file', 'file'),
                 // The following rule is used by search().
                 // Please remove those attributes that should not be searched.
-                array('id, path, mimetype, orignal_name', 'safe', 'on' => 'search'),
+                array('id, path, mimetype, original_name', 'safe', 'on' => 'search'),
         );
     }
 
