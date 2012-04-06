@@ -19,7 +19,7 @@
     ); ?>
 	<?php echo $form->dropDownList($model, 'sections_id', Sections::model()->dropDown(), 
 	        array(
-	                'name' => $nameIndex . 'section_id]',
+	                'name' => $nameIndex . 'sections_id]',
 // 	                'style' => 'float: right; width: 50%;'
 	        )
     ); ?>

@@ -63,15 +63,12 @@ class ReportsController extends Controller
      * Creates a new model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
-    public function actionCreate()
-    {
-        $model=new Reports;
-
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
+    public function actionCreate() {
+        $model = new Reports;
 
         if(isset($_POST['Reports'])) {
             $model = Reports::saveFromPOST();
+            $model->participants_id = 0;
             if($model->save()) {
                 $this->redirect(array('view','id'=>$model->id));
             }

@@ -61,12 +61,12 @@ class Reports extends CActiveRecord {
 
     public static function saveFromPOST($identifier = '') {
         $model = new Reports();
-        $dataConteiner = $identifier != '' ? $_POST['Reports'][$identifier] : $_POST['Reports'];
+        $dataConteiner = $identifier !== '' ? $_POST['Reports'][$identifier] : $_POST['Reports'];
         if (isset($dataConteiner) && $dataConteiner['enabled']) {
             $model->attributes = $dataConteiner;
             $file = new Files();
-            $file->attributes = $identifier != '' ? $_POST['Files'][$identifier] : $_POST['Files'];
-            $file->upload();
+            $file->attributes = $identifier !== '' ? $_POST['Files'][$identifier] : $_POST['Files'];
+            $file->upload($identifier);
             if ($file->save()) {
                 $model->files_id = $file->id;
             }

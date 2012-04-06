@@ -27,8 +27,9 @@ class Files extends CActiveRecord {
         return 'files';
     }
 
-    public function upload() {
-        $this->file = CUploadedFile::getInstance($this, 'file');
+    public function upload($identifier = '') {
+        $name = $identifier !== '' ? "[$identifier]file" : 'file';
+        $this->file = CUploadedFile::getInstance($this, $name);
         $this->uploaded = true;
     }
 
@@ -50,7 +51,7 @@ class Files extends CActiveRecord {
         return array(
                 array('path, mimetype', 'required'),
                 array('path, mimetype, original_name', 'length', 'max' => 255),
-//                 array('file', 'file'),
+                //                 array('file', 'file'),
                 // The following rule is used by search().
                 // Please remove those attributes that should not be searched.
                 array('id, path, mimetype, original_name', 'safe', 'on' => 'search'),
