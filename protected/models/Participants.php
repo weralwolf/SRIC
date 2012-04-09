@@ -28,6 +28,9 @@ class Participants extends CActiveRecord {
     public $city;
     public $organization;
     public $report;
+    public $day;
+    public $year;
+    public $month;
     /**
      * Returns the static model of the specified AR class.
      * @return Participants the static model class
@@ -35,7 +38,30 @@ class Participants extends CActiveRecord {
     public static function model($className = __CLASS__) {
         return parent::model($className);
     }
+    
+    public static function daysList() {
+        $arr = array();
+        for($i = 0; $i < 31; $arr[] = ++$i);
+        return $arr;
+    }
+    
+    public static function monthsList() {
+        $arr = array();
+        for($i = 0; $i < 12; $arr[] = ++$i);
+        return $arr;
+    }
+    
+    public static function yearsList() {
+        $arr = array();
+        for($i = 1900; $i < date('Y'); $arr[] = ++$i);
+        return $arr;
+    }
 
+    public function beforeValidate() {
+        $this->birthdate = $this->day . '-' . $this->month . '-'. $this->year;
+        return parent::beforeValidate();
+    }
+    
     /**
      * @return string the associated database table name
      */
@@ -63,7 +89,7 @@ class Participants extends CActiveRecord {
                 array('participation_type', 'in', 'range' => array('lecturer', 'listner')),
                 array('report_type', 'in', 'range' => array('plenary', 'sessional', 'poster')),
                 array('email', 'email'),
-                array('report', 'file'),
+                array('report', 'file', 'types' => 'pdf, doc, docx'),
                 /*
                  array('phone', 'match', 'pattern'=>'/^(\+[0-9]{2}[\s]{0,1}[\-]{0,1}[\s]{0,1}1|0)50[\s]{0,1}[\-]{0,1}[\s]{0,1}[1-9]{1}[0-9]{6}$/',
                          'message'=>'Number format is +NN NNN NN-NN-NNN, with or without spaces and dashes.'),
