@@ -10,6 +10,10 @@ class Controller extends CController
 	 * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
 	 */
 	public $layout='//layouts/column1';
+	public $layoutFrontend='//layouts/column1';
+	public $layoutAdmin='//layouts/righty';
+	
+	public $adminLayoutActions = array();
 	/**
 	 * @var array context menu items. This property will be assigned to {@link CMenu::items}.
 	 */
@@ -22,7 +26,12 @@ class Controller extends CController
 	public $breadcrumbs=array();
 
 	protected function beforeAction($action) {
+	    if (in_array($action->id, $this->adminLayoutActions)) {
+	        $this->layout = $this->layoutAdmin;
+	    } else {
+	        $this->layout = $this->layoutFrontend;
+	    }
 	    Yii::log(Languages::actualLanguage());
 	    return parent::beforeAction($action);
-	} 
+	}
 }

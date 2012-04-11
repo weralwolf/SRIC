@@ -1,16 +1,13 @@
 <?php
 
 class ParticipantsController extends Controller {
-    /**
-     * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-     * using two-column layout. See 'protected/views/layouts/column2.php'.
-     */
-    public $layout = '//layouts/column2';
 
     /**
      * @var CActiveRecord the currently loaded data model instance.
      */
     private $_model;
+    
+    public $adminLayoutActions = array('admin', 'index', 'view');
 
     /**
      * @return array action filters
@@ -31,15 +28,15 @@ class ParticipantsController extends Controller {
     public function accessRules() {
         return array(
                 array('allow', // allow all users to perform 'index' and 'view' actions
-                        'actions' => array('index', 'view', 'create'),
+                        'actions' => array('create'),
                         'users' => array('*'),
                 ),
                 array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                        'actions' => array('create', 'update'),
+                        'actions' => array('create', 'update', 'viewMe'),
                         'users' => array('@'),
                 ),
                 array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                        'actions' => array('admin', 'delete'),
+                        'actions' => array('index', 'admin', 'delete', 'view'),
                         'users' => array('root'),
                 ),
                 array('deny', // deny all users
@@ -110,7 +107,6 @@ class ParticipantsController extends Controller {
             $report_0 = Reports::saveFromPOST('0');
             $report_1 = Reports::saveFromPOST('1');
 
-//             $model->report = CUploadedFile::getInstance($model, 'report');
             $model->attributes = $_POST['Participants'];
             if ($model->save()) {
                 if (!is_null($report_0)) {
