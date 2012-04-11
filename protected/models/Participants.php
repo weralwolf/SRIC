@@ -19,7 +19,6 @@
  * @property string $phone
  * @property string $participation_type
  * @property string $report_type
- * @property string $sections_id
  * @property string $accommodation_places_id
  * @property string $accommodation_places_rooms_types_id
  */
@@ -27,7 +26,6 @@ class Participants extends CActiveRecord {
     public $country;
     public $city;
     public $organization;
-    public $report;
     public $day;
     public $year;
     public $month;
@@ -77,19 +75,19 @@ class Participants extends CActiveRecord {
                 array(
                         'contries_id, cities_id, name, second_name,
                         last_name, birthdate, organizations_id, post, email, phone,
-                        participation_type, report_type, sections_id',
+                        participation_type, report_type',
                         'required'),
                 /* , accommodation_places_id, accommodation_places_rooms_types_id */
                 array('approved, gender', 'numerical', 'integerOnly' => true),
                 array(
-                        'conferences_id, contries_id, cities_id, organizations_id,
-                        sections_id, accommodation_places_id, accommodation_places_rooms_types_id',
+                        'contries_id, cities_id, organizations_id,
+                         accommodation_places_id, accommodation_places_rooms_types_id',
                         'length', 'max' => 10),
                 array('name, second_name, last_name, post, email, phone', 'length', 'max' => 255),
                 array('participation_type', 'in', 'range' => array('lecturer', 'listner')),
                 array('report_type', 'in', 'range' => array('plenary', 'sessional', 'poster')),
                 array('email', 'email'),
-                array('report', 'file', 'types' => 'pdf, doc, docx'),
+//                 array('report', 'file', 'types' => 'pdf, doc, docx'),
                 /*
                  array('phone', 'match', 'pattern'=>'/^(\+[0-9]{2}[\s]{0,1}[\-]{0,1}[\s]{0,1}1|0)50[\s]{0,1}[\-]{0,1}[\s]{0,1}[1-9]{1}[0-9]{6}$/',
                          'message'=>'Number format is +NN NNN NN-NN-NNN, with or without spaces and dashes.'),
@@ -99,9 +97,9 @@ class Participants extends CActiveRecord {
                  array('birthdate', 'date'),
         */
                 array(
-                        'id, approved, conferences_id, contries_id, cities_id, name,
+                        'id, approved, contries_id, cities_id, name,
                         second_name, last_name, gender, birthdate, organizations_id, post,
-                        email, phone, participation_type, report_type, sections_id,
+                        email, phone, participation_type, report_type,
                         accommodation_places_id, accommodation_places_rooms_types_id',
                         'safe', 'on' => 'search'),
         );
@@ -142,7 +140,6 @@ class Participants extends CActiveRecord {
                 'phone' => $m->translate('Participants', 'phone'),
                 'participation_type' => $m->translate('Participants', 'participation_type'),
                 'report_type' => $m->translate('Participants', 'report_type'),
-                'sections_id' => $m->translate('Participants', 'sections_id'),
                 'accommodation_places_id' => $m->translate('Participants', 'accommodation_places_id'),
                 'accommodation_places_rooms_types_id' => $m->translate('Participants', 'accommodation_places_rooms_types_id'
                 ),
@@ -173,7 +170,6 @@ class Participants extends CActiveRecord {
         $criteria->compare('phone', $this->phone, true);
         $criteria->compare('participation_type', $this->participation_type, true);
         $criteria->compare('report_type', $this->report_type, true);
-        $criteria->compare('sections_id', $this->sections_id, true);
         $criteria->compare('accommodation_places_id', $this->accommodation_places_id, true);
         $criteria->compare('accommodation_places_rooms_types_id', $this->accommodation_places_rooms_types_id, true);
 

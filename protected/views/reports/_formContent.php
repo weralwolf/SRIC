@@ -39,7 +39,7 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
 <div class="one_input wide">
 	<div class="rowElem">
 		<?php echo $form->labelEx($model, 'autors'); ?>
-		<?php echo $form->textArea($model, 'autors', 
+		<?php echo $form->textField($model, 'autors', 
 		        array('rows' => 6,
 		                'cols' => 50,
 		                'name' => $nameIndex. 'autors]',
@@ -51,8 +51,7 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
 </div>
 <div class="one_input tezisi">
 	<div class="rowElem">
-		<label><?php echo $m->translate('Participants', 'file_upload_note'); ?>
-		</label>
+		<label><?php echo $m->translate('Participants', 'file_upload_note'); ?></label>
 		<?php $this->renderPartial('application.views.files._formContent', array(
 		        'form' => $form,
 		        'model' => is_null($model->file) ? new Files() : $model->file,

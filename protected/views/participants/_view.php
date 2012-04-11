@@ -8,10 +8,6 @@
 	<?php echo CHtml::encode($data->approved ? 'Yes' : 'No'); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('conferences_id')); ?>:</b>
-	<?php echo CHtml::encode($data->conferences_id); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('contries_id')); ?>:</b>
 	<?php echo CHtml::encode($data->contries_id); ?>
 	<br />

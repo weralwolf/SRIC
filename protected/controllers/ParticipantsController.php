@@ -62,11 +62,10 @@ class ParticipantsController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
     public function actionCreate() {
+        echo "<pre>";
         $model = new Participants;
 
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
-
+        
         if (isset($_POST['Participants'])) {
             /**
              * @todo: move this parts into model beforeValidate function
@@ -112,7 +111,7 @@ class ParticipantsController extends Controller {
             $report_0 = Reports::saveFromPOST('0');
             $report_1 = Reports::saveFromPOST('1');
 
-            $model->report = CUploadedFile::getInstance($model, 'report');
+//             $model->report = CUploadedFile::getInstance($model, 'report');
             $model->attributes = $_POST['Participants'];
             if ($model->save()) {
                 if (!is_null($report_0)) {
@@ -124,6 +123,13 @@ class ParticipantsController extends Controller {
                     $report_1->save();
                 }
                 $this->redirect(array('view', 'id' => $model->id));
+            } else {
+                if (!is_null($report_0)) {
+                    $report_0->file->delete();
+                }
+                if (!is_null($report_1)) {
+                    $report_1->file->delete();
+                }
             }
         }
 

@@ -28,8 +28,8 @@ class Files extends CActiveRecord {
     }
 
     public function upload($identifier = '') {
-        $name = $identifier !== '' ? "[$identifier]file" : 'file';
-        $this->file = CUploadedFile::getInstance($this, $name);
+        $name = 'Files' . ($identifier !== '' ? "[$identifier]" : '') . '[file]';
+        $this->file = CUploadedFile::getInstanceByName($name);
         $this->uploaded = true;
     }
 

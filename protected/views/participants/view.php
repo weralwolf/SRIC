@@ -20,7 +20,6 @@ $this->menu=array(
 	'attributes'=>array(
 		'id',
 		'approved',
-		'conferences_id',
 		'contries_id',
 		'cities_id',
 		'name',
@@ -34,8 +33,7 @@ $this->menu=array(
 		'phone',
 		'participation_type',
 		'report_type',
-		'sections_id',
-		'accommodation_places_id',
+    		'accommodation_places_id',
 		'accommodation_places_rooms_types_id',
 	),
 )); ?>

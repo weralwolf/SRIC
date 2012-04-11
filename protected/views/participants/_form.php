@@ -2,6 +2,7 @@
 $form = $this->beginWidget('CActiveForm', array(
         'id' => 'participants-form',
         'enableAjaxValidation' => false,
+        'htmlOptions' => array('enctype' => 'multipart/form-data'),
 ));
 
 $m = Yii::app()->messages;
