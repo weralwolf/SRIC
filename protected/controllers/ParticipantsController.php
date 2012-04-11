@@ -62,7 +62,6 @@ class ParticipantsController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
     public function actionCreate() {
-        echo "<pre>";
         $model = new Participants;
 
         
