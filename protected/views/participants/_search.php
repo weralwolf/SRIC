@@ -16,11 +16,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'conferences_id'); ?>
-		<?php echo $form->textField($model,'conferences_id',array('size'=>10,'maxlength'=>10)); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'contries_id'); ?>
 		<?php echo $form->textField($model,'contries_id',array('size'=>10,'maxlength'=>10)); ?>
 	</div>
@@ -83,11 +78,6 @@
 	<div class="row">
 		<?php echo $form->label($model,'report_type'); ?>
 		<?php echo $form->textField($model,'report_type',array('size'=>9,'maxlength'=>9)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'sections_id'); ?>
-		<?php echo $form->textField($model,'sections_id',array('size'=>10,'maxlength'=>10)); ?>
 	</div>
 
 	<div class="row">

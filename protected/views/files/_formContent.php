@@ -5,7 +5,7 @@
 	<?php echo $form->labelEx($model,'file'); ?>
 	<button id="" name="" type="button"
 		class="jqTransformButton jqTransformButton_click">
-		<span> <?php echo CHtml::activeFileField($model, 'file', array('name' => $nameIndex . 'file]', 'alt' => 'button')); ?>
+		<span> <?php echo CHtml::activeFileField($model, 'file', array('name' => $nameIndex . 'file]', 'alt' => 'button', 'type' => 'button')); ?>
 		</span>
 	</button>
 	<?php echo $form->error($model,'file'); ?>

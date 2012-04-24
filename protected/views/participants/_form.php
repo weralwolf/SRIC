@@ -22,15 +22,15 @@ $cs->registerScript("transformation", "$(function(){
 	<tr>
 		<td width="320"><div class="one_input">
 				<div class="rowElem">
-					<?php echo $form->labelEx($model, 'last_name', array('style' => 'display: inline;')); ?>
-					<?php echo $form->textField($model, 'last_name', array('style' => "display: inline;", 'maxlength' => 255)); ?>
+					<?php echo $form->labelEx($model, 'last_name'); ?>
+					<?php echo $form->textField($model, 'last_name', array('maxlength' => 255)); ?>
 					<?php echo $form->error($model, 'last_name'); ?>
 				</div>
 			</div></td>
 		<td width="360"><div class="one_input">
 				<div class="rowElem">
-					<?php echo $form->labelEx($model, 'name', array('style' => 'display: inline;')); ?>
-					<?php echo $form->textField($model, 'name', array('style' => "display: inline;", 'maxlength' => 255)); ?>
+					<?php echo $form->labelEx($model, 'name'); ?>
+					<?php echo $form->textField($model, 'name', array('maxlength' => 255)); ?>
 					<?php echo $form->error($model, 'name'); ?>
 				</div>
 			</div></td>
@@ -38,8 +38,8 @@ $cs->registerScript("transformation", "$(function(){
 	<tr>
 		<td><div class="one_input">
 				<div class="rowElem">
-					<?php echo $form->labelEx($model, 'second_name', array('style' => 'display: inline;')); ?>
-					<?php echo $form->textField($model, 'second_name', array('style' => "display: inline;", 'maxlength' => 255)); ?>
+					<?php echo $form->labelEx($model, 'second_name'); ?>
+					<?php echo $form->textField($model, 'second_name', array('maxlength' => 255)); ?>
 					<?php echo $form->error($model, 'second_name'); ?>
 				</div>
 			</div></td>
@@ -49,17 +49,17 @@ $cs->registerScript("transformation", "$(function(){
 	<tr>
 		<td class="small"><div class="one_input">
 				<div class="rowElem">
-					<?php echo $form->labelEx($model, 'gender', array('style' => 'display: inline;')); ?>
-					<?php echo $form->dropDownList($model, 'gender', array("0" => "Female", "1" => "Male"), array('style' => 'display: inline;')); ?>
+					<?php echo $form->labelEx($model, 'gender'); ?>
+					<?php echo $form->dropDownList($model, 'gender', array("0" => "Female", "1" => "Male")); ?>
 					<?php echo $form->error($model, 'gender'); ?>
 				</div>
 			</div></td>
 		<td class="small"><div class="one_input birth">
 				<div class="rowElem">
-					<?php echo $form->labelEx($model, 'birthdate', array('style' => 'display: inline;')); ?>
-					<?php echo $form->dropDownList($model, 'day', Participants::daysList(), array('style' => 'display: inline;')); ?>
-					<?php echo $form->dropDownList($model, 'month', Participants::monthsList(), array('style' => 'display: inline;')); ?>
-					<?php echo $form->dropDownList($model, 'year', Participants::yearsList(), array('style' => 'display: inline;')); ?>
+					<?php echo $form->labelEx($model, 'birthdate'); ?>
+					<?php echo $form->dropDownList($model, 'day', Participants::daysList()); ?>
+					<?php echo $form->dropDownList($model, 'month', Participants::monthsList()); ?>
+					<?php echo $form->dropDownList($model, 'year', Participants::yearsList()); ?>
 				</div>
 			</div></td>
 	</tr>
@@ -117,7 +117,7 @@ $cs->registerScript("transformation", "$(function(){
 		<td><div class="one_input">
 				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'post'); ?>
-					<?php echo $form->textField($model, 'post', array('style' => "display: inline;", 'maxlength' => 255)); ?>
+					<?php echo $form->textField($model, 'post', array('maxlength' => 255)); ?>
 					<?php echo $form->error($model, 'post'); ?>
 				</div>
 			</div></td>
@@ -126,14 +126,14 @@ $cs->registerScript("transformation", "$(function(){
 		<td><div class="one_input">
 				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'phone'); ?>
-					<?php echo $form->textField($model, 'phone', array('style' => "display: inline;", 'maxlength' => 255)); ?>
+					<?php echo $form->textField($model, 'phone', array('maxlength' => 255)); ?>
 					<?php echo $form->error($model, 'phone'); ?>
 				</div>
 			</div></td>
 		<td><div class="one_input">
 				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'email'); ?>
-					<?php echo $form->textField($model, 'email', array('style' => "wdisplay: inline;", 'maxlength' => 255)); ?>
+					<?php echo $form->textField($model, 'email', array('maxlength' => 255)); ?>
 					<?php echo $form->error($model, 'email'); ?>
 				</div>
 			</div></td>
