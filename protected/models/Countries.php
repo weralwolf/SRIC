@@ -83,6 +83,10 @@ class Countries extends CActiveRecord
 	    return $model ? $model->id : -1;
 	}
 	
+	static public function resolveName($id) {
+	    $model = Countries::model()->findByPk(intval($id));
+	    return $model ? $model->name : '--unexisted--';
+	}
 	/**
 	 * @return array relational rules.
 	 */

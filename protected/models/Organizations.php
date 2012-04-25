@@ -111,6 +111,10 @@ class Organizations extends CActiveRecord
 	    return $model ? $model->id : -1;
 	}
 
+	static public function resolveName($id) {
+	    $model = Organizations::model()->findByPk(intval($id));
+	    return $model ? $model->title : '--unexisted--';
+	}
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.

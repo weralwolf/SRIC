@@ -148,33 +148,28 @@ $cs->registerScript("transformation", "$(function(){
 <p>
 	<?php echo $m->translate('Participants', 'report_note_p2'); ?>
 </p>
-<div class="one_input">
+<div class="one_input member_type">
 	<div class="rowElem">
-		<table class="aricletype">
-			<tr height="22">
-				<td width="120" valign="top"><?php echo $form->labelEx($model, 'participation_type'); ?>
-				</td>
-				<td><?php echo $form->radioButtonList($model, 'participation_type', array(
-				        "lecturer" => $m->translate('Participants', 'participation_type_lecturer'),
-				        "listner" => $m->translate('Participants', 'participation_type_listner'),
-				), array("style" => "float: left; margin-right: 5px;"));
-				?>
-				</td>
-			</tr>
-		</table>
+		<?php echo $form->radioButtonList($model, 'participation_type', array(
+		        "lecturer" => $m->translate('Participants', 'participation_type_lecturer'),
+		        "listner" => $m->translate('Participants', 'participation_type_listner'),
+		),
+		        array('template' => '{label}{input}', 'separator' => ''));
+		?>
 	</div>
 </div>
 <div class="one_input">
 	<div class="rowElem">
 		<table class="aricletype">
 			<tr height="22">
-				<td width="120" valign="top"><?php echo $form->labelEx($model, 'report_type'); ?>
+				<td width="100" valign="top"><?php echo $form->labelEx($model, 'report_type'); ?>
 				</td>
 				<td><?php echo $form->radioButtonList($model, 'report_type', array(
 				        "plenary" => $m->translate('Participants', 'report_type_plenary'),
 				        "sessional" => $m->translate('Participants', 'report_type_sessional'),
 				        "poster" => $m->translate('Participants', 'report_type_poster'),
-				), array("style" => "float: left; margin-right: 5px;"));?> <?php echo $form->error($model, 'report_type'); ?>
+				), array('template' => '{input}{label}', 'separator' => '</td></tr><tr><td></td><td>'));
+				echo $form->error($model, 'report_type'); ?>
 				</td>
 			</tr>
 		</table>
