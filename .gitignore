@@ -5,3 +5,5 @@ protected/tests
 .buildpath
 .project
 index-test.php
+index.php
+protected/config/db.conf.php

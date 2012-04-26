@@ -1,0 +1,9 @@
+<?php 
+
+return array(
+        'connectionString' => 'mysql:host=localhost;dbname=sri_conference',
+        'emulatePrepare' => true,
+        'username' => 'root',
+        'password' => 'littlelover',
+        'charset' => 'utf8'
+        );

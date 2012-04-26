@@ -2,18 +2,18 @@
 
 class SiteController extends Controller
 {
-    public $adminLayoutActions = array('admin', 'login');
+    public $adminLayoutActions = array('admin', 'login', 'logout');
     /**
      * Declares class-based actions.
      */
-    
+
     public function filters()
     {
         return array(
                 'accessControl', // perform access control for CRUD operations
         );
     }
-    
+
     /**
      * Specifies the access control rules.
      * This method is used by the 'accessControl' filter.
@@ -35,8 +35,8 @@ class SiteController extends Controller
                 ),
         );
     }
-    
-    
+
+
     public function actions()
     {
         return array(

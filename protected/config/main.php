@@ -93,15 +93,9 @@ return array(
                         'sessionName' => 'SRIConferenceSite'
                 ),
                 // uncomment the following to use a MySQL database
-                'db'=>array(
-                        'connectionString' => 'mysql:host=localhost;dbname=sri_conference',
-                        'emulatePrepare' => true,
-                        'username' => 'root',
-                        'password' => 'littlelover',
-                        'charset' => 'utf8',
+                'db' => require('db.conf.php'),
                         //			'enableParamLogging' => true,
 //			'enableProfiling' => true,
-                ),
                 'httpRequest' => array(
                         'class' => 'CHttpRequest',
                 ),
