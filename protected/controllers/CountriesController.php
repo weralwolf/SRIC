@@ -1,182 +1,153 @@
 <?php
 
-class CountriesController extends Controller
-{
-	/**
-	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
-	 * using two-column layout. See 'protected/views/layouts/column2.php'.
-	 */
-	public $layout='//layouts/column2';
+class CountriesController extends SourceMessageController {
+    /**
+     * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
+     * using two-column layout. See 'protected/views/layouts/column2.php'.
+     */
+    public $layout='//layouts/column2';
 
-	/**
-	 * @var CActiveRecord the currently loaded data model instance.
-	 */
-	private $_model;
+    public $adminLayoutActions = array('admin', 'index', 'view', 'update', 'create');
 
-	/**
-	 * @return array action filters
-	 */
-	public function filters()
-	{
-		return array(
-			'accessControl', // perform access control for CRUD operations
-		);
-	}
-	
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
-	public function accessRules()
-	{
-	    return array();
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('root'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
-	}
+    /**
+     * @var CActiveRecord the currently loaded data model instance.
+     */
+    private $_model;
 
-	/**
-	 * Displays a particular model.
-	 */
-	public function actionView()
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel(),
-		));
-	}
+    /**
+     * @return array action filters
+     */
+    public function filters()
+    {
+        return array(
+                'accessControl', // perform access control for CRUD operations
+        );
+    }
 
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-	public function actionCreate()
-	{
-		$model=new Countries;
+    /**
+     * Specifies the access control rules.
+     * This method is used by the 'accessControl' filter.
+     * @return array access control rules
+     */
+    public function accessRules()
+    {
+        return array();
+        return array(
+                array('allow',  // allow all users to perform 'index' and 'view' actions
+                        'actions'=>array('index','view'),
+                        'users'=>array('*'),
+                ),
+                array('allow', // allow authenticated user to perform 'create' and 'update' actions
+                        'actions'=>array('create','update'),
+                        'users'=>array('@'),
+                ),
+                array('allow', // allow admin user to perform 'admin' and 'delete' actions
+                        'actions'=>array('admin','delete'),
+                        'users'=>array('root'),
+                ),
+                array('deny',  // deny all users
+                        'users'=>array('*'),
+                ),
+        );
+    }
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+    /**
+     * Displays a particular model.
+     */
+    public function actionView()
+    {
+        $this->render('application.views.sourceMessage.view',array(
+                'model'=>$this->loadModel(),
+        ));
+    }
 
-		if(isset($_POST['Countries']))
-		{
-			$model->attributes=$_POST['Countries'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
+    /**
+     * Creates a new model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     */
+    public function actionCreate()
+    {
+        $model = new Countries;
+        $this->_creation($model);
+        $this->render('application.views.sourceMessage.create',array(
+                'model'=>$model,
+                'category' => 'Countries',
+                'textArea' => false,
+        ));
+    }
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
-	}
+    /**
+     * Updates a particular model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     */
+    public function actionUpdate() {
 
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 */
-	public function actionUpdate()
-	{
-		$model=$this->loadModel();
+        $model = $this->loadModel();
+        $this->_updating($model);
+        $this->render('application.views.sourceMessage.update',array(
+                'model'=>$model,
+                'category' => 'Countries',
+                'textArea' => false,
+        ));
+    }
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+    /**
+     * Deletes a particular model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     */
+    public function actionDelete()
+    {
+        if(Yii::app()->request->isPostRequest)
+        {
+            // we only allow deletion via POST request
+            $this->loadModel()->delete();
 
-		if(isset($_POST['Countries']))
-		{
-			$model->attributes=$_POST['Countries'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
+            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+            if(!isset($_GET['ajax']))
+                $this->redirect(array('application.views.sourceMessage.index', 'category' => 'Countries'));
+        }
+        else
+            throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+    }
 
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}
+    /**
+     * Lists all models.
+     */
+    public function actionIndex() {
+        $dataProvider = new CActiveDataProvider('SourceMessage', array(
+                'criteria' => array(
+                        'condition' => 'category=' . Yii::app()->db->quoteValue("Countries")
+                ),
+        ));
+        $this->render('application.views.sourceMessage.index',array(
+                'dataProvider'=>$dataProvider,
+        ));
+    }
 
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'index' page.
-	 */
-	public function actionDelete()
-	{
-		if(Yii::app()->request->isPostRequest)
-		{
-			// we only allow deletion via POST request
-			$this->loadModel()->delete();
+    /**
+     * Manages all models.
+     */
+    public function actionAdmin() {
+        $model = new Countries('search');
+        $model->unsetAttributes();
+        if(isset($_GET['Countries']))
+            $model->attributes=$_GET['Countries'];
 
-			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-			if(!isset($_GET['ajax']))
-				$this->redirect(array('index'));
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-	}
+        $this->render('application.views.sourceMessage.admin',array(
+                'model'=>$model,
+        ));
+    }
 
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Countries');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new Countries('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Countries']))
-			$model->attributes=$_GET['Countries'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 */
-	public function loadModel()
-	{
-		if($this->_model===null)
-		{
-			if(isset($_GET['id']))
-				$this->_model=Countries::model()->findbyPk($_GET['id']);
-			if($this->_model===null)
-				throw new CHttpException(404,'The requested page does not exist.');
-		}
-		return $this->_model;
-	}
-
-	/**
-	 * Performs the AJAX validation.
-	 * @param CModel the model to be validated
-	 */
-	protected function performAjaxValidation($model)
-	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='countries-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-	}
+    /**
+     * Performs the AJAX validation.
+     * @param CModel the model to be validated
+     */
+    protected function performAjaxValidation($model)
+    {
+        if(isset($_POST['ajax']) && $_POST['ajax']==='countries-form')
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+    }
 }

@@ -18,6 +18,7 @@ return array(
         'import'=>array(
                 'application.models.*',
                 'application.components.*',
+                'application.controllers.*',
                 'ext.components.database.*',
                 'ext.widgets.portlet.XPortlet',
                 'ext.helpers.XHtml',

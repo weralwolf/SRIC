@@ -143,7 +143,7 @@ class PagesController extends Controller {
      */
     public function actionIndex() {
         $this->render('view', array(
-            'model' => Pages::model()->with('title')->find('`title`.message = "about_us_title"'),
+            'model' => Pages::model()->with('title')->find('`title`.message = "conference_title"'),
         ));
     }
     

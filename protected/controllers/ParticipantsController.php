@@ -61,7 +61,6 @@ class ParticipantsController extends Controller {
     public function actionCreate() {
         $model = new Participants;
 
-        
         if (isset($_POST['Participants'])) {
             /**
              * @todo: move this parts into model beforeValidate function

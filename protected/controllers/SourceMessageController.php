@@ -6,7 +6,7 @@ class SourceMessageController extends Controller {
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
     public $layout = '//layouts/column2';
-    
+
     public $adminLayoutActions = array('admin', 'update', 'create', 'view');
 
     /**
@@ -19,8 +19,8 @@ class SourceMessageController extends Controller {
      */
     public function filters() {
         return array(
-            'accessControl', // perform access control for CRUD operations
-            );
+                'accessControl', // perform access control for CRUD operations
+        );
     }
 
     /**
@@ -30,17 +30,17 @@ class SourceMessageController extends Controller {
      */
     public function accessRules() {
         return array(
-             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-             'actions'=>array(),
-             'users'=>array('@'),
-             ),
-             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-             'actions'=>array('create', 'update', 'index', 'view', 'admin', 'delete'),
-             'users'=>array('root'),
-             ),
-             array('deny',  // deny all users
-             'users'=>array('*'),
-             ),
+                array('allow', // allow authenticated user to perform 'create' and 'update' actions
+                        'actions'=>array(),
+                        'users'=>array('@'),
+                ),
+                array('allow', // allow admin user to perform 'admin' and 'delete' actions
+                        'actions'=>array('create', 'update', 'index', 'view', 'admin', 'delete'),
+                        'users'=>array('root'),
+                ),
+                array('deny',  // deny all users
+                        'users'=>array('*'),
+                ),
         );
     }
 
@@ -49,7 +49,7 @@ class SourceMessageController extends Controller {
      */
     public function actionView() {
         $this->render('view', array(
-            'model' => $this->loadModel(),
+                'model' => $this->loadModel(),
         ));
     }
 
@@ -59,20 +59,19 @@ class SourceMessageController extends Controller {
      */
     public function actionCreate() {
         $model = new SourceMessage;
+        $this->_creation($model);
+        $this->render('create', array(
+                'model' => $model,
+        ));
+    }
 
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
-
+    protected function _creation($model) {
         if (isset($_POST['SourceMessage'])) {
             $message_id = SourceMessage::saveFromPOST();
             if ($message_id) {
                 $this->redirect(array('view', 'id' => $message_id));
             }
         }
-
-        $this->render('create', array(
-            'model' => $model,
-        ));
     }
 
     /**
@@ -81,19 +80,18 @@ class SourceMessageController extends Controller {
      */
     public function actionUpdate() {
         $model = $this->loadModel();
+        $this->_updating($model);
+        $this->render('update', array(
+                'model' => $model,
+        ));
+    }
 
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
-
+    protected function _updating($model) {
         if (isset($_POST['SourceMessage'])) {
-            $model->attributes = $_POST['SourceMessage'];
+            $model->updateFromPost();
             if ($model->save())
                 $this->redirect(array('view', 'id' => $model->id));
         }
-
-        $this->render('update', array(
-            'model' => $model,
-        ));
     }
 
     /**
@@ -118,7 +116,7 @@ class SourceMessageController extends Controller {
     public function actionIndex() {
         $dataProvider = new CActiveDataProvider('SourceMessage');
         $this->render('index', array(
-            'dataProvider' => $dataProvider,
+                'dataProvider' => $dataProvider,
         ));
     }
 
@@ -132,7 +130,7 @@ class SourceMessageController extends Controller {
             $model->attributes = $_GET['SourceMessage'];
 
         $this->render('admin', array(
-            'model' => $model,
+                'model' => $model,
         ));
     }
 

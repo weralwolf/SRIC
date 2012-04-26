@@ -1,21 +1,21 @@
 <?php $nameIndex = 'SourceMessage[' . (isset($attributeName) && $attributeName != '' ? $attributeName . '][' : ''); ?>
 
 <div class="row">
-<?php
-if (isset($category) && $category != '') {
-    echo $form->hiddenField($model, 'category', array('value' => $category, 'name' => $nameIndex . 'category]'));
-} else {
-    echo $form->labelEx($model, 'category');
-    echo $form->textField($model, 'category', array('size' => 32, 'maxlength' => 32, 'name' => $nameIndex . 'category]'));
-    echo $form->error($model, 'category');
-}
-?>
+	<?php
+	if (isset($category) && $category != '') {
+	    echo $form->hiddenField($model, 'category', array('value' => $category, 'name' => $nameIndex . 'category]'));
+	} else {
+	    echo $form->labelEx($model, 'category');
+	    echo $form->textField($model, 'category', array('size' => 32, 'maxlength' => 32, 'name' => $nameIndex . 'category]'));
+	    echo $form->error($model, 'category');
+	}
+	?>
 </div>
 
 <div class="row">
 	<?php echo $form->labelEx($model, 'message', array('style' => 'float: left; width: 50%;')); ?>
 	<?php echo $form->textField($model, 'message', array('size' => 50, 'maxlength' => 256, 'name' => $nameIndex . 'message]'));
-?>
+	?>
 	<?php echo $form->error($model, 'message'); ?>
 </div>
 
@@ -34,10 +34,10 @@ foreach ($languages as $language => $message) {
     }
 
     $this->renderPartial('application.views.sourceMessage._message', array(
-        'model' => $message,
-        'form' => $form,
-        'textArea' => isset($textArea) ? $textArea : true,
-        'attributeName' => isset($attributeName) && $attributeName != '' ? $attributeName : '',
+            'model' => $message,
+            'form' => $form,
+            'textArea' => isset($textArea) ? $textArea : true,
+            'attributeName' => isset($attributeName) && $attributeName != '' ? $attributeName : '',
     ));
 }
 ?>

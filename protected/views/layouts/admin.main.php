@@ -42,6 +42,7 @@
 			                array('label' => 'Pages', 'url' => array('/pages/admin')),
 			                array('label' => 'Messages', 'url' => array('/sourceMessage/admin')),
 			                array('label' => 'Sections', 'url' => array('/sections/admin')),
+			                array('label' => 'Countries', 'url' => array('/countries/admin')),
 			                array('label' => 'Living Places', 'url' => array('/accommodationPlaces/admin')),
 			                array('label' => 'Rooms', 'url' => array('/accommodationPlacesRoomsTypes/admin')),
 			                array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
