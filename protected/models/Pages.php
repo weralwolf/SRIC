@@ -6,7 +6,6 @@
  * The followings are the available columns in table 'pages':
  * @property string $id
  * @property string $conferences_id
- * @property string $menu_title
  * @property string $order
  * @property string $texts_id
  */
@@ -55,8 +54,8 @@ class Pages extends CActiveRecord {
     public function attributeLabels() {
         return array(
             'id' => 'Id',
-            'menu_title' => 'Menu Title',
             'order' => 'Menu order',
+            'title' => 'title'
         );
     }
 

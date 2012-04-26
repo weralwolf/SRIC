@@ -43,7 +43,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'id',
-		'menu_title',
+		array('name' => 'title', 'value' => '$data->title->message'),
 		'order',
 		array(
 			'class'=>'CButtonColumn',

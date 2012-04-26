@@ -11,11 +11,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'menu_title'); ?>
-		<?php echo $form->textField($model,'menu_title',array('size'=>60,'maxlength'=>255)); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'order'); ?>
 		<?php echo $form->textField($model,'order',array('size'=>10,'maxlength'=>10)); ?>
 	</div>

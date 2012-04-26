@@ -37,4 +37,5 @@ return array(
         'report_type_plenary' => 'Пленарный',
         'report_type_sessional' => 'Сессионный',
         'report_type_poster' => 'Постер',
+        'file_upload_note' => 'загрузить документ с тезисом в форматах: pdf, doc, docx',
 );

@@ -37,4 +37,5 @@ return array(
         'report_type_plenary' => 'Plenary',
         'report_type_sessional' => 'Sessional',
         'report_type_poster' => 'Poster',
+        'file_upload_note' => 'upload abstracts using file types: pdf, doc, docx',
 );

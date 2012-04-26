@@ -6,8 +6,7 @@ if (isset($category) && $category != '') {
     echo $form->hiddenField($model, 'category', array('value' => $category, 'name' => $nameIndex . 'category]'));
 } else {
     echo $form->labelEx($model, 'category', array('style' => 'float: left; width: 50%;'));
-    echo $form->textField($model, 'category', array('size' => 32, 'maxlength' => 32, 'name' => $nameIndex . 'category]',
-        'style' => 'float: right; width: 50%;'));
+    echo $form->textField($model, 'category', array('size' => 32, 'maxlength' => 32, 'name' => $nameIndex . 'category]'));
     echo $form->error($model, 'category');
 }
 ?>
@@ -15,9 +14,7 @@ if (isset($category) && $category != '') {
 
 <div class="row">
 	<?php echo $form->labelEx($model, 'message', array('style' => 'float: left; width: 50%;')); ?>
-	<?php echo $form->textField($model, 'message', array('size' => 50, 'maxlength' => 256, 'name' => $nameIndex . 'message]',
-    'style' => 'float: right; width: 50%;'
-));
+	<?php echo $form->textField($model, 'message', array('size' => 50, 'maxlength' => 256, 'name' => $nameIndex . 'message]'));
 ?>
 	<?php echo $form->error($model, 'message'); ?>
 </div>

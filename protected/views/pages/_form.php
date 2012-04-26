@@ -15,8 +15,8 @@ jqClEditor::clEditor('#Pages_texts_id', Yii::app()->params['jqClEditor']);
 
 	<div class="row">
 <?php
-echo $form->labelEx($model, 'order', array('style' => 'float: left; width: 50%;'));
-echo $form->textField($model, 'order', array('size' => 10, 'maxlength' => 10, 'style' => 'float: right; width: 50%;'));
+echo $form->labelEx($model, 'order');
+echo $form->textField($model, 'order', array('size' => 10, 'maxlength' => 10));
 echo $form->error($model, 'order');
 ?>
 	</div>

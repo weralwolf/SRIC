@@ -81,12 +81,12 @@ class Reports extends CActiveRecord {
     public function attributeLabels() {
         $m = Yii::app()->messages;
         return array(
-                'id' => $m->translate('reports', 'id'),
-                'participants_id' => $m->translate('reports', 'participants_id'),
-                'sections_id' => $m->translate('reports', 'sections_id'),
-                'files_id' => $m->translate('reports', 'files_id'),
-                'title' => $m->translate('reports', 'title'),
-                'autors' => $m->translate('reports', 'autors'),
+                'id' => $m->translate('Reports', 'id'),
+                'participants_id' => $m->translate('Reports', 'participants_id'),
+                'sections_id' => $m->translate('Reports', 'sections_id'),
+                'files_id' => $m->translate('Reports', 'files_id'),
+                'title' => $m->translate('Reports', 'title'),
+                'autors' => $m->translate('Reports', 'autors'),
         );
     }
 
