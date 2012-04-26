@@ -198,14 +198,14 @@ for ($i = 0; $i < 2; $i++) {
 <div class="one_input wide">
 	<div class="rowElem">
 		<?php echo $form->labelEx($model, 'accommodation_places_id'); ?>
-		<?php echo $form->dropDownList($model, 'accommodation_places_id', Sections::model()->dropDown()); ?>
+		<?php echo $form->dropDownList($model, 'accommodation_places_id', AccommodationPlaces::model()->dropDown()); ?>
 		<?php echo $form->error($model, 'accommodation_places_id'); ?>
 	</div>
 </div>
 <div class="one_input wide">
 	<div class="rowElem">
 		<?php echo $form->labelEx($model, 'accommodation_places_rooms_types_id'); ?>
-		<?php echo $form->dropDownList($model, 'accommodation_places_rooms_types_id', Sections::model()->dropDown()); ?>
+		<?php echo $form->dropDownList($model, 'accommodation_places_rooms_types_id', AccommodationPlacesRoomsTypes::model()->dropDown()); ?>
 		<?php echo $form->error($model, 'accommodation_places_rooms_types_id'); ?>
 	</div>
 </div>

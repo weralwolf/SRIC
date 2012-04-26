@@ -10,12 +10,6 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'conferences_id'); ?>
-		<?php echo $form->textField($model,'conferences_id',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'conferences_id'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'title'); ?>
 		<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'title'); ?>

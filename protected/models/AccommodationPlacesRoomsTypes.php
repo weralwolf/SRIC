@@ -35,12 +35,11 @@ class AccommodationPlacesRoomsTypes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('conferences_id, title', 'required'),
-			array('conferences_id', 'length', 'max'=>10),
+			array('title', 'required'),
 			array('title', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, conferences_id, title', 'safe', 'on'=>'search'),
+			array('id, title', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -90,8 +89,6 @@ class AccommodationPlacesRoomsTypes extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-
-		$criteria->compare('conferences_id',$this->conferences_id,true);
 
 		$criteria->compare('title',$this->title,true);
 
