@@ -95,6 +95,16 @@ class PagesController extends Controller {
         // $this->performAjaxValidation($model);
 
         if (isset($_POST['Pages'])) {
+            $contentId = $model->content->updateFromPOST('content');
+            $titleId = $model->title->updateFromPOST('title');
+            if ($contentId && $titleId) {
+                $model->attributes = $_POST['Pages'];
+                $model->content_sm_id = $contentId;
+                $model->title_sm_id = $titleId;
+                if ($model->save()) {
+                    $this->redirect(array('view', 'id' => $model->id));
+                }
+            }
             $model->attributes = $_POST['Pages'];
             if ($model->save())
                 $this->redirect(array('view', 'id' => $model->id));

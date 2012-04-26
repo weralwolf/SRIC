@@ -64,6 +64,17 @@ class SourceMessage extends CActiveRecord {
         }
         return NULL;
     }
+    
+    public function updateFromPost($identifier = '') {
+        $mC = $identifier != '' ? $_POST['Message'][$identifier] : $_POST['Message'];
+        $this->attributes = $identifier != '' ? $_POST['SourceMessage'][$identifier] : $_POST['SourceMessage'];
+        foreach($this->messages as $message) {
+            $data = $mC[$message->language];
+            $message->translation = $data['translation'];
+            $message->save();
+        }
+        $this->save();
+    } 
 
     /**
      * @return array customized attribute labels (name=>label)
