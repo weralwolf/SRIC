@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 28, 2012 at 09:39 AM
+-- Generation Time: Apr 06, 2012 at 03:07 PM
 -- Server version: 5.1.61
 -- PHP Version: 5.3.6-13ubuntu3.6
 
@@ -368,10 +368,20 @@ INSERT INTO `countries` (`id`, `name`, `approved`) VALUES
 
 CREATE TABLE IF NOT EXISTS `files` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `original_name` varchar(255) COLLATE utf8_bin NOT NULL,
   `path` varchar(255) COLLATE utf8_bin NOT NULL,
   `mimetype` varchar(255) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `files`
+--
+
+INSERT INTO `files` (`id`, `original_name`, `path`, `mimetype`) VALUES
+(1, '01032010_Informacionnoe_pisqmo.pdf', '/home/srv/http/sri_conference/protected/../upload/reports/02.04.2012.00.55.48_01032010_Informacionnoe_pisqmo.pdf', 'application/pdf'),
+(2, '2510750.pdf', '/home/srv/http/sri_conference/protected/../upload/reports/02.04.2012.08.01.26_2510750.pdf', 'application/pdf'),
+(3, '2510750 (1).pdf', '/home/srv/http/sri_conference/protected/../upload/reports/02.04.2012.08.05.48_2510750 (1).pdf', 'application/pdf');
 
 -- --------------------------------------------------------
 
@@ -453,7 +463,13 @@ INSERT INTO `Message` (`id`, `language`, `translation`) VALUES
 (20, 'en', '<h1>Page not created yet</h1>'),
 (21, 'ua', 'Сторінка відсутня'),
 (21, 'ru', 'Страница отсутствует'),
-(21, 'en', 'Not found');
+(21, 'en', 'Not found'),
+(22, 'ua', 'FFFFFFFFF'),
+(22, 'ru', 'FFFFFFFFF'),
+(22, 'en', 'FFFFFFFFF'),
+(23, 'ua', 'Інфо'),
+(23, 'ru', 'івва'),
+(23, 'en', 'sfdsdf');
 
 -- --------------------------------------------------------
 
@@ -468,7 +484,7 @@ CREATE TABLE IF NOT EXISTS `organizations` (
   `approved` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `cities_id` (`cities_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `organizations`
@@ -476,7 +492,8 @@ CREATE TABLE IF NOT EXISTS `organizations` (
 
 INSERT INTO `organizations` (`id`, `cities_id`, `title`, `approved`) VALUES
 (1, 1, 'SRI KHU NANNU', 1),
-(2, 1, 'Kiev National University', 0);
+(2, 1, 'Kiev National University', 0),
+(3, 1, 'KNU', 0);
 
 -- --------------------------------------------------------
 
@@ -524,11 +541,10 @@ CREATE TABLE IF NOT EXISTS `participants` (
   `phone` varchar(255) COLLATE utf8_bin NOT NULL,
   `participation_type` enum('lecturer','listner') COLLATE utf8_bin NOT NULL,
   `report_type` enum('plenary','sessional','poster') COLLATE utf8_bin DEFAULT NULL,
-  `sections_id` int(10) unsigned DEFAULT NULL,
   `accommodation_places_id` int(10) unsigned DEFAULT NULL,
   `accommodation_places_rooms_types_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `conferences_id` (`contries_id`,`cities_id`,`organizations_id`,`sections_id`),
+  KEY `conferences_id` (`contries_id`,`cities_id`,`organizations_id`),
   KEY `accommodation_places_id` (`accommodation_places_id`,`accommodation_places_rooms_types_id`),
   KEY `accommodation_places_rooms_types_id` (`accommodation_places_rooms_types_id`),
   KEY `cities_id` (`cities_id`)
@@ -538,9 +554,9 @@ CREATE TABLE IF NOT EXISTS `participants` (
 -- Dumping data for table `participants`
 --
 
-INSERT INTO `participants` (`id`, `approved`, `contries_id`, `cities_id`, `name`, `second_name`, `last_name`, `gender`, `birthdate`, `organizations_id`, `post`, `email`, `phone`, `participation_type`, `report_type`, `sections_id`, `accommodation_places_id`, `accommodation_places_rooms_types_id`) VALUES
-(1, 0, 228, 1, 'Anatolii', 'Volodymyrovych', 'Koval', 1, '0000-00-00', 2, 'Student', 'weralwolf@gmail.com', '+380632413879', 'lecturer', 'plenary', 0, 0, 0),
-(2, 0, 233, 1, 'Tanya', 'blahivna', 'Gratko', 1, '0000-00-00', 2, 'Cleaner', 'gmail@gmail.com', '+380632413879', 'lecturer', 'plenary', 0, 0, 0);
+INSERT INTO `participants` (`id`, `approved`, `contries_id`, `cities_id`, `name`, `second_name`, `last_name`, `gender`, `birthdate`, `organizations_id`, `post`, `email`, `phone`, `participation_type`, `report_type`, `accommodation_places_id`, `accommodation_places_rooms_types_id`) VALUES
+(1, 0, 228, 1, 'Anatolii', 'Volodymyrovych', 'Koval', 1, '0000-00-00', 2, 'Student', 'weralwolf@gmail.com', '+380632413879', 'lecturer', 'plenary', 0, 0),
+(2, 0, 233, 1, 'Tanya', 'blahivna', 'Gratko', 1, '0000-00-00', 2, 'Cleaner', 'gmail@gmail.com', '+380632413879', 'lecturer', 'plenary', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -592,7 +608,7 @@ CREATE TABLE IF NOT EXISTS `SourceMessage` (
   `category` varchar(32) COLLATE utf8_bin DEFAULT NULL,
   `message` text COLLATE utf8_bin,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=22 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=24 ;
 
 --
 -- Dumping data for table `SourceMessage`
@@ -663,7 +679,8 @@ CREATE TABLE IF NOT EXISTS `YiiSession` (
 --
 
 INSERT INTO `YiiSession` (`id`, `expire`, `data`) VALUES
-('36lt8cmo8r5a5db7cs7slrcqr4', 1332918109, '834abe956272111ec003057c637bb04f__id|s:1:"1";834abe956272111ec003057c637bb04f__name|s:4:"root";834abe956272111ec003057c637bb04f__states|a:0:{}language|s:2:"ru";');
+('j5bruj79ci3lthh5nt86gklhu4', 1333714478, ''),
+('d20f1dgs05l6t51qnven75if55', 1333715380, '834abe956272111ec003057c637bb04f__id|s:1:"1";834abe956272111ec003057c637bb04f__name|s:4:"root";834abe956272111ec003057c637bb04f__states|a:0:{}');
 
 --
 -- Constraints for dumped tables
