@@ -31,6 +31,7 @@
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 		        array('label' => 'Participants', 'url' => array('/participants/admin')),
 			    array('label' => 'Pages', 'url' => array('/pages/admin')),
+		        array('label' => 'Messages', 'url' => array('/sourceMessage/admin')),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 		        array('label'=>'Site', 'url'=>array('/')),
 			),

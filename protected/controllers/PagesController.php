@@ -1,7 +1,7 @@
 <?php
 
 class PagesController extends Controller {
-    public $adminLayoutActions = array('admin', 'update');
+    public $adminLayoutActions = array('admin', 'update', 'create');
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
