@@ -89,7 +89,8 @@ $this->widget('zii.widgets.CMenu', array(
 <div class="blur"><div class="blur_in"></div></div>
 <div class="footer_in">
 <a href="mailto:spaceConf2012@gmail.com" class="foot_mail">spaceConf2012@gmail.com</a>
-<span>Copyright &copy; <?php echo date('Y'); ?> by Lab28.<br/>
+<span>Copyright &copy; <?php echo date('Y'); ?> by <?php echo CHtml::link('Lab28', array('site/admin'), 
+        array('style' => 'text-decoration: none; color: white; font-size: 12px; font-weight: 100;')); ?>.<br/>
 		<?php echo Yii::powered(); ?></span>
 <span class="foot_phone">+38(044) 200-82-14, 200-82-16, 200-82-17</span>
 </div>
