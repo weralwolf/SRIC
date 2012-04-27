@@ -10,7 +10,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create SourceMessage</h1>
+<h1>Create `<?php echo isset($category) && !empty($category) ? $category : 'SourceMessage'?>`</h1>
 
 <?php echo $this->renderPartial('application.views.sourceMessage._form', array(
         'model'=>$model,

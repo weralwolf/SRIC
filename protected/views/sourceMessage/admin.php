@@ -31,7 +31,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 </p>
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?><br />
-<?php echo CHtml::link('New',array('sourceMessage/create')); ?>
+<?php echo CHtml::link('New', isset($creationURl) ? $creationURl : array('sourceMessage/create')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('application.views.sourceMessage._search',array(
 	'model'=>$model,
