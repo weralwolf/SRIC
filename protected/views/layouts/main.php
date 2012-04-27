@@ -83,17 +83,21 @@ $this->widget('zii.widgets.CMenu', array(
 <div class="content_block_in"> <?php echo $content; ?></div>
 </div>
  <div class="push"></div>
- </div> 
- 
-<div class="footer">
-<div class="blur"><div class="blur_in"></div></div>
-<div class="footer_in">
-<a href="mailto:spaceConf2012@gmail.com" class="foot_mail">spaceConf2012@gmail.com</a>
-<span>Copyright &copy; <?php echo date('Y'); ?> by <?php echo CHtml::link('Lab28', array('site/admin'), 
-        array('style' => 'text-decoration: none; color: white; font-size: 12px; font-weight: 100;')); ?>.<br/>
-		<?php echo Yii::powered(); ?></span>
-<span class="foot_phone">+38(044) 200-82-14, 200-82-16, 200-82-17</span>
-</div>
-</div>
+ </div>
+
+	<div class="footer">
+		<div class="blur">
+			<div class="blur_in"></div>
+		</div>
+		<div class="footer_in">
+			<a href="mailto:spaceConf2012@gmail.com" class="foot_mail"
+				style="font-weight: 100;">spaceConf2012@gmail.com</a> <span>&copy;
+				2012 Developed in <?php echo CHtml::link('Space Research Institute NASU-NSAU', array('site/admin'), 
+				        array('style' => 'text-decoration: none; color: #cdcfcf; font-size: 12px; font-weight: 100;')); ?>.<br />
+				<?php echo Yii::powered(); ?>
+			</span> <span class="foot_phone">+38(044) 200-82-14, 200-82-16,
+				200-82-17</span>
+		</div>
+	</div>
 </body>
 </html>

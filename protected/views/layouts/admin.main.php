@@ -43,6 +43,14 @@
 			                array('label' => 'Messages', 'url' => array('/sourceMessage/admin')),
 			                array('label' => 'Sections', 'url' => array('/sections/admin')),
 			                array('label' => 'Countries', 'url' => array('/countries/admin')),
+			                array('label' => 'Orgs', 'url' => array('/organizations/admin')),
+// 			                array('label' => 'd',
+// 			                        'url' => '#',
+// 			                        'items' => array(
+// 			                                array('label' => 'Sections', 'url' => array('/sections/admin')),
+// 			                                array('label' => 'Countries', 'url' => array('/countries/admin')),
+// 			                        )),
+			                array('label' => 'Cities', 'url' => array('/cities/admin')),
 			                array('label' => 'Living Places', 'url' => array('/accommodationPlaces/admin')),
 			                array('label' => 'Rooms', 'url' => array('/accommodationPlacesRoomsTypes/admin')),
 			                array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
@@ -60,10 +68,12 @@
 		<?php echo $content; ?>
 
 		<div id="footer">
-			Copyright &copy;
-			<?php echo date('Y'); ?>
-			by My Company.<br /> All Rights Reserved.<br />
-			<?php echo Yii::powered(); ?>
+			<a href="mailto:spaceConf2012@gmail.com" class="foot_mail"
+				style="font-weight: 100; color: #555;">spaceConf2012@gmail.com</a> <span>&copy;
+				2012 Developed in <?php echo CHtml::link('Space Research Institute NASU-NSAU', array('site/admin'), 
+				        array('style' => 'text-decoration: none; color: #555; font-size: 12px; font-weight: 100;')); ?>.<br />
+				<?php echo Yii::powered(); ?>
+		
 		</div>
 		<!-- footer -->
 

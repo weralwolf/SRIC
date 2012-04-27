@@ -12,7 +12,7 @@ class SourceMessageController extends Controller {
     /**
      * @var CActiveRecord the currently loaded data model instance.
      */
-    private $_model;
+    protected $_model;
 
     /**
      * @return array action filters
@@ -30,10 +30,6 @@ class SourceMessageController extends Controller {
      */
     public function accessRules() {
         return array(
-                array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                        'actions'=>array(),
-                        'users'=>array('@'),
-                ),
                 array('allow', // allow admin user to perform 'admin' and 'delete' actions
                         'actions'=>array('create', 'update', 'index', 'view', 'admin', 'delete'),
                         'users'=>array('root'),
@@ -148,14 +144,4 @@ class SourceMessageController extends Controller {
         return $this->_model;
     }
 
-    /**
-     * Performs the AJAX validation.
-     * @param CModel the model to be validated
-     */
-    protected function performAjaxValidation($model) {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'source-message-form') {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
-        }
-    }
 }
