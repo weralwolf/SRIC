@@ -6,7 +6,7 @@ class ParticipantsController extends Controller {
      * @var CActiveRecord the currently loaded data model instance.
      */
     private $_model;
-    
+
     public $adminLayoutActions = array('admin', 'index', 'view');
 
     /**
@@ -61,52 +61,47 @@ class ParticipantsController extends Controller {
     public function actionCreate() {
         $model = new Participants;
 
+//         echo "<pre>";
+//         echo CVarDumper::dump($_REQUEST);
+//         die;
+        
         if (isset($_POST['Participants'])) {
             /**
              * @todo: move this parts into model beforeValidate function
              */
             $model->country = $_POST['countryName'];
-            $model->contries_id = Countries::model()->resolveID($model->country);
+            $model->contries_id = Countries::model()->resolveID($model->country, 'Countries');
             if ($model->contries_id == - 1) {
-                $countrie = new Countries();
-                $countrie->name = $model->country;
-                if ($countrie->save()) {
-                    $model->contries_id = $countrie->id;
-                } else {
-                    Yii::trace($countrie->getErrors());
-                }
+                $message = strtolower(str_replace(array('-', ' '), '_', $_POST['countryName']));
+                $model->contries_id = SourceMessage::createMessage($message, 'Countries',
+                        array(
+                                'ua' => $_POST['countryName'],
+                                'ru' => $_POST['countryName'],
+                                'en' => $_POST['countryName'],
+                        )
+                );
             }
 
             $model->city = $_POST['cityName'];
-            $model->cities_id = Cities::model()->resolveID($model->city);
+            $model->cities_id = Cities::model()->resolveID($model->city, 'Cities');
             if ($model->cities_id == - 1) {
-                $city = new Cities();
-                $city->name = $model->city;
-                $city->countries_id = $model->contries_id;
-                if ($city->save()) {
-                    $model->cities_id = $city->id;
-                } else {
-                    Yii::trace($city->getErrors());
-                }
-            }
-
-            $model->organization = $_POST['organizationName'];
-            $model->organizations_id = Organizations::model()->resolveID($model->organization);
-            if ($model->organizations_id == - 1) {
-                $org = new Organizations();
-                $org->title = $model->organization;
-                $org->cities_id = $model->cities_id;
-                if ($org->save()) {
-                    $model->organizations_id = $org->id;
-                } else {
-                    print Yii::trace($org->getErrors());
-                }
+                $message = strtolower(str_replace(array('-', ' '), '_', $_POST['cityName']));
+                $model->cities_id = SourceMessage::createMessage($message, 'Cities',
+                        array(
+                                'ua' => $_POST['cityName'],
+                                'ru' => $_POST['cityName'],
+                                'en' => $_POST['cityName'],
+                        )
+                );
             }
 
             $report_0 = Reports::saveFromPOST('0');
             $report_1 = Reports::saveFromPOST('1');
 
             $model->attributes = $_POST['Participants'];
+            $model->day = $_POST['Participants']['day'];
+            $model->month = $_POST['Participants']['month'];
+            $model->year = $_POST['Participants']['year'];
             if ($model->save()) {
                 if (!is_null($report_0)) {
                     $report_0->participants_id = $model->id;
@@ -125,6 +120,7 @@ class ParticipantsController extends Controller {
                     $report_1->file->delete();
                 }
             }
+            $this->redirect(array('/pages/index'));
         }
 
         $this->render('create', array(

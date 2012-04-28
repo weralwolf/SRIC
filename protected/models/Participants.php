@@ -39,24 +39,25 @@ class Participants extends CActiveRecord {
     
     public static function daysList() {
         $arr = array();
-        for($i = 0; $i < 31; $arr[] = ++$i);
+        for($i = 0; $i < 31; ++$i, $arr[$i] = $i);
         return $arr;
     }
     
     public static function monthsList() {
         $arr = array();
-        for($i = 0; $i < 12; $arr[] = ++$i);
+        for($i = 0; $i < 12; ++$i, $arr[$i] = $i);
         return $arr;
     }
     
     public static function yearsList() {
         $arr = array();
-        for($i = 1900; $i < date('Y'); $arr[] = ++$i);
+        for($i = 1900; $i < date('Y'); ++$i, $arr[$i] = $i);
         return $arr;
     }
 
     public function beforeValidate() {
-        $this->birthdate = $this->day . '-' . $this->month . '-'. $this->year;
+        $this->birthdate = $this->year . '-' . $this->month . '-' . $this->day;
+        Yii::log($this->birthdate);
         return parent::beforeValidate();
     }
     

@@ -18,6 +18,15 @@ class Organizations extends SourceMessage {
         return parent::model($className);
     }
 
+    public function dropDown() {
+        $rows = $this->findAll(array('condition' => 'category=' . Yii::app()->db->quoteValue("Organizations")));
+        $dropDown = array();
+        foreach ($rows as $row) {
+            $dropDown[$row->id] = $row->t();
+        }
+        return $dropDown;
+    }
+    
     public function suggest($keyword, $limit = 20) {
         return $this->suggestFromCategory($keyword, 'Organizations', $limit);
     }

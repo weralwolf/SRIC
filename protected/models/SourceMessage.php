@@ -155,13 +155,28 @@ class SourceMessage extends CActiveRecord {
     }
     
     public function resolveID($name, $category) {
-        $id = $this->seachIt($name, $category);
+        $id = SourceMessage::searchIt($name, $category);
         return count($id) ? $id[0] : -1;
     }
     
+    public static function createMessage($message, $category, $translations) {
+        $model = new SourceMessage();
+        $model->message = $message;
+        $model->category = $category;
+        $model->save();
+        foreach($translations as $l => $t) {
+            $message = new Message();
+            $message->language = $l;
+            $message->translation = $t;
+            $message->id = $model->id;
+            $message->save();
+        }
+        return $model->id;
+    } 
+    
     static public function resolveName($id) {
-        $model = SourceMessages::model()->findByPk(intval($id));
-        return $model ? $model->name->t() : '--unexisted--';
+        $model = SourceMessage::model()->findByPk(intval($id));
+        return $model ? $model->t() : '--unexisted--';
     }
     
     public function t($language = '') {

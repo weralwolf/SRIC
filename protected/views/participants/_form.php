@@ -101,16 +101,7 @@ $cs->registerScript("transformation", "$(function(){
 		<td><div class="one_input">
 				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'organizations_id'); ?>
-					<?php $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
-					        'id' => 'organizationName',
-					        'name' => 'organizationName',
-					        'value' => $model->organization,
-					        'source' => $this->createUrl('request/suggestOrganization'),
-					        'htmlOptions' => array(
-					                'style' => 'display: inline;'
-					        ),
-					));
-					?>
+					<?php echo $form->dropDownList($model, 'organizations_id', Organizations::model()->dropDown()); ?>
 					<?php echo $form->error($model, 'organizations_id'); ?>
 				</div>
 			</div></td>
