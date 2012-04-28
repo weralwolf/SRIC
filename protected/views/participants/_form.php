@@ -7,9 +7,18 @@ $form = $this->beginWidget('CActiveForm', array(
 
 $m = Yii::app()->messages;
 $cs = Yii::app()->clientScript;
-$cs->registerScript("transformation", "$(function(){
-        $('#participants-form').jqTransform({imgPath:'images/form_img/'});
+$cs->registerScript("transformation", 
+"$(function(){
+    $('#participants-form').jqTransform({imgPath:'images/form_img/'});
 });", CClientScript::POS_HEAD);
+
+$cs->registerScript("reports_hide",
+"$('[id*=\"Participants_participation_type_\"]').each(function() {
+    var number = parseInt($(this).attr('id').match(/[0-9]+/)[0]);
+    $(this).parent().children().filter('a').bind('click', function(){
+        $('#report_form_fields').css('display', number ? 'none' : 'block');
+    })
+});", CClientScript::POS_LOAD);
 ?>
 <h1>
 	<?php echo $m->translate('Participants', 'personal_data_title'); ?>
@@ -158,7 +167,7 @@ $cs->registerScript("transformation", "$(function(){
 				<td><?php echo $form->radioButtonList($model, 'report_type', array(
 				        "plenary" => $m->translate('Participants', 'report_type_plenary'),
 				        "sessional" => $m->translate('Participants', 'report_type_sessional'),
-				        "poster" => $m->translate('Participants', 'report_type_poster'),
+// 				        "poster" => $m->translate('Participants', 'report_type_poster'),
 				), array('template' => '{input}{label}', 'separator' => '</td></tr><tr><td></td><td>'));
 				echo $form->error($model, 'report_type'); ?>
 				</td>
@@ -167,6 +176,7 @@ $cs->registerScript("transformation", "$(function(){
 	</div>
 </div>
 <!-- ------------------------------------------------------------- REPORT FORM PART -->
+<div style="display: none;" id="report_form_fields">
 <?php
 for ($i = 0; $i < 2; $i++) {
     echo $this->renderPartial('application.views.reports._formContent', array(
@@ -176,6 +186,7 @@ for ($i = 0; $i < 2; $i++) {
     ));
 }
 ?>
+</div>
 <p>
 	Требования к оформлению указаны в меню <a href="#">тезисы</a>.
 </p>

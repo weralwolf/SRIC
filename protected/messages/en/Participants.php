@@ -32,7 +32,7 @@ return array(
         'report_note_p2' =>
         'Один докладывающий автор может подать не более двух работ. После загрузки первых тезисов
         автоматически активируется кнопка ДОБАВИТЬ ЕЩЁ ДОКЛАД.',
-        'participation_type_lecturer' => 'Lecturer',
+        'participation_type_lecturer' => 'Reporter',
         'participation_type_listner' => 'Listner',
         'report_type_plenary' => 'Plenary',
         'report_type_sessional' => 'Sessional',
