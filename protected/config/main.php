@@ -91,11 +91,12 @@ return array(
                         'connectionID' => 'db',
                         'sessionTableName' => 'YiiSession',
                         'autoStart' => true,
+                        'timeout' => 24*60*60,
                         'sessionName' => 'SRIConferenceSite'
                 ),
                 // uncomment the following to use a MySQL database
                 'db' => require('db.conf.php'),
-                        //			'enableParamLogging' => true,
+                //			'enableParamLogging' => true,
 //			'enableProfiling' => true,
                 'httpRequest' => array(
                         'class' => 'CHttpRequest',

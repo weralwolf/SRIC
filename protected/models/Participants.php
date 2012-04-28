@@ -86,7 +86,7 @@ class Participants extends CActiveRecord {
                         'length', 'max' => 10),
                 array('name, second_name, last_name, post, email, phone', 'length', 'max' => 255),
                 array('participation_type', 'in', 'range' => array('lecturer', 'listner')),
-                array('report_type', 'in', 'range' => array('plenary', 'sessional', 'poster')),
+                array('report_type', 'in', 'range' => array('plenary', 'sessional')),
                 array('email', 'email'),
 //                 array('report', 'file', 'types' => 'pdf, doc, docx'),
                 /*

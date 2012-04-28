@@ -62,6 +62,7 @@ class ParticipantsController extends Controller {
         $model = new Participants;
 
         if (isset($_POST['Participants'])) {
+            $model->attributes = $_POST['Participants'];
             /**
              * @todo: move this parts into model beforeValidate function
              */
@@ -91,29 +92,30 @@ class ParticipantsController extends Controller {
                 );
             }
 
-            $report_0 = Reports::saveFromPOST('0');
-            $report_1 = Reports::saveFromPOST('1');
+            if ($model->participation_type == 'lecturer') {
+                $report_0 = Reports::saveFromPOST('0');
+                $report_1 = Reports::saveFromPOST('1');
+            }
 
-            $model->attributes = $_POST['Participants'];
             $model->day = $_POST['Participants']['day'];
             $model->month = $_POST['Participants']['month'];
             $model->year = $_POST['Participants']['year'];
             if ($model->save()) {
-                if (!is_null($report_0)) {
+                if (isset($report_0) && !is_null($report_0)) {
                     $report_0->participants_id = $model->id;
                     $report_0->save();
                 }
-                if (!is_null($report_1)) {
+                if (isset($report_1) && !is_null($report_1)) {
                     $report_1->participants_id = $model->id;
                     $report_1->save();
                 }
                 //                 $this->redirect(array('view', 'id' => $model->id));
                 $this->redirect(array('/participants/registrationComplited'));
             } else {
-                if (!is_null($report_0)) {
+                if (isset($report_0) && !is_null($report_0)) {
                     $report_0->file->delete();
                 }
-                if (!is_null($report_1)) {
+                if (isset($report_1) && !is_null($report_1)) {
                     $report_1->file->delete();
                 }
             }
