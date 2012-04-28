@@ -11,7 +11,11 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
 	        )
     ); ?>
 </div>-->
-
+<?php if (isset($attributeName)) {?>
+<div class="ger_title" style="text-align: left;">
+	<?php echo $m->translate('Participants', $attributeName == 0 ? 'report_1' : 'report_2');?>
+</div>
+<?php }?>
 <div class="one_input wide">
 	<div class="rowElem">
 		<?php echo $form->labelEx($model, 'sections_id'); ?>
@@ -51,7 +55,8 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
 </div>
 <div class="one_input tezisi">
 	<div class="rowElem">
-		<label><?php echo $m->translate('Participants', 'file_upload_note'); ?></label>
+		<label><?php echo $m->translate('Participants', 'file_upload_note'); ?>
+		</label>
 		<?php $this->renderPartial('application.views.files._formContent', array(
 		        'form' => $form,
 		        'model' => is_null($model->file) ? new Files() : $model->file,

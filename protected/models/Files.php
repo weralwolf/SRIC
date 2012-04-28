@@ -34,6 +34,10 @@ class Files extends CActiveRecord {
     }
 
     public function save($runValidation = true, $attributes = NULL) {
+        if (is_null($this->file)) {
+            $this->addError("file", "File unexist");
+            return false;
+        }
         $this->original_name = $this->file->name;
         $this->mimetype = $this->file->type;
         $this->path = Yii::app()->basePath . Yii::app()->params['reportsSavePath'] . '/' . date('d.m.Y.H.i.s') . '_' .

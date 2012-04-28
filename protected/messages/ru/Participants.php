@@ -38,4 +38,6 @@ return array(
         'report_type_sessional' => 'Сессионный',
         'report_type_poster' => 'Постер',
         'file_upload_note' => 'загрузить документ с тезисом в форматах: pdf, doc, docx',
+        'report_1' => 'Доклад #1',
+        'report_2' => 'Доклад #2 (опционально)',
 );
