@@ -28,7 +28,7 @@ class ParticipantsController extends Controller {
     public function accessRules() {
         return array(
                 array('allow', // allow all users to perform 'index' and 'view' actions
-                        'actions' => array('create'),
+                        'actions' => array('create', 'registrationComplited'),
                         'users' => array('*'),
                 ),
                 array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -108,7 +108,7 @@ class ParticipantsController extends Controller {
                     $report_1->save();
                 }
                 //                 $this->redirect(array('view', 'id' => $model->id));
-                $this->redirect(array('/pages/index'));
+                $this->redirect(array('/participants/registrationComplited'));
             } else {
                 if (!is_null($report_0)) {
                     $report_0->file->delete();
@@ -124,6 +124,10 @@ class ParticipantsController extends Controller {
         ));
     }
 
+    public function actionRegistrationComplited() {
+        $this->render('registrationComplited');
+    }
+    
     /**
      * Updates a particular model.
      * If update is successful, the browser will be redirected to the 'view' page.

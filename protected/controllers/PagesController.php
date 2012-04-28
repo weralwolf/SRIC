@@ -142,9 +142,10 @@ class PagesController extends Controller {
      }
      */
     public function actionIndex() {
-        $this->render('view', array(
-            'model' => Pages::model()->with('title')->find('`title`.message = "conference_title"'),
-        ));
+//         $this->render('view', array(
+//             'model' => Pages::model()->with('title')->findByPk(6),
+//         ));
+        $this->redirect(array('view', 'id' => 6));
     }
     
     public function actionNotImplemented() {

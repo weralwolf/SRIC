@@ -30,11 +30,11 @@ class Pages extends CActiveRecord {
      */
     public function rules() {
         return array(
-            array('title_sm_id, order, content_sm_id', 'required'),
+                array('title_sm_id, order, content_sm_id', 'required'),
                 array('order, title_sm_id, content_sm_id', 'length', 'max' => 11),
-            // The following rule is used by search().
-            // Please remove those attributes that should not be searched.
-            array('id, order', 'safe', 'on' => 'search'),
+                // The following rule is used by search().
+                // Please remove those attributes that should not be searched.
+                array('id, order', 'safe', 'on' => 'search'),
         );
     }
 
@@ -43,8 +43,8 @@ class Pages extends CActiveRecord {
      */
     public function relations() {
         return array(
-            'content' => array(self::BELONGS_TO, 'SourceMessage', 'content_sm_id', 'with' => 'messages'),
-            'title' => array(self::BELONGS_TO, 'SourceMessage', 'title_sm_id')
+                'content' => array(self::BELONGS_TO, 'SourceMessage', 'content_sm_id', 'with' => 'messages'),
+                'title' => array(self::BELONGS_TO, 'SourceMessage', 'title_sm_id')
         );
     }
 
@@ -53,9 +53,9 @@ class Pages extends CActiveRecord {
      */
     public function attributeLabels() {
         return array(
-            'id' => 'Id',
-            'order' => 'Menu order',
-            'title' => 'title'
+                'id' => 'Id',
+                'order' => 'Menu order',
+                'title' => 'title'
         );
     }
 
@@ -68,16 +68,16 @@ class Pages extends CActiveRecord {
             $key = self::orderKey($usedKeys, $line->order);
             $usedKeys[] = $key;
             $ordered[$key] = array(
-                'label' => Yii::app()->dbMessages->translate($line->title->category, $line->title->message),
-                'url' => array('pages/view', 'id' => intval($line->id)),
+                    'label' => Yii::app()->dbMessages->translate($line->title->category, $line->title->message),
+                    'url' => array('pages/view', 'id' => intval($line->id)),
             );
         }
         foreach (Yii::app()->params['additionalSideMenuElements'] as $index => $info) {
             $key = self::orderKey($usedKeys, $info['order']);
             $usedKeys[] = $key;
             $ordered[$key] = array(
-                'label' => Yii::app()->dbMessages->translate($info['title_sm_message'][0], $info['title_sm_message'][1]),
-                'url' => $info['url'],
+                    'label' => Yii::app()->dbMessages->translate($info['title_sm_message'][0], $info['title_sm_message'][1]),
+                    'url' => $info['url'],
             );
         }
         sort($ordered);
@@ -89,6 +89,33 @@ class Pages extends CActiveRecord {
         for (; in_array($key, $usedKeys); $key++)
             ;
         return $key;
+    }
+
+    public static function menuLinkActive() {
+        if (isset($_REQUEST['r']) && $_REQUEST['r'] == 'pages/view' && isset($_REQUEST['id']) && $_REQUEST['id'] != 1) {
+            return true;
+        }
+        if (isset($_REQUEST['r']) && $_REQUEST['r'] == 'participants/create') {
+            return true;
+        };
+        return false;
+    }
+
+    public static function menuLinkURL() {
+        parse_str(parse_url(Yii::app()->httpRequest->url, PHP_URL_QUERY), $output);
+
+        if (isset($output['r']) && $output['r'] == 'pages/view' && isset($output['id']) && $output['id'] != 1) {
+            return array('pages/view', 'id' => $output['id']);
+        }
+        if (isset($output['r']) && $output['r'] == 'participants/create') {
+            return array('participants/create');
+        }
+
+        /*
+         * Do not fuck me cause of this magic number 6
+        * This magic number means id of information page in db
+        */
+        return array('pages/view', 'id' => 6);
     }
 
     /**
@@ -103,7 +130,7 @@ class Pages extends CActiveRecord {
         $criteria->compare('order', $this->order, true);
 
         return new CActiveDataProvider('Pages', array(
-            'criteria' => $criteria,
+                'criteria' => $criteria,
         ));
     }
 }
