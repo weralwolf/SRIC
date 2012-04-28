@@ -74,7 +74,7 @@ class PagesController extends Controller {
                 $model->content_sm_id = $contentId;
                 $model->title_sm_id = $titleId;
                 if ($model->save()) {
-                    $this->redirect(array('view', 'id' => $model->id));
+                    $this->redirect(array('admin'));
                 }
             }
         }
@@ -102,12 +102,12 @@ class PagesController extends Controller {
                 $model->content_sm_id = $contentId;
                 $model->title_sm_id = $titleId;
                 if ($model->save()) {
-                    $this->redirect(array('view', 'id' => $model->id));
+                    $this->redirect(array('admin'));
                 }
             }
-            $model->attributes = $_POST['Pages'];
-            if ($model->save())
-                $this->redirect(array('view', 'id' => $model->id));
+//             $model->attributes = $_POST['Pages'];
+//             if ($model->save())
+//                 $this->redirect(array('view', 'id' => $model->id));
         }
 
         $this->render('update', array(

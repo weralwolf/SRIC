@@ -40,4 +40,5 @@ return array(
         'file_upload_note' => 'upload abstracts using file types: pdf, doc, docx',
         'report_1' => 'Report #1',
         'report_2' => 'Report #2 (optional)',
+        'like_in_abstracts' => 'like in abstracts',
 );

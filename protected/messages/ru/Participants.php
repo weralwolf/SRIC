@@ -40,4 +40,5 @@ return array(
         'file_upload_note' => 'загрузить документ с тезисом в форматах: pdf, doc, docx',
         'report_1' => 'Доклад #1',
         'report_2' => 'Доклад #2 (опционально)',
+        'like_in_abstracts' => 'как в тезисах',
 );

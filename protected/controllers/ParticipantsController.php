@@ -63,9 +63,6 @@ class ParticipantsController extends Controller {
 
         if (isset($_POST['Participants'])) {
             $model->attributes = $_POST['Participants'];
-            /**
-             * @todo: move this parts into model beforeValidate function
-             */
             $model->country = $_POST['countryName'];
             $model->contries_id = Countries::model()->resolveID($model->country, 'Countries');
             if ($model->contries_id == - 1) {

@@ -34,9 +34,9 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
 		        array('size' => 60,
 		                'maxlength' => 255,
 		                'name' => $nameIndex . 'title]',
-		                'value' => "как в тезисах",
+		                'value' => $m->translate('Participants', 'like_in_abstracts'),
 		                'onfocus' => "this.value='';",
-			'onblur' => "if (this.value != '') {this.onfocus = function() {this.style.backgroundColor='#f3fdff';};} else this.value='название доклада';")); ?>
+			'onblur' => "if (this.value != '') {this.onfocus = function() {this.style.backgroundColor='#f3fdff';};} else this.value='" . $m->translate('Participants', 'like_in_abstracts') . "';")); ?>
 		<?php echo $form->error($model, 'title'); ?>
 	</div>
 </div>
@@ -47,9 +47,9 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
 		        array('rows' => 6,
 		                'cols' => 50,
 		                'name' => $nameIndex. 'autors]',
-		                'value' => "как в тезисах, ФИО докладывающего автора необходимо подчеркнуть",
+		                'value' => $m->translate('Participants', 'like_in_abstracts'),
 		                'onfocus' => "this.value='';",
-			'onblur' => "if (this.value != '') {this.onfocus = function() {this.style.backgroundColor='#f3fdff';};} else this.value='как в тезисах, ФИО докладывающего автора необходимо подчеркнуть';")); ?>
+			'onblur' => "if (this.value != '') {this.onfocus = function() {this.style.backgroundColor='#f3fdff';};} else this.value='" . $m->translate('Participants', 'like_in_abstracts') . "';")); ?>
 		<?php echo $form->error($model, 'autors'); ?>
 	</div>
 </div>
