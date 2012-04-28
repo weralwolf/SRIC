@@ -446,12 +446,12 @@ h2 {
 	margin: 20px 0 0 0;
 }
 
-.right_col ul li {
+.right_col ul li, .right_col ol li{
 	color: #0099ff;
 	font-weight: 700;
 }
 
-.right_col ul li span {
+.right_col ul li span, .right_col ol li span {
 	color: #ffffff;
 	font-weight: 400;
 }

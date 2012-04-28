@@ -69,8 +69,10 @@ class Reports extends CActiveRecord {
             $file->upload($identifier);
             if ($file->save()) {
                 $model->files_id = $file->id;
+                return $model;
+            } else {
+                return NULL;
             }
-            return $model;
         }
         return NULL;
     }

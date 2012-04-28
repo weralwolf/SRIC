@@ -63,6 +63,7 @@ class ParticipantsController extends Controller {
 
         if (isset($_POST['Participants'])) {
             $model->attributes = $_POST['Participants'];
+
             $model->country = $_POST['countryName'];
             $model->contries_id = Countries::model()->resolveID($model->country, 'Countries');
             if ($model->contries_id == - 1) {
@@ -88,6 +89,9 @@ class ParticipantsController extends Controller {
                         )
                 );
             }
+            
+            $report_0 = NULL;
+            $report_1 = NULL;
 
             if ($model->participation_type == 'lecturer') {
                 $report_0 = Reports::saveFromPOST('0');
@@ -98,21 +102,20 @@ class ParticipantsController extends Controller {
             $model->month = $_POST['Participants']['month'];
             $model->year = $_POST['Participants']['year'];
             if ($model->save()) {
-                if (isset($report_0) && !is_null($report_0)) {
+                if (!is_null($report_0)) {
                     $report_0->participants_id = $model->id;
                     $report_0->save();
                 }
-                if (isset($report_1) && !is_null($report_1)) {
+                if (!is_null($report_1)) {
                     $report_1->participants_id = $model->id;
                     $report_1->save();
                 }
-                //                 $this->redirect(array('view', 'id' => $model->id));
                 $this->redirect(array('/participants/registrationComplited'));
             } else {
-                if (isset($report_0) && !is_null($report_0)) {
+                if (!is_null($report_0)) {
                     $report_0->file->delete();
                 }
-                if (isset($report_1) && !is_null($report_1)) {
+                if (!is_null($report_1)) {
                     $report_1->file->delete();
                 }
             }
