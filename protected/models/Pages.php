@@ -31,7 +31,7 @@ class Pages extends CActiveRecord {
     public function rules() {
         return array(
             array('title_sm_id, order, content_sm_id', 'required'),
-            array('order, title_sm_id, content_sm_id', 'length', 'max' => 11),
+                array('order, title_sm_id, content_sm_id', 'length', 'max' => 11),
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
             array('id, order', 'safe', 'on' => 'search'),
@@ -80,6 +80,7 @@ class Pages extends CActiveRecord {
                 'url' => $info['url'],
             );
         }
+        sort($ordered);
         return $ordered;
     }
 

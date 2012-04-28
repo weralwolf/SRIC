@@ -32,7 +32,7 @@ class ParticipantsController extends Controller {
                         'users' => array('*'),
                 ),
                 array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                        'actions' => array('create', 'update', 'viewMe'),
+                        'actions' => array('update', 'viewMe'),
                         'users' => array('@'),
                 ),
                 array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -61,10 +61,6 @@ class ParticipantsController extends Controller {
     public function actionCreate() {
         $model = new Participants;
 
-//         echo "<pre>";
-//         echo CVarDumper::dump($_REQUEST);
-//         die;
-        
         if (isset($_POST['Participants'])) {
             /**
              * @todo: move this parts into model beforeValidate function
@@ -111,7 +107,8 @@ class ParticipantsController extends Controller {
                     $report_1->participants_id = $model->id;
                     $report_1->save();
                 }
-                $this->redirect(array('view', 'id' => $model->id));
+                //                 $this->redirect(array('view', 'id' => $model->id));
+                $this->redirect(array('/pages/index'));
             } else {
                 if (!is_null($report_0)) {
                     $report_0->file->delete();
@@ -120,7 +117,6 @@ class ParticipantsController extends Controller {
                     $report_1->file->delete();
                 }
             }
-            $this->redirect(array('/pages/index'));
         }
 
         $this->render('create', array(
