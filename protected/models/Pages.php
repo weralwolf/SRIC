@@ -80,7 +80,7 @@ class Pages extends CActiveRecord {
                     'url' => $info['url'],
             );
         }
-        sort($ordered);
+        ksort($ordered);
         return $ordered;
     }
 
