@@ -5,20 +5,24 @@ $form = $this->beginWidget('CActiveForm', array(
         'htmlOptions' => array('enctype' => 'multipart/form-data'),
 ));
 
-$m = Yii::app()->messages;
+$m = Yii::app()->dbMessages;
 $cs = Yii::app()->clientScript;
-$cs->registerScript("transformation", 
-"$(function(){
-    $('#participants-form').jqTransform({imgPath:'images/form_img/'});
+$cs->registerScriptFile(XHtml::jsUrl('jquery.maskedinput-1.3.js'), CClientScript::POS_HEAD);
+$cs->registerScript("transformation",
+        "$(function(){
+        $('#participants-form').jqTransform({imgPath:'images/form_img/'});
 });", CClientScript::POS_HEAD);
 
 $cs->registerScript("reports_hide",
-"$('[id*=\"Participants_participation_type_\"]').each(function() {
-    var number = parseInt($(this).attr('id').match(/[0-9]+/)[0]);
-    $(this).parent().children().filter('a').bind('click', function(){
+        "$('[id*=\"Participants_participation_type_\"]').each(function() {
+        var number = parseInt($(this).attr('id').match(/[0-9]+/)[0]);
+        $(this).parent().children().filter('a').bind('click', function(){
         $('#report_form_fields').css('display', number ? 'none' : 'block');
-    })
+})
 });", CClientScript::POS_LOAD);
+
+$cs->registerScript("form_mask",
+        "jQuery(function($){ $('#Participants_birthdate').mask('9999-99-99'); });", CClientScript::POS_LOAD);
 ?>
 <h1>
 	<?php echo $m->translate('Participants', 'personal_data_title'); ?>
@@ -66,9 +70,10 @@ $cs->registerScript("reports_hide",
 		<td class="small"><div class="one_input birth">
 				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'birthdate'); ?>
-					<?php echo $form->dropDownList($model, 'day', Participants::daysList()); ?>
-					<?php echo $form->dropDownList($model, 'month', Participants::monthsList()); ?>
-					<?php echo $form->dropDownList($model, 'year', Participants::yearsList()); ?>
+					<?php echo $form->textField($model, 'birthdate', array('maxlength' => 255)); ?>
+					<?php // echo $form->dropDownList($model, 'day', Participants::daysList()); ?>
+					<?php // echo $form->dropDownList($model, 'month', Participants::monthsList()); ?>
+					<?php // echo $form->dropDownList($model, 'year', Participants::yearsList()); ?>
 				</div>
 			</div></td>
 	</tr>
@@ -167,7 +172,7 @@ $cs->registerScript("reports_hide",
 				<td><?php echo $form->radioButtonList($model, 'report_type', array(
 				        "plenary" => $m->translate('Participants', 'report_type_plenary'),
 				        "sessional" => $m->translate('Participants', 'report_type_sessional'),
-// 				        "poster" => $m->translate('Participants', 'report_type_poster'),
+				        // 				        "poster" => $m->translate('Participants', 'report_type_poster'),
 				), array('template' => '{input}{label}', 'separator' => '</td></tr><tr><td></td><td>'));
 				echo $form->error($model, 'report_type'); ?>
 				</td>
@@ -177,15 +182,15 @@ $cs->registerScript("reports_hide",
 </div>
 <!-- ------------------------------------------------------------- REPORT FORM PART -->
 <div style="display: none;" id="report_form_fields">
-<?php
-for ($i = 0; $i < 2; $i++) {
-    echo $this->renderPartial('application.views.reports._formContent', array(
-            'model' => isset($model->reports[$i]) ? $model->reports[$i] : new Reports(),
-            'form' => $form,
-            'attributeName' => (string)$i,
-    ));
-}
-?>
+	<?php
+	for ($i = 0; $i < 2; $i++) {
+	    echo $this->renderPartial('application.views.reports._formContent', array(
+	            'model' => isset($model->reports[$i]) ? $model->reports[$i] : new Reports(),
+	            'form' => $form,
+	            'attributeName' => (string)$i,
+	    ));
+	}
+	?>
 </div>
 <p>
 	Требования к оформлению указаны в меню <a href="#">тезисы</a>.

@@ -47,14 +47,6 @@ return array(
                         'editorCSS'=>'editor.css',
                         'editorUploadRoute'=>'/request/uploadFile',
                 ),
-                /*
-                 'gii'=>array(
-                         'class'=>'system.gii.GiiModule',
-                         'password'=>'Enter Your Password Here',
-                         // If removed, Gii defaults to localhost only. Edit carefully to taste.
-                         'ipFilters'=>array('127.0.0.1','::1'),
-                 ),
-*/
         ),
 
         // application components
@@ -64,21 +56,6 @@ return array(
                         'allowAutoLogin'=>true,
                 ),
                 // uncomment the following to enable URLs in path-format
-                /*
-'urlManager' => array(
-        'urlFormat'=>'path',
-        'rules' => array(
-                '<controller:\w+>/<id:\d+>'=>'<controller>/view',
-                '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-        ),
-),
-*/
-                /*
-                 'db'=>array(
-                         'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-                 ),
-*/
                 'messages' => array(
                         'class'=>'CPhpMessageSource',
                 ),
@@ -96,8 +73,6 @@ return array(
                 ),
                 // uncomment the following to use a MySQL database
                 'db' => require('db.conf.php'),
-                //			'enableParamLogging' => true,
-//			'enableProfiling' => true,
                 'httpRequest' => array(
                         'class' => 'CHttpRequest',
                 ),
@@ -113,11 +88,6 @@ return array(
                                         'class'=>'CFileLogRoute',
                                         'levels'=>'error, warning, info',
                                 ),
-                                /*				array(
-                                 'class'=>'CWebLogRoute',
-                                        'enabled' => YII_DEBUG
-                                ),
-*/
                                 array(
                                         'class' => 'CProfileLogRoute',
                                         'enabled' => YII_DEBUG,

@@ -131,9 +131,10 @@ if (!Yii::app()->request->isAjaxRequest) {
 				style="font-weight: 100;">spaceConf2012@gmail.com</a> <span>&copy;
 				2012 Developed in <?php echo CHtml::link('Space Research Institute NASU-NSAU', array('site/admin'), 
 				        array('style' => 'text-decoration: none; color: #cdcfcf; font-size: 12px; font-weight: 100;')); ?>.<br />
-				<?php echo Yii::powered(); ?>
-			</span> <span class="foot_phone">+38(044) 200-82-14, 200-82-16,
-				200-82-17</span>
+				<?php //echo Yii::powered(); ?>
+<!-- 				Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a>  -->
+			</span> <span class="foot_phone">+38(044) 200-82-14,
+				200-82-07</span>
 		</div>
 	</div>
 </body>
