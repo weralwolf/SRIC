@@ -3,13 +3,15 @@
 <div id="content">
 	<?php if (Pages::menuLinkActive()) {?>
 	<div class="left_col">
-		<?php 
-		$this->widget('zii.widgets.CMenu',array(
-		        'items' => Pages::sideMenu(),
-		        'activeCssClass' => 'active',
-		        'htmlOptions' => array('class' => 'side_menu'),
-		));
-		?>
+		<div class="fixed_col">
+			<?php 
+			$this->widget('zii.widgets.CMenu',array(
+			        'items' => Pages::sideMenu(),
+			        'activeCssClass' => 'active',
+			        'htmlOptions' => array('class' => 'side_menu'),
+			));
+			?>
+		</div>
 	</div>
 	<div class="right_col">
 		<?php echo $content; ?>
