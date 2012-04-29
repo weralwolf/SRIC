@@ -2,7 +2,7 @@
 
 <?php
 Yii::import('application.extensions.jqClEditor');
-$form = $this->beginWidget('CActiveForm', array(
+$form = $this->beginWidget('ActiveForm', array(
     'id' => 'pages-form',
     'enableAjaxValidation' => false,
 ));

@@ -1,5 +1,5 @@
 <?php
-$form = $this->beginWidget('CActiveForm', array(
+$form = $this->beginWidget('ActiveForm', array(
         'id' => 'participants-form',
         'enableAjaxValidation' => false,
         'htmlOptions' => array('enctype' => 'multipart/form-data'),
@@ -70,7 +70,7 @@ $cs->registerScript("form_mask",
 		<td class="small"><div class="one_input birth">
 				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'birthdate'); ?>
-					<?php echo $form->textField($model, 'birthdate', array('maxlength' => 255)); ?>
+					<?php echo $form->textField($model, 'birthdate', array('maxlength' => 255, 'value' => '1975-03-27')); ?>
 					<?php // echo $form->dropDownList($model, 'day', Participants::daysList()); ?>
 					<?php // echo $form->dropDownList($model, 'month', Participants::monthsList()); ?>
 					<?php // echo $form->dropDownList($model, 'year', Participants::yearsList()); ?>
