@@ -22,7 +22,10 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
                             };
                         } else 
                             this.value=\'' . $m->translate('Participants', 'like_in_abstracts') . '\';
-                    })
+                    });
+                    $(this).bind("focus", function() {
+                            this.value = "";
+                    });
             });',
             CClientScript::POS_LOAD
     );
@@ -52,8 +55,9 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
 		                'maxlength' => 255,
 		                'name' => $nameIndex . 'title]',
 		                'value' => $m->translate('Participants', 'like_in_abstracts'),
-		                'onfocus' => "this.value='';",
-			'onblur' => "if (this.value != '') {this.onfocus = function() {this.style.backgroundColor='#f3fdff';};} else this.value='" . $m->translate('Participants', 'like_in_abstracts') . "';")); ?>
+// 		                'onfocus' => "this.value='';",
+// 			'onblur' => "if (this.value != '') {this.onfocus = function() {this.style.backgroundColor='#f3fdff';};} else this.value='" . $m->translate('Participants', 'like_in_abstracts') . "';"
+		)); ?>
 		<?php echo $form->error($model, 'title'); ?>
 	</div>
 </div>
@@ -65,8 +69,9 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
 		                'cols' => 50,
 		                'name' => $nameIndex. 'autors]',
 		                'value' => $m->translate('Participants', 'like_in_abstracts'),
-		                'onfocus' => "this.value='';",
-			'onblur' => "if (this.value != '') {this.onfocus = function() {this.style.backgroundColor='#f3fdff';};} else this.value='" . $m->translate('Participants', 'like_in_abstracts') . "';")); ?>
+// 		                'onfocus' => "this.value='';",
+// 			'onblur' => "if (this.value != '') {this.onfocus = function() {this.style.backgroundColor='#f3fdff';};} else this.value='" . $m->translate('Participants', 'like_in_abstracts') . "';"
+		)); ?>
 		<?php echo $form->error($model, 'autors'); ?>
 	</div>
 </div>

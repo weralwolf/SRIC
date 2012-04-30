@@ -327,6 +327,16 @@ h2 {
 	margin: 0 0 0 5px;
 }
 
+.right_block .langs a.active,.right_block .langs a:hover {
+	border: #4191C1 1px solid;
+	margin: -1px;
+}
+
+.right_block .langs a+a.active,.right_block .langs a+a:hover {
+	border: #4191C1 1px solid;
+	margin: -1px -1px 0 4px;
+}
+
 .content_block {
 	margin: 0 0 74px 0;
 	position: relative;
@@ -446,12 +456,12 @@ h2 {
 	margin: 20px 0 0 0;
 }
 
-.right_col ul li, .right_col ol li{
+.right_col ul li {
 	color: #0099ff;
 	font-weight: 700;
 }
 
-.right_col ul li span, .right_col ol li span {
+.right_col ul li span {
 	color: #ffffff;
 	font-weight: 400;
 }
@@ -733,7 +743,7 @@ span.blue {
 }
 
 .one_input.wide label {
-	width: 100px;
+	width: 125px;
 	text-align: right;
 }
 

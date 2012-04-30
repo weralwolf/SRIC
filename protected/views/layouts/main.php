@@ -42,7 +42,8 @@ if (!Yii::app()->request->isAjaxRequest) {
 	<div class="wrapper">
 		<div class="header">
 			<div class="conf_title">
-				<img src="images/conf_title.png" width="573" height="113"
+				<img src="images/conf_title_<?php echo Yii::app()->language?>.png"
+					width="573" height="113"
 					alt="<?php echo Yii::app()->dbMessages->translate("MenuLinks", "site_title")?>" />
 			</div>
 			<div class="logo">
@@ -95,13 +96,12 @@ if (!Yii::app()->request->isAjaxRequest) {
 						onblur="if (this.value != '') {this.onfocus = function() {this.style.backgroundColor='#f3fdff';};} else this.value='найти на сайте';" />
 				</div>
 				<div class="langs">
-					<a
-						href="<?php echo Yii::app()->createUrl('languages/switch', array('lang' => Yii::app()->params['languages'][0])); ?>"
-						class="ukr">ukr</a> <a
-						href="<?php echo Yii::app()->createUrl('languages/switch', array('lang' => Yii::app()->params['languages'][1])); ?>"
-						class="rus">ru</a> <a
-						href="<?php echo Yii::app()->createUrl('languages/switch', array('lang' => Yii::app()->params['languages'][2])); ?>"
-						class="en">en</a>
+					<a href="<?php echo Yii::app()->createUrl('languages/switch', array('lang' => Yii::app()->params['languages'][0])); ?>"
+						class="ukr<?php echo Yii::app()->language == 'ua' ? ' active' : ''?>">ukr</a>
+					 <a	href="<?php echo Yii::app()->createUrl('languages/switch', array('lang' => Yii::app()->params['languages'][1])); ?>"
+						class="rus<?php echo Yii::app()->language == 'ru' ? ' active' : ''?>">ru</a>
+					<a href="<?php echo Yii::app()->createUrl('languages/switch', array('lang' => Yii::app()->params['languages'][2])); ?>"
+						class="en<?php echo Yii::app()->language == 'en' ? ' active' : ''?>">en</a>
 				</div>
 			</div>
 			<div class="top_blur"></div>
@@ -131,10 +131,8 @@ if (!Yii::app()->request->isAjaxRequest) {
 				style="font-weight: 100;">spaceConf2012@gmail.com</a> <span>&copy;
 				2012 Developed in <?php echo CHtml::link('Space Research Institute NASU-NSAU', array('site/admin'), 
 				        array('style' => 'text-decoration: none; color: #cdcfcf; font-size: 12px; font-weight: 100;')); ?>.<br />
-				<?php //echo Yii::powered(); ?>
-<!-- 				Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a>  -->
-			</span> <span class="foot_phone">+38(044) 200-82-14,
-				200-82-07</span>
+				<?php //echo Yii::powered(); ?> <!-- 				Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a>  -->
+			</span> <span class="foot_phone">+38(044) 200-82-14, 200-82-07</span>
 		</div>
 	</div>
 </body>
