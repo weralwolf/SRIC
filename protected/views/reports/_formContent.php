@@ -1,15 +1,32 @@
 <?php
-$m = Yii::app()->messages;
+$m = Yii::app()->dbMessages;
 $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attributeName . '][' : ''); ?>
 <!--<div class="row">
-	<?php echo $form->checkBox($model, 'enabled', 
-	        array(
-	                'name' => $nameIndex . 'enabled]',
-	        )
-	) . ' ' . $form->labelEx($model, 'enabled',
-	        array(
-	        )
-    ); ?>
+<?php
+    echo $form->checkBox($model, 'enabled', 
+            array(
+                    'name' => $nameIndex . 'enabled]',
+            )
+    ) . ' ' . $form->labelEx($model, 'enabled',
+            array(
+            )
+    );
+    
+    $cs = Yii::app()->clientScript;
+    $cs->registerScript("report_transform", 
+            '$(\'input[name*="Reports"]\').each(function(){
+                    $(this).bind("blur", function(){
+                        if (this.value != \'\') {
+                            this.onfocus = function() {
+                                this.style.backgroundColor=\'#f3fdff\';
+                            };
+                        } else 
+                            this.value=\'' . $m->translate('Participants', 'like_in_abstracts') . '\';
+                    })
+            });',
+            CClientScript::POS_LOAD
+    );
+?>
 </div>-->
 <?php if (isset($attributeName)) {?>
 <div class="ger_title" style="text-align: left;">

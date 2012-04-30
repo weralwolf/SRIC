@@ -20,6 +20,19 @@ $cs->registerScript("reports_hide",
         $('#report_form_fields').css('display', number ? 'none' : 'block');
 })
 });", CClientScript::POS_LOAD);
+// $cs->registerScript("data_transform",
+//         '$(\'input[name*="Reports"]\').each(function(){
+//             $(this).bind("blur", function(){
+//                 if (this.value != \'\') {
+//                     this.onfocus = function() {
+//                         this.style.backgroundColor=\'#f3fdff\';
+//                     };
+//                 } else
+//                     this.value=\'1975-03-27\';
+//                 })
+//             });',
+//         CClientScript::POS_LOAD
+// );
 
 $cs->registerScript("form_mask",
         "jQuery(function($){ $('#Participants_birthdate').mask('9999-99-99'); });", CClientScript::POS_LOAD);

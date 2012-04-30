@@ -26,9 +26,9 @@ class Participants extends CActiveRecord {
     public $country;
     public $city;
     public $organization;
-    public $day;
-    public $year;
-    public $month;
+//     public $day;
+//     public $year;
+//     public $month;
     /**
      * Returns the static model of the specified AR class.
      * @return Participants the static model class
@@ -55,11 +55,11 @@ class Participants extends CActiveRecord {
         return $arr;
     }
 
-    public function beforeValidate() {
-        $this->birthdate = $this->year . '-' . $this->month . '-' . $this->day;
-        Yii::log($this->birthdate);
-        return parent::beforeValidate();
-    }
+//     public function beforeValidate() {
+//         $this->birthdate = $this->year . '-' . $this->month . '-' . $this->day;
+//         Yii::log($this->birthdate);
+//         return parent::beforeValidate();
+//     }
     
     /**
      * @return string the associated database table name

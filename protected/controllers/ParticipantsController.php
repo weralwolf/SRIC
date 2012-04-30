@@ -98,9 +98,9 @@ class ParticipantsController extends Controller {
                 $report_1 = Reports::saveFromPOST('1');
             }
 
-            $model->day = $_POST['Participants']['day'];
-            $model->month = $_POST['Participants']['month'];
-            $model->year = $_POST['Participants']['year'];
+//             $model->day = $_POST['Participants']['day'];
+//             $model->month = $_POST['Participants']['month'];
+//             $model->year = $_POST['Participants']['year'];
             if ($model->save()) {
                 if (!is_null($report_0)) {
                     $report_0->participants_id = $model->id;
