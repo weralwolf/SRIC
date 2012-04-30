@@ -231,7 +231,7 @@ $cs->registerScript("form_mask",
 </div>
 <div class="one_input submit">
 	<div class="rowElem">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::app()->messages->translate('Participants', 'register') : 'Save'); ?>
 	</div>
 </div>
 <?php $this->endWidget(); ?>

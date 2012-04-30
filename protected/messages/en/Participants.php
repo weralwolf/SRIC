@@ -19,6 +19,7 @@ return array(
         'sections_id' => 'Section',
         'accommodation_places_id' => 'Accommodation Place',
         'accommodation_places_rooms_types_id' => 'Room Type',
+        'register' => 'Register',
 
         // _form.php translation
 //         'personal_data_title' => 'Персональные данные',

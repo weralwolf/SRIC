@@ -19,6 +19,7 @@ return array(
         'sections_id' => 'Секція',
         'accommodation_places_id' => 'Місце проживання',
         'accommodation_places_rooms_types_id' => 'Тип кімнати',
+        'register' => 'Зареєтруватсь',
 
         // _form.php translation
 //         'personal_data_title' => 'Персональные данные',
