@@ -24,25 +24,7 @@ $(document).ready(function() {
 
 		}
 	});
-})
-
-// $(document).ready(function() {
-// $(window).scroll(function()
-// {
-// h_head = 227;
-// h = $(window).scrollTop();
-// w_head = 1000;
-// w = $(window).width();
-// if ((h >= h_head)&&(w_head >= w))
-// {
-// $(".fixed_col").css({left:-scrLeft});
-// }
-// else
-// {
-// $(".fixed_col").css({left:0});
-// }
-// });
-// })
+});
 
 $(document).ready(function() {
 
@@ -57,7 +39,7 @@ $(document).ready(function() {
 		$(".fixed_col").removeClass("left_fixed");
 		$(".wrapper").removeClass("minW");
 	}
-})
+});
 
 $(document).ready(function() {
 	$(window).resize(function() {
@@ -79,7 +61,7 @@ $(document).ready(function() {
 			$(".wrapper").removeClass("minW");
 		}
 	});
-})
+});
 
 $(document).ready(function() {
 	$(".deadlines_head").toggle(function() {
@@ -91,7 +73,7 @@ $(document).ready(function() {
 			right : "-199px"
 		}, 1000);
 	});
-})
+});
 
 $(document).ready(function() {
 	$(".toggle_button").text("показать");
@@ -108,4 +90,4 @@ $(document).ready(function() {
 		$(this).parent(".one_section").addClass("closed");
 		$(this).text("show");
 	});
-})
+});

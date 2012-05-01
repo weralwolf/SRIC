@@ -5,8 +5,8 @@ if (!Yii::app()->request->isAjaxRequest) {
     $cs->registerCoreScript('jquery');
     $cs->registerCoreScript('yii');
     $cs->registerScriptFile(XHtml::jsUrl('common.js'), CClientScript::POS_HEAD);
-    $cs->registerScriptFile(XHtml::jsUrl('design.main.js'), CClientScript::POS_HEAD);
     $cs->registerScriptFile(XHtml::jsUrl('jquery.jqtransform.js'), CClientScript::POS_HEAD);
+    $cs->registerScriptFile(XHtml::jsUrl('design.main.js'), CClientScript::POS_HEAD);
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

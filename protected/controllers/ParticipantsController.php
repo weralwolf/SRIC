@@ -64,32 +64,6 @@ class ParticipantsController extends Controller {
         if (isset($_POST['Participants'])) {
             $model->attributes = $_POST['Participants'];
 
-            $model->country = $_POST['countryName'];
-            $model->contries_id = Countries::model()->resolveID($model->country, 'Countries');
-            if ($model->contries_id == - 1) {
-                $message = strtolower(str_replace(array('-', ' '), '_', $_POST['countryName']));
-                $model->contries_id = SourceMessage::createMessage($message, 'Countries',
-                        array(
-                                'ua' => $_POST['countryName'],
-                                'ru' => $_POST['countryName'],
-                                'en' => $_POST['countryName'],
-                        )
-                );
-            }
-
-            $model->city = $_POST['cityName'];
-            $model->cities_id = Cities::model()->resolveID($model->city, 'Cities');
-            if ($model->cities_id == - 1) {
-                $message = strtolower(str_replace(array('-', ' '), '_', $_POST['cityName']));
-                $model->cities_id = SourceMessage::createMessage($message, 'Cities',
-                        array(
-                                'ua' => $_POST['cityName'],
-                                'ru' => $_POST['cityName'],
-                                'en' => $_POST['cityName'],
-                        )
-                );
-            }
-            
             $report_0 = NULL;
             $report_1 = NULL;
 
@@ -98,9 +72,6 @@ class ParticipantsController extends Controller {
                 $report_1 = Reports::saveFromPOST('1');
             }
 
-//             $model->day = $_POST['Participants']['day'];
-//             $model->month = $_POST['Participants']['month'];
-//             $model->year = $_POST['Participants']['year'];
             if ($model->save()) {
                 if (!is_null($report_0)) {
                     $report_0->participants_id = $model->id;
@@ -120,6 +91,9 @@ class ParticipantsController extends Controller {
                 }
             }
         }
+        
+        $model->participation_type = 'listner';
+        $model->report_type = 'plenary';
 
         $this->render('create', array(
                 'model' => $model,

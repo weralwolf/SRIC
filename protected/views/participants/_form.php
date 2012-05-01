@@ -20,6 +20,18 @@ $cs->registerScript("reports_hide",
         $('#report_form_fields').css('display', number ? 'none' : 'block');
 })
 });", CClientScript::POS_LOAD);
+
+$cs->registerScript('organization changer',
+'$(\'#Participants_organizations_id\').parent().children(\'ul\').children(\'li\')
+		.children(\'a\').each(function() {
+			$(this).bind(\'click\', function() {
+				if ($(\'#Participants_organizations_id\').attr(\'value\') == -1) {
+					$(\'#alt_organization\').show();
+				} else {
+					$(\'#alt_organization\').hide();
+				}
+			});
+		});', CClientScript::POS_LOAD);
 // $cs->registerScript("data_transform",
 //         '$(\'input[name*="Reports"]\').each(function(){
 //             $(this).bind("blur", function(){
@@ -69,7 +81,13 @@ $cs->registerScript("form_mask",
 					<?php echo $form->error($model, 'second_name'); ?>
 				</div>
 			</div></td>
-		<td>
+		<td><div class="one_input">
+				<div class="rowElem">
+					<?php echo $form->labelEx($model, 'post'); ?>
+					<?php echo $form->textField($model, 'post', array('maxlength' => 255)); ?>
+					<?php echo $form->error($model, 'post'); ?>
+				</div>
+			</div></td>
 	
 	</tr>
 	<tr>
@@ -80,10 +98,11 @@ $cs->registerScript("form_mask",
 					<?php echo $form->error($model, 'gender'); ?>
 				</div>
 			</div></td>
-		<td class="small"><div class="one_input birth">
+		<td class="small"><div class="one_input">
 				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'birthdate'); ?>
 					<?php echo $form->textField($model, 'birthdate', array('maxlength' => 255, 'value' => 'yyyy-mm-dd')); ?>
+					<?php echo $form->error($model, 'birthdate'); ?>
 				</div>
 			</div></td>
 	</tr>
@@ -130,10 +149,10 @@ $cs->registerScript("form_mask",
 				</div>
 			</div></td>
 		<td><div class="one_input">
-				<div class="rowElem">
-					<?php echo $form->labelEx($model, 'post'); ?>
-					<?php echo $form->textField($model, 'post', array('maxlength' => 255)); ?>
-					<?php echo $form->error($model, 'post'); ?>
+				<div class="rowElem" id="alt_organization"  style='display: none;'>
+					<?php echo $form->labelEx($model, 'alt_organization'); ?>
+					<?php echo $form->textField($model, 'alt_organization', array('maxlength' => 255)); ?>
+					<?php echo $form->error($model, 'alt_organization'); ?>
 				</div>
 			</div></td>
 	</tr>
@@ -171,6 +190,7 @@ $cs->registerScript("form_mask",
 		),
 		        array('template' => '{label}{input}', 'separator' => ''));
 		?>
+		<?php echo $form->error($model, 'participation_type'); ?>
 	</div>
 </div>
 <div class="one_input">
@@ -182,7 +202,6 @@ $cs->registerScript("form_mask",
 				<td><?php echo $form->radioButtonList($model, 'report_type', array(
 				        "plenary" => $m->translate('Participants', 'report_type_plenary'),
 				        "sessional" => $m->translate('Participants', 'report_type_sessional'),
-				        // 				        "poster" => $m->translate('Participants', 'report_type_poster'),
 				), array('template' => '{input}{label}', 'separator' => '</td></tr><tr><td></td><td>'));
 				echo $form->error($model, 'report_type'); ?>
 				</td>

@@ -19,18 +19,21 @@ class Organizations extends SourceMessage {
     }
 
     public function dropDown() {
-        $rows = $this->findAll(array('condition' => 'category=' . Yii::app()->db->quoteValue("Organizations")));
-        $dropDown = array();
+        $rows = $this->findAll(array('condition' => 'category=' . Yii::app()->db->quoteValue("Organizations"), 'order' => 'message ASC'));
+        $dropDown = array(
+                '-2' => Yii::app()->dbMessages->translate('Participants', 'no_organization'),
+                '-1' => Yii::app()->dbMessages->translate('Participants', 'new_organization')
+        );
         foreach ($rows as $row) {
             $dropDown[$row->id] = $row->t();
         }
         return $dropDown;
     }
-    
+
     public function suggest($keyword, $limit = 20) {
         return $this->suggestFromCategory($keyword, 'Organizations', $limit);
     }
-    
+
     public function search() {
         $criteria = new CDbCriteria;
         $criteria->compare('id', $this->id);

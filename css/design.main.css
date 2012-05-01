@@ -742,9 +742,8 @@ span.blue {
 	height: 24px;
 }
 
-.one_input.wide label {
-/*	width: 125px;*/
-    width: 100px;
+.one_input.wide label { /*	width: 125px;*/
+	width: 100px;
 	text-align: right;
 }
 
@@ -1211,3 +1210,9 @@ a.jqTransformChecked {
 	display: none;
 }
 /*end - registration*/
+
+.errorMessage {
+	color: #D22828;
+	font-weight: 700;
+	float: left;
+}

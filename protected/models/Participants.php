@@ -26,9 +26,7 @@ class Participants extends CActiveRecord {
     public $country;
     public $city;
     public $organization;
-//     public $day;
-//     public $year;
-//     public $month;
+    public $alt_organization;
     /**
      * Returns the static model of the specified AR class.
      * @return Participants the static model class
@@ -36,31 +34,66 @@ class Participants extends CActiveRecord {
     public static function model($className = __CLASS__) {
         return parent::model($className);
     }
-    
-    public static function daysList() {
-        $arr = array();
-        for($i = 0; $i < 31; ++$i, $arr[$i] = $i);
-        return $arr;
+
+    public function validateCity($attribute,$params) {
+        $this->city = $_POST['cityName'];
+        $this->cities_id = Cities::model()->resolveID($this->city, 'Cities');
+        if ($this->cities_id == - 1) {
+            if (empty($_POST['cityName'])) {
+                $this->addError('cities_id', 'Select city');
+                return;
+            }
+            $message = strtolower(str_replace(array('-', ' '), '_', $_POST['cityName']));
+            $this->cities_id = SourceMessage::createMessage($message, 'Cities',
+                    array(
+                            'ua' => $_POST['cityName'],
+                            'ru' => $_POST['cityName'],
+                            'en' => $_POST['cityName'],
+                    )
+            );
+        }
     }
     
-    public static function monthsList() {
-        $arr = array();
-        for($i = 0; $i < 12; ++$i, $arr[$i] = $i);
-        return $arr;
-    }
-    
-    public static function yearsList() {
-        $arr = array();
-        for($i = 1900; $i < date('Y'); ++$i, $arr[$i] = $i);
-        return $arr;
+    public function validateCountry($attribute,$params) {
+        $this->country = $_POST['countryName'];
+        $this->contries_id = Countries::model()->resolveID($this->country, 'Countries');
+        if ($this->contries_id == - 1) {
+            if (empty($_POST['countryName'])) {
+                $this->addError('contries_id', 'Select country');
+                return;
+            }
+            $message = strtolower(str_replace(array('-', ' '), '_', $_POST['countryName']));
+            $this->contries_id = SourceMessage::createMessage($message, 'Countries',
+                    array(
+                            'ua' => $_POST['countryName'],
+                            'ru' => $_POST['countryName'],
+                            'en' => $_POST['countryName'],
+                    )
+            );
+        }
     }
 
-//     public function beforeValidate() {
-//         $this->birthdate = $this->year . '-' . $this->month . '-' . $this->day;
-//         Yii::log($this->birthdate);
-//         return parent::beforeValidate();
-//     }
-    
+    public function validateOrganization($attribute,$params) {
+        if ($this->organizations_id == -2) {
+            $this->addError("organizations_id", "Select organization");
+        }
+        
+        if ($this->organizations_id == -1) {
+            if (empty($_POST['alt_organization'])) {
+                $this->addError("organizations_id", "Select organization");
+                return;
+            }
+            $message = strtolower(str_replace(array('-', ' '), '_', $_POST['alt_organization']));
+            $this->organizations_id = SourceMessage::createMessage($message, 'Organizations',
+                    array(
+                            'ua' => $_POST['alt_organization'],
+                            'ru' => $_POST['alt_organization'],
+                            'en' => $_POST['alt_organization'],
+                    )
+            );
+        }
+    }
+
     /**
      * @return string the associated database table name
      */
@@ -82,7 +115,7 @@ class Participants extends CActiveRecord {
                 array('approved, gender', 'numerical', 'integerOnly' => true),
                 array(
                         'contries_id, cities_id, organizations_id,
-                         accommodation_places_id, accommodation_places_rooms_types_id',
+                        accommodation_places_id, accommodation_places_rooms_types_id',
                         'length', 'max' => 10),
                 array('name, second_name, last_name, post, email, phone', 'length', 'max' => 255),
                 array('participation_type', 'in', 'range' => array('lecturer', 'listner')),
@@ -94,9 +127,8 @@ class Participants extends CActiveRecord {
                          'message'=>'Number format is +NN NNN NN-NN-NNN, with or without spaces and dashes.'),
         */
                 array('report_type', 'length', 'max' => 9),
-                /*
-                 array('birthdate', 'date'),
-        */
+                array('birthdate', 'date'),
+                array('organizations_id', 'validateOrganization'),
                 array(
                         'id, approved, contries_id, cities_id, name,
                         second_name, last_name, gender, birthdate, organizations_id, post,
@@ -142,8 +174,8 @@ class Participants extends CActiveRecord {
                 'participation_type' => $m->translate('Participants', 'participation_type'),
                 'report_type' => $m->translate('Participants', 'report_type'),
                 'accommodation_places_id' => $m->translate('Participants', 'accommodation_places_id'),
-                'accommodation_places_rooms_types_id' => $m->translate('Participants', 'accommodation_places_rooms_types_id'
-                ),
+                'accommodation_places_rooms_types_id' => $m->translate('Participants', 'accommodation_places_rooms_types_id'),
+                'alt_organization' => '',
         );
     }
 
