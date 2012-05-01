@@ -41,7 +41,8 @@ echo $this->renderPartial('application.views.sourceMessage._formContent', array(
 ));
 ?>
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', 
+		        array('class' => "wymupdate")); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
