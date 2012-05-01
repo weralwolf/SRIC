@@ -395,7 +395,7 @@ h2 {
 	display: inline-block;
 	vertical-align: middle;
 	padding: 8px 13px 8px 26px;
-	height: 18px;
+	/* height: 18px; */
 }
 
 .side_menu li+li a {

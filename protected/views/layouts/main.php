@@ -113,6 +113,9 @@ if (!Yii::app()->request->isAjaxRequest) {
 					<?php echo Yii::app()->dbMessages->translate("MenuLinks", "deadlines") ?>
 				</div>
 			</div>
+			<div class="deadline_text">
+                <?php echo Yii::app()->dbMessages->translate("MenuLinks", "deadlines_content") ?>
+            </div>
 		</div>
 		<div class="content_block">
 			<div class="content_block_in">
