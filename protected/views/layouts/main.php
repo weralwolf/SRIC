@@ -97,7 +97,7 @@ if (!Yii::app()->request->isAjaxRequest) {
 				</div>
 				<div class="langs">
 					<a href="<?php echo Yii::app()->createUrl('languages/switch', array('lang' => Yii::app()->params['languages'][0])); ?>"
-						class="ukr<?php echo Yii::app()->language == 'ua' ? ' active' : ''?>">ukr</a>
+						class="ukr<?php echo Yii::app()->language == 'uk' ? ' active' : ''?>">ukr</a>
 					 <a	href="<?php echo Yii::app()->createUrl('languages/switch', array('lang' => Yii::app()->params['languages'][1])); ?>"
 						class="rus<?php echo Yii::app()->language == 'ru' ? ' active' : ''?>">ru</a>
 					<a href="<?php echo Yii::app()->createUrl('languages/switch', array('lang' => Yii::app()->params['languages'][2])); ?>"
