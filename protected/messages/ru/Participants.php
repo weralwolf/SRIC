@@ -20,6 +20,7 @@ return array(
         'accommodation_places_id' => 'Место проживания',
         'accommodation_places_rooms_types_id' => 'Тип комнаты',
         'register' => 'Зарегистрироваться',
+        'alt_organization' => 'Введите название организации',
 
         // _form.php translation
 //         'personal_data_title' => 'Персональные данные',

@@ -32,6 +32,20 @@ $cs->registerScript('organization changer',
 				}
 			});
 		});', CClientScript::POS_LOAD);
+$cs->registerScript("alt_org_transform",
+        '$(\'#Participants_alt_organization\').bind("blur", function() {
+        	if (this.value != \'\') {
+        		this.onfocus = function() {
+        			this.style.backgroundColor = \'#f3fdff\';
+        		};
+        	} else {
+        		this.value = \'' . Yii::app()->messages->translate('Participants', 'alt_organization') . '\';
+        	}
+        });
+        $(\'#Participants_alt_organization\').bind("focus", function() {
+        		this.value = "";
+    	});', CClientScript::POS_LOAD
+);
 // $cs->registerScript("data_transform",
 //         '$(\'input[name*="Reports"]\').each(function(){
 //             $(this).bind("blur", function(){
@@ -151,7 +165,12 @@ $cs->registerScript("form_mask",
 		<td><div class="one_input">
 				<div class="rowElem" id="alt_organization"  style='display: none;'>
 					<?php echo $form->labelEx($model, 'alt_organization'); ?>
-					<?php echo $form->textField($model, 'alt_organization', array('maxlength' => 255, 'style' => 'width: 100%;')); ?>
+					<?php echo $form->textField($model, 'alt_organization', array(
+					        'maxlength' => 255, 
+					        'style' => 'width: 200px;', 
+					        'value' => Yii::app()->messages->translate('Participants', 'alt_organization')
+					        )
+				        ); ?>
 					<?php echo $form->error($model, 'alt_organization'); ?>
 				</div>
 			</div></td>
