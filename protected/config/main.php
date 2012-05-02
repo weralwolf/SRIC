@@ -9,7 +9,7 @@ return array(
         'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
         'name'=>'Conference',
         'defaultController' => 'pages',
-        'language' => 'ua',
+        'language' => 'uk',
 
         // preloading 'log' component
         'preload'=>array('log'),

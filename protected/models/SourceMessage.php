@@ -75,6 +75,14 @@ class SourceMessage extends CActiveRecord {
         }
         $this->save();
     }
+    
+    public static function generateTranslation($message) {
+        $trans = array();
+        foreach (Yii::app()->params['languages'] as $lang) {
+            $trans[$lang] = $message;
+        }
+        return $trans;
+    }
 
     public static function searchLike($keyword, $category, $language = '') {
         if (empty($language)) {

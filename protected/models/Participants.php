@@ -39,57 +39,52 @@ class Participants extends CActiveRecord {
         $this->city = $_POST['cityName'];
         $this->cities_id = Cities::model()->resolveID($this->city, 'Cities');
         if ($this->cities_id == - 1) {
-            if (empty($_POST['cityName'])) {
-                $this->addError('cities_id', 'Select city');
+            if (empty($this->city)) {
+                $this->addError('cities_id', Yii::app()->dbMessages->translate('Errors', 'select_city'));
                 return;
             }
-            $message = strtolower(str_replace(array('-', ' '), '_', $_POST['cityName']));
-            $this->cities_id = SourceMessage::createMessage($message, 'Cities',
-                    array(
-                            'ua' => $_POST['cityName'],
-                            'ru' => $_POST['cityName'],
-                            'en' => $_POST['cityName'],
-                    )
+            $message = strtolower(str_replace(array('-', ' '), '_', $this->city));
+            $this->cities_id = SourceMessage::createMessage(
+                    $message,
+                    'Cities',
+                    SourceMessage::generateTranslation($this->city)
             );
         }
     }
-    
+
     public function validateCountry($attribute,$params) {
         $this->country = $_POST['countryName'];
         $this->contries_id = Countries::model()->resolveID($this->country, 'Countries');
         if ($this->contries_id == - 1) {
-            if (empty($_POST['countryName'])) {
-                $this->addError('contries_id', 'Select country');
+            if (empty($this->country)) {
+                $this->addError('contries_id', Yii::app()->dbMessages->translate('Errors', 'select_country'));
                 return;
             }
-            $message = strtolower(str_replace(array('-', ' '), '_', $_POST['countryName']));
-            $this->contries_id = SourceMessage::createMessage($message, 'Countries',
-                    array(
-                            'ua' => $_POST['countryName'],
-                            'ru' => $_POST['countryName'],
-                            'en' => $_POST['countryName'],
-                    )
+            $message = strtolower(str_replace(array('-', ' '), '_', $this->country));
+            $this->contries_id = SourceMessage::createMessage(
+                    $message,
+                    'Countries',
+                    SourceMessage::generateTranslation($this->country)
             );
         }
     }
 
     public function validateOrganization($attribute,$params) {
         if ($this->organizations_id == -2) {
-            $this->addError("organizations_id", "Select organization");
+            $this->addError("organizations_id", Yii::app()->dbMessages->translate('Errors', 'select_organization'));
         }
-        
+
+        $this->alt_organization = $_POST['Participants']['alt_organization'];
         if ($this->organizations_id == -1) {
-            if (empty($_POST['alt_organization'])) {
-                $this->addError("organizations_id", "Select organization");
+            if (empty($this->alt_organization)) {
+                $this->addError("organizations_id", Yii::app()->dbMessages->translate('Errors', 'select_organization'));
                 return;
             }
-            $message = strtolower(str_replace(array('-', ' '), '_', $_POST['alt_organization']));
-            $this->organizations_id = SourceMessage::createMessage($message, 'Organizations',
-                    array(
-                            'ua' => $_POST['alt_organization'],
-                            'ru' => $_POST['alt_organization'],
-                            'en' => $_POST['alt_organization'],
-                    )
+            $message = strtolower(str_replace(array('-', ' '), '_', $this->alt_organization));
+            $this->organizations_id = SourceMessage::createMessage(
+                    $message,
+                    'Organizations',
+                    SourceMessage::generateTranslation($this->alt_organization)
             );
         }
     }
@@ -106,6 +101,9 @@ class Participants extends CActiveRecord {
      */
     public function rules() {
         return array(
+                array('organizations_id', 'validateOrganization'),
+                array('cities_id', 'validateCity'),
+                array('contries_id', 'validateCountry'),
                 array(
                         'contries_id, cities_id, name, second_name,
                         last_name, birthdate, organizations_id, post, email, phone,
@@ -121,14 +119,13 @@ class Participants extends CActiveRecord {
                 array('participation_type', 'in', 'range' => array('lecturer', 'listner')),
                 array('report_type', 'in', 'range' => array('plenary', 'sessional')),
                 array('email', 'email'),
-//                 array('report', 'file', 'types' => 'pdf, doc, docx'),
+                //                 array('report', 'file', 'types' => 'pdf, doc, docx'),
                 /*
-                 array('phone', 'match', 'pattern'=>'/^(\+[0-9]{2}[\s]{0,1}[\-]{0,1}[\s]{0,1}1|0)50[\s]{0,1}[\-]{0,1}[\s]{0,1}[1-9]{1}[0-9]{6}$/',
-                         'message'=>'Number format is +NN NNN NN-NN-NNN, with or without spaces and dashes.'),
+        array('phone', 'match', 'pattern'=>'/^(\+[0-9]{2}[\s]{0,1}[\-]{0,1}[\s]{0,1}1|0)50[\s]{0,1}[\-]{0,1}[\s]{0,1}[1-9]{1}[0-9]{6}$/',
+                'message'=>'Number format is +NN NNN NN-NN-NNN, with or without spaces and dashes.'),
         */
                 array('report_type', 'length', 'max' => 9),
-                array('birthdate', 'date'),
-                array('organizations_id', 'validateOrganization'),
+                array('birthdate', 'date', 'format' => 'yyyy-mm-dd'),
                 array(
                         'id, approved, contries_id, cities_id, name,
                         second_name, last_name, gender, birthdate, organizations_id, post,

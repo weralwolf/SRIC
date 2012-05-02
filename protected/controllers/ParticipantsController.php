@@ -66,6 +66,8 @@ class ParticipantsController extends Controller {
 
             $report_0 = NULL;
             $report_1 = NULL;
+            
+//             $model->reports = array();
 
             if ($model->participation_type == 'lecturer') {
                 $report_0 = Reports::saveFromPOST('0');
@@ -90,6 +92,8 @@ class ParticipantsController extends Controller {
                     $report_1->file->delete();
                 }
             }
+//             $model->reports[] = $report_0;
+//             $model->reports[] = $report_1;
         }
         
         $model->participation_type = 'listner';
