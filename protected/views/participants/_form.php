@@ -43,22 +43,16 @@ $(\'#Participants_alt_organization\').bind("focus", function() {
 		    this.value = \'\';
 		}
 });', CClientScript::POS_LOAD);
-// $cs->registerScript("data_transform",
-//         '$(\'input[name*="Reports"]\').each(function(){
-//             $(this).bind("blur", function(){
-//                 if (this.value != \'\') {
-//                     this.onfocus = function() {
-//                         this.style.backgroundColor=\'#f3fdff\';
-//                     };
-//                 } else
-//                     this.value=\'1975-03-27\';
-//                 })
-//             });',
-//         CClientScript::POS_LOAD
-// );
 
 $cs->registerScript("form_mask",
         "jQuery(function($){ $('#Participants_birthdate').mask('9999-99-99'); });", CClientScript::POS_LOAD);
+$cs->registerScript("biethdate_transform",
+'$(\'#Participants_birthdate\').bind("blur", function() {
+    if (this.value == \'\') {
+        this.value = \'yyyy-mm-dd\';
+    }
+});
+$(\'#Participants_birthdate\').attr("value", "yyyy-mm-dd");', CClientScript::POS_LOAD);
 ?>
 <h1>
 	<?php echo $m->translate('Participants', 'personal_data_title'); ?>
@@ -112,7 +106,7 @@ $cs->registerScript("form_mask",
 		<td class="small"><div class="one_input">
 				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'birthdate'); ?>
-					<?php echo $form->textField($model, 'birthdate', array('maxlength' => 255, 'value' => 'yyyy-mm-dd')); ?>
+					<?php echo $form->textField($model, 'birthdate', array('maxlength' => 255)); ?>
 					<?php echo $form->error($model, 'birthdate'); ?>
 				</div>
 			</div></td>
