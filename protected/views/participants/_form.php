@@ -151,7 +151,7 @@ $cs->registerScript("form_mask",
 		<td><div class="one_input">
 				<div class="rowElem" id="alt_organization"  style='display: none;'>
 					<?php echo $form->labelEx($model, 'alt_organization'); ?>
-					<?php echo $form->textField($model, 'alt_organization', array('maxlength' => 255)); ?>
+					<?php echo $form->textField($model, 'alt_organization', array('maxlength' => 255, 'style' => 'width: 100%;')); ?>
 					<?php echo $form->error($model, 'alt_organization'); ?>
 				</div>
 			</div></td>
