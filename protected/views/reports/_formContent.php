@@ -42,6 +42,7 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
 		<?php echo $form->dropDownList($model, 'sections_id', Sections::model()->dropDown(), 
 		        array(
 		                'name' => $nameIndex . 'sections_id]',
+		                'style' => 'width: 100%;',
 		        )
     ); ?>
 		<?php echo $form->error($model, 'sections_id'); ?>
