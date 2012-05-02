@@ -33,19 +33,16 @@ $cs->registerScript('organization changer',
 			});
 		});', CClientScript::POS_LOAD);
 $cs->registerScript("alt_org_transform",
-        '$(\'#Participants_alt_organization\').bind("blur", function() {
-        	if (this.value != \'\') {
-        		this.onfocus = function() {
-        			this.style.backgroundColor = \'#f3fdff\';
-        		};
-        	} else {
-        		this.value = \'' . Yii::app()->messages->translate('Participants', 'alt_organization') . '\';
-        	}
-        });
-        $(\'#Participants_alt_organization\').bind("focus", function() {
-        		this.value = "";
-    	});', CClientScript::POS_LOAD
-);
+'$(\'#Participants_alt_organization\').bind("blur", function() {
+	if (this.value == \'\') {
+		this.value = \'' . Yii::app()->messages->translate('Participants', 'alt_organization') . '\';
+	}
+});
+$(\'#Participants_alt_organization\').bind("focus", function() {
+        if (this.value == \'' . Yii::app()->messages->translate('Participants', 'alt_organization') . '\') {
+		    this.value = \'\';
+		}
+});', CClientScript::POS_LOAD);
 // $cs->registerScript("data_transform",
 //         '$(\'input[name*="Reports"]\').each(function(){
 //             $(this).bind("blur", function(){

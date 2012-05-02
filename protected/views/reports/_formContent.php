@@ -15,16 +15,15 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
     $cs = Yii::app()->clientScript;
     $cs->registerScript("report_transform", 
             '$(\'input[name*="Reports"]\').each(function(){
-                    $(this).bind("blur", function(){
-                        if (this.value != \'\') {
-                            this.onfocus = function() {
-                                this.style.backgroundColor=\'#f3fdff\';
-                            };
-                        } else 
-                            this.value=\'' . $m->translate('Participants', 'like_in_abstracts') . '\';
+                    $(this).bind("blur", function() {
+                    	if (this.value == \'\') {
+                    		this.value = \'' . $m->translate('Participants', 'like_in_abstracts') . '\';
+                    	}
                     });
                     $(this).bind("focus", function() {
-                            this.value = "";
+                            if (this.value == \'' . $m->translate('Participants', 'like_in_abstracts') . '\') {
+                    		    this.value = \'\';
+                    		}
                     });
             });',
             CClientScript::POS_LOAD

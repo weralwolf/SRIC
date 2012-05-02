@@ -20,8 +20,8 @@ return array(
         'accommodation_places_id' => 'Місце проживання',
         'accommodation_places_rooms_types_id' => 'Тип кімнати',
         'register' => 'Зареєтруватсь',
-        'alt_organization' => 'Введіть назва організації',
-
+        'alt_organization' => 'Введіть назву організації',
+ 
         // _form.php translation
 //         'personal_data_title' => 'Персональные данные',
 //         'personal_data_note' => 'Украинские участники должны заполнить эту группу полей на украинском языке, а иностранные'
