@@ -19,7 +19,7 @@ class Organizations extends SourceMessage {
     }
 
     public function dropDown() {
-        $rows = $this->findAll(array('condition' => 'category LIKE ' . Yii::app()->db->quoteValue("Organizations_%"), 'order' => 'message ASC, category ASC '));
+        $rows = $this->findAll(array('condition' => 'category LIKE ' . Yii::app()->db->quoteValue("Organizations_%"), 'order' => 'category ASC, message ASC'));
         $dropDown = array(
                 '-2' => Yii::app()->dbMessages->translate('Participants', 'no_organization'),
                 '-1' => Yii::app()->dbMessages->translate('Participants', 'new_organization')
