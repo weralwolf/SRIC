@@ -98,14 +98,14 @@ $(\'#Participants_birthdate\').attr("value", "yyyy-mm-dd");', CClientScript::POS
 	
 	</tr>
 	<tr>
-		<td class="small"><div class="one_input">
+		<td><div class="one_input">
 				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'gender'); ?>
 					<?php echo $form->dropDownList($model, 'gender', array("0" => "Female", "1" => "Male")); ?>
 					<?php echo $form->error($model, 'gender'); ?>
 				</div>
 			</div></td>
-		<td class="small"><div class="one_input">
+		<td><div class="one_input">
 				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'birthdate'); ?>
 					<?php echo $form->textField($model, 'birthdate', array('maxlength' => 255)); ?>
@@ -150,27 +150,6 @@ $(\'#Participants_birthdate\').attr("value", "yyyy-mm-dd");', CClientScript::POS
 	<tr>
 		<td><div class="one_input">
 				<div class="rowElem">
-					<?php echo $form->labelEx($model, 'organizations_id'); ?>
-					<?php echo $form->dropDownList($model, 'organizations_id', Organizations::model()->dropDown()); ?>
-					<?php echo $form->error($model, 'organizations_id'); ?>
-				</div>
-			</div></td>
-		<td><div class="one_input">
-				<div class="rowElem" id="alt_organization"  style='display: none;'>
-					<?php echo $form->labelEx($model, 'alt_organization'); ?>
-					<?php echo $form->textField($model, 'alt_organization', array(
-					        'maxlength' => 255, 
-					        'style' => 'width: 200px;', 
-					        'value' => Yii::app()->messages->translate('Participants', 'alt_organization')
-					        )
-				        ); ?>
-					<?php echo $form->error($model, 'alt_organization'); ?>
-				</div>
-			</div></td>
-	</tr>
-	<tr>
-		<td><div class="one_input">
-				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'phone'); ?>
 					<?php echo $form->textField($model, 'phone', array('maxlength' => 255)); ?>
 					<?php echo $form->error($model, 'phone'); ?>
@@ -185,6 +164,25 @@ $(\'#Participants_birthdate\').attr("value", "yyyy-mm-dd");', CClientScript::POS
 			</div></td>
 	</tr>
 </table>
+ <div class="one_input wide">
+    <div class="rowElem">
+    	<?php echo $form->labelEx($model, 'organizations_id'); ?>
+    	<?php echo $form->dropDownList($model, 'organizations_id', Organizations::model()->dropDown()); ?>
+    	<?php echo $form->error($model, 'organizations_id'); ?>
+    	</div>
+    </div>
+<div class="one_input wide">
+    <div class="rowElem" id="alt_organization"  style='display: none;'>
+    	<?php echo $form->labelEx($model, 'alt_organization'); ?>
+    	<?php echo $form->textField($model, 'alt_organization', array(
+    	        'maxlength' => 255, 
+    	        'style' => 'width: 200px;', 
+    	        'value' => Yii::app()->messages->translate('Participants', 'alt_organization')
+    	        )
+            ); ?>
+    	<?php echo $form->error($model, 'alt_organization'); ?>
+    	</div>
+    </div>
 <div class="ger_title">
 	<?php echo $m->translate('Participants', 'report_title'); ?>
 </div>
@@ -234,7 +232,7 @@ $(\'#Participants_birthdate\').attr("value", "yyyy-mm-dd");', CClientScript::POS
 	?>
 </div>
 <p>
-	Требования к оформлению указаны в меню <a href="#">тезисы</a>.
+	<?php echo $m->translate('Participants', 'report_note_p3'); ?>
 </p>
 <!-- ------------------------------------------------------------- REPORT FORM PART -->
 <div class="ger_title">

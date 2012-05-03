@@ -262,7 +262,7 @@
 			
 			/* Now add the html for the select */
 			$wrapper.prepend('<div><span></span><a href="#" class="jqTransformSelectOpen"></a></div><ul></ul>');
-			var $ul = $('ul', $wrapper).css('width', $select.width() < 400 ? 400 : $select.width()).hide(); //
+			var $ul = $('ul', $wrapper).css('width',$select.width()).hide();
 			/* Now we add the options */
 			$('option', this).each(function(i){
 
@@ -311,7 +311,7 @@
 			var oSpan = $('span:first',$wrapper);
 			var newWidth = (iSelectWidth > oSpan.innerWidth())?iSelectWidth+oLinkOpen.outerWidth():$wrapper.width();
 			$wrapper.css('width',newWidth);
-			$ul.css('width', newWidth-2 < 400 ? 400 : newWidth-2);
+			$ul.css('width',newWidth-2);
 			oSpan.css({width:iSelectWidth});
 		
 			// Calculate the height if necessary, less elements that the default height
