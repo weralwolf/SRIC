@@ -88,6 +88,13 @@ class Participants extends CActiveRecord {
             );
         }
     }
+    
+    public function validateBirthdate($attribute,$params) {
+    	$date = explode('-', $this->birthdate);
+    	if (!checkdate($date[1], $date[2], $date[0])) {
+    		$this->addError('birthdate', Yii::app()->dbMessages->translate('Errors', 'incorrect_data'));
+    	}
+    }
 
     /**
      * @return string the associated database table name
@@ -126,6 +133,7 @@ class Participants extends CActiveRecord {
         */
                 array('report_type', 'length', 'max' => 9),
                 array('birthdate', 'date', 'format' => 'yyyy-mm-dd'),
+                array('birthdate', 'validateBirthdate'),
                 array(
                         'id, approved, contries_id, cities_id, name,
                         second_name, last_name, gender, birthdate, organizations_id, post,

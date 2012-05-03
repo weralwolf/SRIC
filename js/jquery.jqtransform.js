@@ -265,7 +265,12 @@
 			var $ul = $('ul', $wrapper).css('width',$select.width()).hide();
 			/* Now we add the options */
 			$('option', this).each(function(i){
-				var oLi = $('<li><a href="#" index="'+ i +'">'+ $(this).html() +'</a></li>');
+
+				// fix for enormous titles
+				var substr_length = 23;
+				var full_name = $(this).html();
+				var alt = full_name.length > (substr_length + 3) ? full_name.substr(0, substr_length) + '...' : full_name;
+				var oLi = $('<li><a href="#" index="'+ i +'" alt="' + alt + '">'+ full_name +'</a></li>');
 				$ul.append(oLi);
 			});
 			
@@ -276,7 +281,7 @@
 					/* Fire the onchange event */
 					if ($select[0].selectedIndex != $(this).attr('index') && $select[0].onchange) { $select[0].selectedIndex = $(this).attr('index'); $select[0].onchange(); }
 					$select[0].selectedIndex = $(this).attr('index');
-					$('span:eq(0)', $wrapper).html($(this).html());
+					$('span:eq(0)', $wrapper).html($(this).attr('alt'));
 					$ul.hide();
 					return false;
 			});
@@ -302,7 +307,7 @@
 			;
 
 			// Set the new width
-			var iSelectWidth = $select.outerWidth();
+			var iSelectWidth = 200;//$select.outerWidth();
 			var oSpan = $('span:first',$wrapper);
 			var newWidth = (iSelectWidth > oSpan.innerWidth())?iSelectWidth+oLinkOpen.outerWidth():$wrapper.width();
 			$wrapper.css('width',newWidth);
@@ -312,7 +317,14 @@
 			// Calculate the height if necessary, less elements that the default height
 			//show the ul to calculate the block, if ul is not displayed li height value is 0
 			$ul.css({display:'block',visibility:'hidden'});
-			var iSelectHeight = ($('li',$ul).length)*($('li:first',$ul).height());//+1 else bug ff
+			
+			// fix for enormous titles
+			var list = $('li',$ul);
+			var iSelectHeight = 0;
+			for (i in list) {
+				iSelectHeight += $(i).height();
+			}
+//			var iSelectHeight = ($('li',$ul).length) * ($('li:first',$ul).height());//+1 else bug ff
 			(iSelectHeight < $ul.height()) && $ul.css({height:iSelectHeight,'overflow':'hidden'});//hidden else bug with ff
 			$ul.css({display:'none',visibility:'visible'});
 			
