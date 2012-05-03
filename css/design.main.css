@@ -1202,7 +1202,6 @@ a.jqTransformChecked {
 
 .jqTransformSelectWrapper ul {
 	position: absolute;
-	width: 182px !important;
 	top: 30px;
 	left: 0px;
 	list-style: none;
