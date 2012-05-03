@@ -1,7 +1,7 @@
 /* CSS Document */
 @charset "utf-8";
 /*Defoults*/
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td
 	{
 	margin: 0;
 	padding: 0;
@@ -788,13 +788,13 @@ span.blue {
 }
 
 .one_input.wide label { /*	width: 125px;*/
-	width: 100px;
+	width: 126px;
 	text-align: right;
 }
 
 .one_input.wide .jqTransformSelectWrapper,.one_input.wide .jqTransformSelectWrapper ul,.one_input.wide .jqTransformInputInner
 	{
-	width: 500px !important;
+	width: 526px !important;
 }
 
 .one_input.wide .jqTransformInputInner input {
@@ -859,12 +859,12 @@ button.jqTransformButton {
 	width: 1;
 } /* IE7 */
 button.jqTransformButton span {
-	background: url(../images/add_tezis_button_bg.png) no-repeat 0 0;
+	background: url(../images/add_tezis_button_bg.png) repeat-x 0 0;
 	display: block;
 	float: left;
 	margin: 0px;
 	height: 29px;
-	width: 123px;
+	width: 153px;
 	border: #0085c3 1px solid;
 }
 
@@ -877,7 +877,7 @@ button.jqTransformButton span span {
 	text-decoration: none;
 	height: 24px;
 	padding: 5px 0 0 0;
-	width: 121px;
+	width: 153px;
 	border: none;
 }
 /*hover*/
