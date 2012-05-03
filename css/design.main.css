@@ -474,6 +474,40 @@ h2 {
 	list-style: inside disc;
 }
 
+.no_col {
+	
+}
+
+.no_col p {
+	text-indent: 36px;
+}
+
+.no_col h1+p {
+	margin: 16px 0 0 0;
+}
+
+.no_col p+p {
+	margin: 20px 0 0 0;
+}
+
+.no_col ul li {
+	color: #0099ff;
+	font-weight: 700;
+}
+
+.no_col ul li span {
+	color: #ffffff;
+	font-weight: 400;
+}
+
+.no_col .numbers {
+	list-style: inside decimal;
+}
+
+.no_col .dots {
+	list-style: inside disc;
+}
+
 .push {
 	height: 74px;
 	margin-top: -74px;
@@ -1210,7 +1244,6 @@ a.jqTransformChecked {
 	display: none;
 }
 /*end - registration*/
-
 .errorMessage {
 	color: #D22828;
 	font-weight: 700;
