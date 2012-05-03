@@ -497,8 +497,8 @@ h2 {
 	margin: 16px 0 0 0;
 }
 
-.no_col p+p {
-	margin: 20px 0 0 0;
+.no_col p+p,.no_col p+ul,.no_col ul+p {
+    margin: 20px 0 0 0;
 }
 
 .no_col ul li {
