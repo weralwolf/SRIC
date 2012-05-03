@@ -167,10 +167,11 @@ class SourceMessage extends CActiveRecord {
         return count($id) ? $id[0] : -1;
     }
     
-    public static function createMessage($message, $category, $translations) {
+    public static function createMessage($message, $category, $translations, $approved = 1) {
         $model = new SourceMessage();
         $model->message = $message;
         $model->category = $category;
+        $model->approved = $approved;
         $model->save();
         foreach($translations as $l => $t) {
             $message = new Message();

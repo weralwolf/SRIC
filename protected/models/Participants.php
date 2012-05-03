@@ -48,7 +48,8 @@ class Participants extends CActiveRecord {
             $this->cities_id = SourceMessage::createMessage(
                     $message,
                     'Cities',
-                    SourceMessage::generateTranslation($this->city)
+                    SourceMessage::generateTranslation($this->city),
+                    0
             );
         }
     }
@@ -65,7 +66,8 @@ class Participants extends CActiveRecord {
             $this->contries_id = SourceMessage::createMessage(
                     $message,
                     'Countries',
-                    SourceMessage::generateTranslation($this->country)
+                    SourceMessage::generateTranslation($this->country),
+                    0
             );
         }
     }
@@ -94,7 +96,8 @@ class Participants extends CActiveRecord {
             $this->organizations_id = SourceMessage::createMessage(
                     $message,
                     'Organizations',
-                    SourceMessage::generateTranslation($this->alt_organization)
+                    SourceMessage::generateTranslation($this->alt_organization),
+                    0
             );
         }
     }
