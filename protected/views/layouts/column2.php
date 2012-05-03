@@ -18,7 +18,9 @@
 	</div>
 	<div style="clear: both"></div>
 	<?php } else {?>
-	<?php echo $content; ?>
+    	<div class="main right_col">
+    		<?php echo $content; ?>
+    	</div>
 	<?php }?>
 </div>
 <!-- content -->
