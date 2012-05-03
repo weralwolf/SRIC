@@ -95,7 +95,7 @@ class Participants extends CActiveRecord {
             $message = strtolower(str_replace(array('-', ' '), '_', $this->alt_organization));
             $this->organizations_id = SourceMessage::createMessage(
                     $message,
-                    'Organizations',
+                    'Organizations_' . Yii::app()->language,
                     SourceMessage::generateTranslation($this->alt_organization),
                     0
             );
