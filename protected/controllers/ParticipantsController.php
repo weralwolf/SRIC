@@ -60,6 +60,7 @@ class ParticipantsController extends Controller {
      */
     public function actionCreate() {
         $model = new Participants;
+        $model->no_report = NULL;
 
         if (isset($_POST['Participants'])) {
             $model->attributes = $_POST['Participants'];
@@ -72,6 +73,10 @@ class ParticipantsController extends Controller {
             if ($model->participation_type == 'lecturer') {
                 $report_0 = Reports::saveFromPOST('0');
                 $report_1 = Reports::saveFromPOST('1');
+            }
+            
+            if (is_null($report_0) && $model->participation_type == 'lecturer') {
+                $model->no_report = Yii::app()->dbMessages->translate('Errors', 'empty_report');
             }
 
             if ($model->save()) {

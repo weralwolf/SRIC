@@ -27,6 +27,7 @@ class Participants extends CActiveRecord {
     public $city;
     public $organization;
     public $alt_organization;
+    public $no_report;
     /**
      * Returns the static model of the specified AR class.
      * @return Participants the static model class
@@ -109,6 +110,12 @@ class Participants extends CActiveRecord {
     	}
     }
 
+    public function validateReport($attribute,$params) {
+        if (!is_null($this->no_report)) {
+            $this->addError('participation_type', Yii::app()->dbMessages->translate('Errors', 'empty_report'));
+        }
+    }
+    
     /**
      * @return string the associated database table name
      */
@@ -137,6 +144,7 @@ class Participants extends CActiveRecord {
                         'length', 'max' => 10),
                 array('name, second_name, last_name, post, email, phone', 'length', 'max' => 255),
                 array('participation_type', 'in', 'range' => array('lecturer', 'listner')),
+                array('participation_type', 'validateReport'),
                 array('report_type', 'in', 'range' => array('plenary', 'sessional')),
                 array('email', 'email'),
                 //                 array('report', 'file', 'types' => 'pdf, doc, docx'),
