@@ -218,6 +218,7 @@ h2 {
 	-moz-transform: rotate(270deg);
 	-webkit-transform: rotate(270deg);
 	-o-transform: rotate(270deg);
+	transform: rotate(270deg);
 	position: relative;
 	top: 77px;
 	left: -3px;
