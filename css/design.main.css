@@ -793,7 +793,7 @@ span.blue {
 	text-align: right;
 }
 
-.one_input.wide .jqTransformSelectWrapper,.one_input.wide .jqTransformSelectWrapper ul,.one_input.wide .jqTransformInputInner
+.one_input.wide .jqTransformSelectWrapper,.one_input.wide .jqTransformSelectWrapper ul,.one_input.wide .jqTransformInputInner,.one_input.wide .jqTransformInputWrapper
 	{
 	width: 526px !important;
 }
@@ -1238,7 +1238,7 @@ a.jqTransformChecked {
 }
 
 .one_input.rooms ul {
-    height: 150px !important;
+	height: 150px !important;
 }
 
 .jqTransformSelectWrapper ul a {
