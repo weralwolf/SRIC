@@ -6,15 +6,16 @@ $form = $this->beginWidget('ActiveForm', array(
     'id' => 'pages-form',
     'enableAjaxValidation' => false,
 ));
-// jqClEditor::clEditor('#Pages_texts_id', Yii::app()->params['jqClEditor']);
-$cs = Yii::app()->clientScript;
-$cs->registerScriptFile(XHtml::jsUrl('jquery.ui.sortable.js'), CClientScript::POS_HEAD);
-$cs->registerScriptFile(XHtml::jsUrl('jquery.ui.resizable.js'), CClientScript::POS_HEAD);
-$cs->registerScriptFile(XHtml::jsUrl('jquery.ui.js'), CClientScript::POS_HEAD);
-$cs->registerScriptFile(XHtml::jsUrl('jquery.ui.draggable.js'), CClientScript::POS_HEAD);
-$cs->registerScriptFile(XHtml::jsUrl('jquery.ui.sortable.js'), CClientScript::POS_HEAD);
-$cs->registerScriptFile(XHtml::jsUrl('wymeditor/jquery.wymeditor.js'), CClientScript::POS_HEAD);
-$cs->registerScript("wymeditor", '$(".wymeditor").wymeditor();', CClientScript::POS_LOAD);
+Yii::import('application.extensions.jqClEditor');
+jqClEditor::clEditor('#Pages_texts_id', Yii::app()->params['jqClEditor']);
+// $cs = Yii::app()->clientScript;
+// $cs->registerScriptFile(XHtml::jsUrl('jquery.ui.sortable.js'), CClientScript::POS_HEAD);
+// $cs->registerScriptFile(XHtml::jsUrl('jquery.ui.resizable.js'), CClientScript::POS_HEAD);
+// $cs->registerScriptFile(XHtml::jsUrl('jquery.ui.js'), CClientScript::POS_HEAD);
+// $cs->registerScriptFile(XHtml::jsUrl('jquery.ui.draggable.js'), CClientScript::POS_HEAD);
+// $cs->registerScriptFile(XHtml::jsUrl('jquery.ui.sortable.js'), CClientScript::POS_HEAD);
+// $cs->registerScriptFile(XHtml::jsUrl('wymeditor/jquery.wymeditor.js'), CClientScript::POS_HEAD);
+// $cs->registerScript("wymeditor", '$(".wymeditor").wymeditor();', CClientScript::POS_LOAD);
 ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
