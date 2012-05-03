@@ -267,9 +267,9 @@
 			$('option', this).each(function(i){
 
 				// fix for enormous titles
-				var substr_length = 23;
+//				var substr_length = 200;
 				var full_name = $(this).html();
-				var alt = full_name.length > (substr_length + 3) ? full_name.substr(0, substr_length) + '...' : full_name;
+				var alt = full_name;//.length > (substr_length + 3) ? full_name.substr(0, substr_length) + '...' : full_name;
 				var oLi = $('<li><a href="#" index="'+ i +'" alt="' + alt + '">'+ full_name +'</a></li>');
 				$ul.append(oLi);
 			});

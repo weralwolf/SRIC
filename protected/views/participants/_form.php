@@ -176,7 +176,6 @@ $(\'#Participants_birthdate\').attr("value", "yyyy-mm-dd");', CClientScript::POS
     	<?php echo $form->labelEx($model, 'alt_organization'); ?>
     	<?php echo $form->textField($model, 'alt_organization', array(
     	        'maxlength' => 255, 
-    	        'style' => 'width: 200px;', 
     	        'value' => Yii::app()->messages->translate('Participants', 'alt_organization')
     	        )
             ); ?>
