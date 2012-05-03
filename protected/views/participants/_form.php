@@ -81,9 +81,11 @@ $(\'#Participants_birthdate\').attr("value", "yyyy-mm-dd");', CClientScript::POS
 	<tr>
 		<td><div class="one_input">
 				<div class="rowElem">
-					<?php echo $form->labelEx($model, 'second_name'); ?>
-					<?php echo $form->textField($model, 'second_name', array('maxlength' => 255)); ?>
-					<?php echo $form->error($model, 'second_name'); ?>
+    				<?php if (Yii::app()->language != 'en') { ?>
+    					<?php echo $form->labelEx($model, 'second_name'); ?>
+    					<?php echo $form->textField($model, 'second_name', array('maxlength' => 255)); ?>
+    					<?php echo $form->error($model, 'second_name'); ?>
+    				<?php }?>
 				</div>
 			</div></td>
 		<td><div class="one_input">

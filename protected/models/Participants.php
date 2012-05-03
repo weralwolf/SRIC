@@ -73,6 +73,10 @@ class Participants extends CActiveRecord {
         if ($this->organizations_id == -2) {
             $this->addError("organizations_id", Yii::app()->dbMessages->translate('Errors', 'select_organization'));
         }
+        
+        if (trim($this->alt_organization) == Yii::app()->messages->translate('Participants', 'alt_organization')) {
+            $this->addError("organizations_id", Yii::app()->dbMessages->translate('Errors', 'select_organization'));
+        }
 
         $this->alt_organization = $_POST['Participants']['alt_organization'];
         if ($this->organizations_id == -1) {
@@ -80,6 +84,11 @@ class Participants extends CActiveRecord {
                 $this->addError("organizations_id", Yii::app()->dbMessages->translate('Errors', 'select_organization'));
                 return;
             }
+            
+            if (SourceMessage::resolveID($this->alt_organization, 'Organizations') != -1) {
+                $this->addError("organizations_id", Yii::app()->dbMessages->translate('Errors', 'organization_exists'));
+                return;
+            } 
             $message = strtolower(str_replace(array('-', ' '), '_', $this->alt_organization));
             $this->organizations_id = SourceMessage::createMessage(
                     $message,
@@ -90,6 +99,10 @@ class Participants extends CActiveRecord {
     }
     
     public function validateBirthdate($attribute,$params) {
+        if ($this->birthdate == 'yyyy-mm-dd') {
+            $this->addError('birthdate', Yii::app()->dbMessages->translate('Errors', 'incorrect_data'));
+            return;
+        }
     	$date = explode('-', $this->birthdate);
     	if (!checkdate($date[1], $date[2], $date[0])) {
     		$this->addError('birthdate', Yii::app()->dbMessages->translate('Errors', 'incorrect_data'));
@@ -112,7 +125,7 @@ class Participants extends CActiveRecord {
                 array('cities_id', 'validateCity'),
                 array('contries_id', 'validateCountry'),
                 array(
-                        'contries_id, cities_id, name, second_name,
+                        'contries_id, cities_id, name,
                         last_name, birthdate, organizations_id, post, email, phone,
                         participation_type, report_type',
                         'required'),

@@ -162,7 +162,7 @@ class SourceMessage extends CActiveRecord {
         return $suggest;
     }
     
-    public function resolveID($name, $category) {
+    public static function resolveID($name, $category) {
         $id = SourceMessage::searchIt($name, $category);
         return count($id) ? $id[0] : -1;
     }
