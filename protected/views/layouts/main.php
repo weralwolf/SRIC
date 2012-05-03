@@ -93,7 +93,7 @@ if (!Yii::app()->request->isAjaxRequest) {
 					<input class="search_in" type="text"
 						value="<?php echo Yii::app()->dbMessages->translate("MenuLinks", "search_query")?>"
 						onfocus="this.value='';"
-						onblur="if (this.value != '') {this.onfocus = function() {this.style.backgroundColor='#f3fdff';};} else this.value='найти на сайте';" />
+						onblur="if (this.value != '') {this.onfocus = function() {this.style.backgroundColor='#f3fdff';};} else this.value='<?php echo Yii::app()->dbMessages->translate("MenuLinks", "search_query")?>';" />
 				</div>
 				<div class="langs">
 					<a href="<?php echo Yii::app()->createUrl('languages/switch', array('lang' => Yii::app()->params['languages'][0])); ?>"

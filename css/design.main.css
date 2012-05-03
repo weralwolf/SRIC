@@ -498,7 +498,7 @@ h2 {
 }
 
 .no_col p+p,.no_col p+ul,.no_col ul+p {
-    margin: 20px 0 0 0;
+	margin: 20px 0 0 0;
 }
 
 .no_col ul li {
@@ -776,6 +776,7 @@ span.blue {
 
 .aricletype {
 	margin: 12px 0 0 208px;
+	width: 590px;
 }
 
 .aricletype label {
@@ -1230,6 +1231,14 @@ a.jqTransformChecked {
 	overflow-y: auto;
 	z-index: 10;
 	border: #006492 1px solid;
+}
+
+.one_input.gender ul {
+	height: 56px !important;
+}
+
+.one_input.rooms ul {
+    height: 150px !important;
 }
 
 .jqTransformSelectWrapper ul a {

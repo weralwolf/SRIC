@@ -98,7 +98,7 @@ $(\'#Participants_birthdate\').attr("value", "yyyy-mm-dd");', CClientScript::POS
 	
 	</tr>
 	<tr>
-		<td><div class="one_input">
+		<td><div class="one_input gender">
 				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'gender'); ?>
 					<?php echo $form->dropDownList($model, 'gender', array("0" => "Female", "1" => "Male")); ?>
@@ -240,14 +240,14 @@ $(\'#Participants_birthdate\').attr("value", "yyyy-mm-dd");', CClientScript::POS
 <p>
 	<?php echo $m->translate('Participants', 'accommodation_note'); ?>
 </p>
-<div class="one_input wide">
+<div class="one_input wide rooms">
 	<div class="rowElem">
 		<?php echo $form->labelEx($model, 'accommodation_places_id'); ?>
 		<?php echo $form->dropDownList($model, 'accommodation_places_id', AccommodationPlaces::model()->dropDown()); ?>
 		<?php echo $form->error($model, 'accommodation_places_id'); ?>
 	</div>
 </div>
-<div class="one_input wide">
+<div class="one_input wide rooms">
 	<div class="rowElem">
 		<?php echo $form->labelEx($model, 'accommodation_places_rooms_types_id'); ?>
 		<?php echo $form->dropDownList($model, 'accommodation_places_rooms_types_id', AccommodationPlacesRoomsTypes::model()->dropDown()); ?>
