@@ -1,6 +1,4 @@
 <?php $this->beginContent('//layouts/main'); ?>
-
-<div id="content">
 	<?php if (Pages::menuLinkActive()) {?>
 	<div class="left_col">
 		<div class="fixed_col">
@@ -22,6 +20,5 @@
     		<?php echo $content; ?>
     	</div>
 	<?php }?>
-</div>
 <!-- content -->
 <?php $this->endContent(); ?>
