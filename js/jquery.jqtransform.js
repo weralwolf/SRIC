@@ -348,29 +348,6 @@
 			if( $('select', this).jqTransSelect().length > 0 ){jqTransformAddDocumentListener();}
 			selfForm.bind('reset',function(){var action = function(){jqTransformReset(this);}; window.setTimeout(action, 10);});
 			
-			//preloading dont needed anymore since normal, focus and hover image are the same one
-			/*if(opt.preloadImg && !jqTransformImgPreloaded){
-				jqTransformImgPreloaded = true;
-				var oInputText = $('input:text:first', selfForm);
-				if(oInputText.length > 0){
-					//pour ie on eleve les ""
-					var strWrapperImgUrl = oInputText.get(0).wrapper.css('background-image');
-					jqTransformPreloadHoverFocusImg(strWrapperImgUrl);					
-					var strInnerImgUrl = $('div.jqTransformInputInner',$(oInputText.get(0).wrapper)).css('background-image');
-					jqTransformPreloadHoverFocusImg(strInnerImgUrl);
-				}
-				
-				var oTextarea = $('textarea',selfForm);
-				if(oTextarea.length > 0){
-					var oTable = oTextarea.get(0).oTable;
-					$('td',oTable).each(function(){
-						var strImgBack = $(this).css('background-image');
-						jqTransformPreloadHoverFocusImg(strImgBack);
-					});
-				}
-			}*/
-			
-			
 		}); /* End Form each */
 				
 	};/* End the Plugin */
