@@ -19,7 +19,7 @@ return array(
         'sections_id' => 'Секція',
         'accommodation_places_id' => 'Місце проживання',
         'accommodation_places_rooms_types_id' => 'Тип кімнати',
-        'register' => 'Зареєтруватсь',
+        'register' => 'Зареєтруватись',
         'alt_organization' => 'Введіть назву організації',
  
         // _form.php translation
