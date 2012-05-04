@@ -29,8 +29,8 @@ class OrganizationsController extends SourceMessageController {
         $this->_creation($model);
         $this->render('application.views.sourceMessage.create',array(
                 'model'=>$model,
-                'category' => 'Organizations',
                 'textArea' => false,
+                'categoryHelper' => 'Organizations_',
         ));
     }
 

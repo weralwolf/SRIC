@@ -16,7 +16,8 @@
 	        'form' => $form,
 	        'model' => $model,
 	        'textArea' => isset($textArea) ? $textArea : true,
-	        'category' => isset($category) && !empty($category) ? $category : ''
+	        'category' => isset($category) && !empty($category) ? $category : '',
+	        'categoryHelper' => isset($categoryHelper) && !empty($categoryHelper) ? $categoryHelper : '',
 ))?>
 
 	<div class="row buttons">

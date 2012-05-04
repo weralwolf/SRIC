@@ -6,7 +6,7 @@
 	    echo $form->hiddenField($model, 'category', array('value' => $category, 'name' => $nameIndex . 'category]'));
 	} else {
 	    echo $form->labelEx($model, 'category');
-	    echo $form->textField($model, 'category', array('size' => 32, 'maxlength' => 32, 'name' => $nameIndex . 'category]'));
+	    echo $form->textField($model, 'category', array('size' => 32, 'maxlength' => 32, 'value' => (isset($categoryHelper) ? $categoryHelper : '') , 'name' => $nameIndex . 'category]'));
 	    echo $form->error($model, 'category');
 	}
 	?>
