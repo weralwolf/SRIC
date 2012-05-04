@@ -74,7 +74,7 @@ class ParticipantsController extends Controller {
                 $report_0 = Reports::saveFromPOST('0');
                 $report_1 = Reports::saveFromPOST('1');
             }
-            
+            die;
             if (is_null($report_0) && $model->participation_type == 'lecturer') {
                 $model->no_report = Yii::app()->dbMessages->translate('Errors', 'empty_report');
             }

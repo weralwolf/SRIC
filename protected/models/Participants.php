@@ -216,6 +216,7 @@ class Participants extends CActiveRecord {
         // should not be searched.
 
         $criteria = new CDbCriteria;
+//         $criteria->order = 'categories_id ASC';
         $criteria->compare('id', $this->id, true);
         $criteria->compare('approved', $this->approved);
         $criteria->compare('contries_id', $this->contries_id, true);

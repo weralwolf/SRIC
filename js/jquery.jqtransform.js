@@ -267,10 +267,7 @@
 			$('option', this).each(function(i){
 
 				// fix for enormous titles
-//				var substr_length = 200;
-				var full_name = $(this).html();
-				var alt = full_name;//.length > (substr_length + 3) ? full_name.substr(0, substr_length) + '...' : full_name;
-				var oLi = $('<li><a href="#" index="'+ i +'" alt="' + alt + '">'+ full_name +'</a></li>');
+				var oLi = $('<li><a href="#" index="'+ i +'">'+ $(this).html() +'</a></li>');
 				$ul.append(oLi);
 			});
 			
@@ -281,7 +278,7 @@
 					/* Fire the onchange event */
 					if ($select[0].selectedIndex != $(this).attr('index') && $select[0].onchange) { $select[0].selectedIndex = $(this).attr('index'); $select[0].onchange(); }
 					$select[0].selectedIndex = $(this).attr('index');
-					$('span:eq(0)', $wrapper).html($(this).attr('alt'));
+					$('span:eq(0)', $wrapper).html($(this).html());
 					$ul.hide();
 					return false;
 			});
