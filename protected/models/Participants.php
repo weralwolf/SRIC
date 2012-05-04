@@ -14,7 +14,6 @@
  * @property integer $gender
  * @property string $birthdate
  * @property string $organizations_id
- * @property string $post
  * @property string $email
  * @property string $phone
  * @property string $participation_type
@@ -136,7 +135,7 @@ class Participants extends CActiveRecord {
                 array('contries_id', 'validateCountry'),
                 array(
                         'contries_id, cities_id, name,
-                        last_name, birthdate, organizations_id, post, email, phone,
+                        last_name, birthdate, organizations_id, email, phone,
                         participation_type, report_type',
                         'required'),
                 /* , accommodation_places_id, accommodation_places_rooms_types_id */
@@ -145,7 +144,7 @@ class Participants extends CActiveRecord {
                         'contries_id, cities_id, organizations_id,
                         accommodation_places_id, accommodation_places_rooms_types_id',
                         'length', 'max' => 10),
-                array('name, second_name, last_name, post, email, phone', 'length', 'max' => 255),
+                array('name, second_name, last_name, email, phone', 'length', 'max' => 255),
                 array('participation_type', 'in', 'range' => array('lecturer', 'listner')),
                 array('participation_type', 'validateReport'),
                 array('report_type', 'in', 'range' => array('plenary', 'sessional')),
@@ -160,7 +159,7 @@ class Participants extends CActiveRecord {
                 array('birthdate', 'validateBirthdate'),
                 array(
                         'id, approved, contries_id, cities_id, name,
-                        second_name, last_name, gender, birthdate, organizations_id, post,
+                        second_name, last_name, gender, birthdate, organizations_id,
                         email, phone, participation_type, report_type,
                         accommodation_places_id, accommodation_places_rooms_types_id',
                         'safe', 'on' => 'search'),
@@ -227,7 +226,6 @@ class Participants extends CActiveRecord {
         $criteria->compare('gender', $this->gender);
         $criteria->compare('birthdate', $this->birthdate, true);
         $criteria->compare('organizations_id', $this->organizations_id, true);
-        $criteria->compare('post', $this->post, true);
         $criteria->compare('email', $this->email, true);
         $criteria->compare('phone', $this->phone, true);
         $criteria->compare('participation_type', $this->participation_type, true);

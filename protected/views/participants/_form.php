@@ -88,13 +88,7 @@ $(\'#Participants_birthdate\').attr("value", "yyyy-mm-dd");', CClientScript::POS
     				<?php }?>
 				</div>
 			</div></td>
-		<td><div class="one_input">
-				<div class="rowElem">
-					<?php echo $form->labelEx($model, 'post'); ?>
-					<?php echo $form->textField($model, 'post', array('maxlength' => 255)); ?>
-					<?php echo $form->error($model, 'post'); ?>
-				</div>
-			</div></td>
+		<td></td>
 	
 	</tr>
 	<tr>
