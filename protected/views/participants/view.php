@@ -51,7 +51,13 @@ $this->menu=array(
                 'phone',
                 'participation_type',
                 'report_type',
-                'accommodation_places_id',
-                'accommodation_places_rooms_types_id',
+                array('label' => Yii::app()->messages->translate('Participants', 'accommodation_places_id'),
+                        'type' => 'raw',
+                        'value' => Cities::resolveName($model->accommodation_places_id)
+                ),
+                array('label' => Yii::app()->messages->translate('Participants', 'accommodation_places_rooms_types_id'),
+                        'type' => 'raw',
+                        'value' => Cities::resolveName($model->accommodation_places_rooms_types_id)
+                ),
         ),
 )); ?>
