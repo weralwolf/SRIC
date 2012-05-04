@@ -64,12 +64,6 @@ class Reports extends CActiveRecord {
         $dataConteiner = ($identifier !== '' ? $_POST['Reports'][$identifier] : $_POST['Reports']);
         if (isset($dataConteiner) && isset($_POST['Files'][$identifier])) {
             $model->attributes = $dataConteiner;
-            if (strcmp($model->title, utf8_encode(Yii::app()->dbMessages->translate('Participants', 'like_in_abstracts'))) || empty($model->title)) {
-                return NULL;
-            }
-            if (strcmp($model->autors, utf8_encode(Yii::app()->dbMessages->translate('Participants', 'like_in_abstracts'))) || empty($model->autors)) {
-                return NULL;
-            }
             $file = new Files();
             $file->attributes = ($identifier !== '' ? $_POST['Files'][$identifier] : $_POST['Files']);
             $file->upload($identifier);
