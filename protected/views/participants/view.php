@@ -46,7 +46,6 @@ $this->menu=array(
                         'type' => 'raw',
                         'value' => Organizations::resolveName($model->organizations_id)
                 ),
-                'post',
                 'email',
                 'phone',
                 'participation_type',
