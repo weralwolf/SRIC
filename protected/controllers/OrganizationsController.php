@@ -44,7 +44,6 @@ class OrganizationsController extends SourceMessageController {
         $this->_updating($model);
         $this->render('application.views.sourceMessage.update',array(
                 'model'=>$model,
-                'category' => 'Organizations',
                 'textArea' => false,
         ));
     }

@@ -21,6 +21,7 @@ $this->menu=array(
 <?php echo $this->renderPartial('application.views.sourceMessage._form', array(
         'model'=>$model,
         'textArea' => isset($textArea) ? $textArea : true,
-        'category' => isset($category) && !empty($category) ? $category : ''
+        'category' => isset($category) && !empty($category) ? $category : '',
+        'categoryHelper' => isset($categoryHelper) && !empty($categoryHelper) ? $categoryHelper : '',
 ));
 ?>
