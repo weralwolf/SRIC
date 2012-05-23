@@ -27,6 +27,7 @@ class Participants extends CActiveRecord {
     public $organization;
     public $alt_organization;
     public $no_report;
+    public $report;
     /**
      * Returns the static model of the specified AR class.
      * @return Participants the static model class
@@ -53,6 +54,19 @@ class Participants extends CActiveRecord {
         }
     }
 
+    public function reportsButtons() {
+        if (!empty($this->reports)) {
+            foreach($this->reports as $report) {
+                return Yii::app()->controller->renderPartial(
+                        'application.views.files.button',
+                        array('model' => $report->file)
+                );
+            }
+        } else {
+            return 'No reports';
+        }
+    }
+
     public function validateCountry($attribute,$params) {
         $this->country = $_POST['countryName'];
         $this->contries_id = Countries::model()->resolveID($this->country, 'Countries');
@@ -75,7 +89,7 @@ class Participants extends CActiveRecord {
         if ($this->organizations_id == -2) {
             $this->addError("organizations_id", Yii::app()->dbMessages->translate('Errors', 'select_organization'));
         }
-        
+
         if (trim($this->alt_organization) == Yii::app()->messages->translate('Participants', 'alt_organization')) {
             $this->addError("organizations_id", Yii::app()->dbMessages->translate('Errors', 'select_organization'));
         }
@@ -86,11 +100,11 @@ class Participants extends CActiveRecord {
                 $this->addError("organizations_id", Yii::app()->dbMessages->translate('Errors', 'select_organization'));
                 return;
             }
-            
+
             if (SourceMessage::resolveID($this->alt_organization, 'Organizations') != -1) {
                 $this->addError("organizations_id", Yii::app()->dbMessages->translate('Errors', 'organization_exists'));
                 return;
-            } 
+            }
             $message = strtolower(str_replace(array('-', ' '), '_', $this->alt_organization));
             $this->organizations_id = SourceMessage::createMessage(
                     $message,
@@ -100,16 +114,16 @@ class Participants extends CActiveRecord {
             );
         }
     }
-    
+
     public function validateBirthdate($attribute,$params) {
         if ($this->birthdate == 'yyyy-mm-dd') {
             $this->addError('birthdate', Yii::app()->dbMessages->translate('Errors', 'incorrect_data'));
             return;
         }
-    	$date = explode('-', $this->birthdate);
-    	if (!checkdate($date[1], $date[2], $date[0])) {
-    		$this->addError('birthdate', Yii::app()->dbMessages->translate('Errors', 'incorrect_data'));
-    	}
+        $date = explode('-', $this->birthdate);
+        if (!checkdate($date[1], $date[2], $date[0])) {
+            $this->addError('birthdate', Yii::app()->dbMessages->translate('Errors', 'incorrect_data'));
+        }
     }
 
     public function validateReport($attribute,$params) {
@@ -117,7 +131,7 @@ class Participants extends CActiveRecord {
             $this->addError('participation_type', Yii::app()->dbMessages->translate('Errors', 'empty_report'));
         }
     }
-    
+
     /**
      * @return string the associated database table name
      */
@@ -204,6 +218,7 @@ class Participants extends CActiveRecord {
                 'accommodation_places_id' => $m->translate('Participants', 'accommodation_places_id'),
                 'accommodation_places_rooms_types_id' => $m->translate('Participants', 'accommodation_places_rooms_types_id'),
                 'alt_organization' => '',
+                'report' => 'Report',
         );
     }
 
@@ -216,7 +231,7 @@ class Participants extends CActiveRecord {
         // should not be searched.
 
         $criteria = new CDbCriteria;
-//         $criteria->order = 'categories_id ASC';
+        //         $criteria->order = 'categories_id ASC';
         $criteria->compare('id', $this->id, true);
         $criteria->compare('approved', $this->approved);
         $criteria->compare('contries_id', $this->contries_id, true);
@@ -233,6 +248,9 @@ class Participants extends CActiveRecord {
         $criteria->compare('report_type', $this->report_type, true);
         $criteria->compare('accommodation_places_id', $this->accommodation_places_id, true);
         $criteria->compare('accommodation_places_rooms_types_id', $this->accommodation_places_rooms_types_id, true);
+        //'reports' => array(self::HAS_MANY, 'Reports', 'participants_id'),
+        $criteria->with = array('reports');
+        $criteria->together = true;
 
         return new CActiveDataProvider('Participants', array(
                 'criteria' => $criteria,

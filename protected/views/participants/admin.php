@@ -47,29 +47,35 @@ Yii::app()->clientScript->registerScript('search', "
         'columns'=>array(
                 array(
                         'name' => 'name',
-//                         'label' => '`' . Yii::app()->messages->translate('Participants', 'last_name') . '` `' .
-//                         Yii::app()->messages->translate('Participants', 'name') . '` `' .
-//                         Yii::app()->messages->translate('Participants', 'second_name') . '`',
+                        //'label' => '`' . Yii::app()->messages->translate('Participants', 'last_name') . '` `' .
+                        //Yii::app()->messages->translate('Participants', 'name') . '` `' .
+                        //Yii::app()->messages->translate('Participants', 'second_name') . '`',
                         'value' => '$data->last_name . " " . $data->name . " " . $data->second_name',
                 ),
                 array(
                         'name' => 'organizations_id',
-//                         'label' => Yii::app()->messages->translate('Participants', 'organizations_id'),
+                        //'label' => Yii::app()->messages->translate('Participants', 'organizations_id'),
                         'value' => 'Organizations::resolveName($data->organizations_id)',
                 ),
                 array(
                         'name' => 'contries_id',
-//                         'label' => '`' . Yii::app()->messages->translate('Participants', 'countries_id') . '`, `' .
-//                         Yii::app()->messages->translate('Participants', 'cities_id') . '`',
+                        //'label' => '`' . Yii::app()->messages->translate('Participants', 'countries_id') . '`, `' .
+                        //Yii::app()->messages->translate('Participants', 'cities_id') . '`',
                         'value' => 'Organizations::resolveName($data->contries_id) . "-" . Organizations::resolveName($data->cities_id)'
                 ),
                 array(
                         'name' => 'report_type',
-//                         'label' => Yii::app()->messages->translate('Participants', 'report_type'),
-                        'value' => 'Yii::app()->messages->translate(\'Participants\', \'report_type_\' . $data->report_type)',
-	                ),
-		array(
-			'class'=>'CButtonColumn',
-		),
-	),
+                        //'label' => Yii::app()->messages->translate('Participants', 'report_type'),
+                        'value' => 'Yii::app()->dbMessages->translate(\'Participants\', \'report_type_\' . $data->report_type)',
+                ),
+
+                array(
+                        'name' => 'report',
+                        'value' => '$data->reportsButtons()',
+                ),
+
+                array(
+                        'class'=>'CButtonColumn',
+                ),
+        ),
 )); ?>
