@@ -40,7 +40,7 @@ class ReportsController extends Controller
                         'users'=>array('@'),
                 ),
                 array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                        'actions'=>array('admin','delete'),
+                        'actions'=>array('admin','delete', 'download'),
                         'users'=>array('root'),
                 ),
                 array('deny',  // deny all users
@@ -175,4 +175,27 @@ class ReportsController extends Controller
             Yii::app()->end();
         }
     }
+
+public function actionDownload($id)   {
+        $model = Report::model()->with('file')->findByPk($id);
+        $src = $model->file->path;
+        if(file_exists($src)) {
+            $path_parts = @pathinfo($src);
+            $mime = $model->file->mimetype;
+            header('Content-Description: File Transfer');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename=' . $model->title);
+            header('Content-Transfer-Encoding: binary');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($src));
+            readfile($src);
+            exit();
+        } else {
+            header("HTTP/1.0 404 Not Found");
+            exit();
+        }
+    }
+
 }

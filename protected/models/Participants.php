@@ -59,7 +59,9 @@ class Participants extends CActiveRecord {
             foreach($this->reports as $report) {
                 return Yii::app()->controller->renderPartial(
                         'application.views.files.button',
-                        array('model' => $report->file)
+                        array('model' => $report->file,
+                              'title' => $report->title
+                        )
                 );
             }
         } else {
