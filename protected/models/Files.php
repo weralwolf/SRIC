@@ -41,7 +41,7 @@ class Files extends CActiveRecord {
         $this->original_name = $this->file->name;
         $this->mimetype = $this->file->type;
         $this->path = Yii::app()->basePath . Yii::app()->params['reportsSavePath'] . '/' . date('d.m.Y.H.i.s') . '_' .
-                $this->original_name;
+            $this->original_name;
         $this->file->saveAs($this->path);
         return parent::save($runValidation, $attributes);
     }
@@ -53,12 +53,12 @@ class Files extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-                array('path, mimetype', 'required'),
-                array('path, mimetype, original_name', 'length', 'max' => 255),
-                //                 array('file', 'file'),
-                // The following rule is used by search().
-                // Please remove those attributes that should not be searched.
-                array('id, path, mimetype, original_name', 'safe', 'on' => 'search'),
+            array('path, mimetype', 'required'),
+            array('path, mimetype, original_name', 'length', 'max' => 255),
+            //                 array('file', 'file'),
+            // The following rule is used by search().
+            // Please remove those attributes that should not be searched.
+            array('id, path, mimetype, original_name', 'safe', 'on' => 'search'),
         );
     }
 
@@ -75,11 +75,11 @@ class Files extends CActiveRecord {
      */
     public function attributeLabels() {
         return array(
-                'id' => 'Id',
-                'orignal_name' => 'Original Name',
-                'path' => 'Path',
-                'file' => 'File',
-                'mimetype' => 'Mimetype',
+            'id'           => 'Id',
+            'orignal_name' => 'Original Name',
+            'path'         => 'Path',
+            'file'         => 'File',
+            'mimetype'     => 'Mimetype',
         );
     }
 
@@ -100,7 +100,7 @@ class Files extends CActiveRecord {
         $criteria->compare('mimetype', $this->mimetype, true);
 
         return new CActiveDataProvider('Files', array(
-                'criteria' => $criteria,
+            'criteria' => $criteria,
         ));
     }
 }

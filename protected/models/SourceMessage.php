@@ -31,11 +31,11 @@ class SourceMessage extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-                array('category', 'length', 'max' => 32),
-                array('message', 'safe'),
-                // The following rule is used by search().
-                // Please remove those attributes that should not be searched.
-                array('id, category, message', 'safe', 'on' => 'search'),
+            array('category', 'length', 'max' => 32),
+            array('message', 'safe'),
+            // The following rule is used by search().
+            // Please remove those attributes that should not be searched.
+            array('id, category, message', 'safe', 'on' => 'search'),
         );
     }
 
@@ -44,7 +44,7 @@ class SourceMessage extends CActiveRecord {
      */
     public function relations() {
         return array(
-                'messages' => array(self::HAS_MANY, 'Message', 'id'),
+            'messages' => array(self::HAS_MANY, 'Message', 'id'),
         );
     }
 
@@ -68,14 +68,14 @@ class SourceMessage extends CActiveRecord {
     public function updateFromPost($identifier = '') {
         $mC = $identifier != '' ? $_POST['Message'][$identifier] : $_POST['Message'];
         $this->attributes = $identifier != '' ? $_POST['SourceMessage'][$identifier] : $_POST['SourceMessage'];
-        foreach($this->messages as $message) {
+        foreach ($this->messages as $message) {
             $data = $mC[$message->language];
             $message->translation = $data['translation'];
             $message->save();
         }
         $this->save();
     }
-    
+
     public static function generateTranslation($message) {
         $trans = array();
         foreach (Yii::app()->params['languages'] as $lang) {
@@ -89,26 +89,19 @@ class SourceMessage extends CActiveRecord {
             $language = Yii::app()->language;
         }
         $c = Yii::app()->db;
-        $query = 'SELECT ' .
-                $c->quoteTableName('SourceMessage') . '.' . $c->quoteColumnName('id') .
-                ' FROM ' .
-                $c->quoteTableName('SourceMessage') . ' LEFT JOIN ' .
-                $c->quoteTableName('Message') . ' ON ' .
-                $c->quoteTableName('Message') . '.' . $c->quoteColumnName('id') .
-                ' = ' .
-                $c->quoteTableName('SourceMessage') . '.' . $c->quoteColumnName('id') .
-                ' WHERE ' .
-                $c->quoteTableName('Message') . '.' . $c->quoteColumnName('language') .
-                ' = ' . $c->quoteValue($language) . ' AND ' .
-                $c->quoteTableName('SourceMessage') . '.' . $c->quoteColumnName('category') .
-                ' = ' . $c->quoteValue($category) . ' AND ' .
-                $c->quoteTableName('Message') . '.' . $c->quoteColumnName('translation') .
-                ' LIKE ' . $c->quoteValue('%' . $keyword . '%') . ';';
+        $query = 'SELECT ' . $c->quoteTableName('SourceMessage') . '.' . $c->quoteColumnName('id') . ' FROM ' . $c->
+            quoteTableName('SourceMessage') . ' LEFT JOIN ' . $c->quoteTableName('Message') . ' ON ' . $c->
+            quoteTableName('Message') . '.' . $c->quoteColumnName('id') . ' = ' . $c->quoteTableName('SourceMessage') .
+            '.' . $c->quoteColumnName('id') . ' WHERE ' . $c->quoteTableName('Message') . '.' . $c->quoteColumnName(
+            'language') . ' = ' . $c->quoteValue($language) . ' AND ' . $c->quoteTableName('SourceMessage') . '.' . $c->
+            quoteColumnName('category') . ' = ' . $c->quoteValue($category) . ' AND ' . $c->quoteTableName('Message') .
+            '.' . $c->quoteColumnName('translation') . ' LIKE ' . $c->quoteValue('%' . $keyword . '%') . ';';
         $r = $c->createCommand($query);
         $ids = array();
-        foreach($r->queryAll() as $line) {
+        foreach ($r->queryAll() as $line) {
             $ids[] = $line['id'];
-        };
+        }
+        ;
         return $ids;
     }
 
@@ -117,26 +110,19 @@ class SourceMessage extends CActiveRecord {
             $language = Yii::app()->language;
         }
         $c = Yii::app()->db;
-        $query = 'SELECT ' .
-                $c->quoteTableName('SourceMessage') . '.' . $c->quoteColumnName('id') .
-                ' FROM ' .
-                $c->quoteTableName('SourceMessage') . ' LEFT JOIN ' .
-                $c->quoteTableName('Message') . ' ON ' .
-                $c->quoteTableName('Message') . '.' . $c->quoteColumnName('id') .
-                ' = ' .
-                $c->quoteTableName('SourceMessage') . '.' . $c->quoteColumnName('id') .
-                ' WHERE ' .
-                $c->quoteTableName('Message') . '.' . $c->quoteColumnName('language') .
-                ' = ' . $c->quoteValue($language) . ' AND ' .
-                $c->quoteTableName('SourceMessage') . '.' . $c->quoteColumnName('category') .
-                ' = ' . $c->quoteValue($category) . ' AND ' .
-                $c->quoteTableName('Message') . '.' . $c->quoteColumnName('translation') .
-                ' = ' . $c->quoteValue($keyword) . ';';
+        $query = 'SELECT ' . $c->quoteTableName('SourceMessage') . '.' . $c->quoteColumnName('id') . ' FROM ' . $c->
+            quoteTableName('SourceMessage') . ' LEFT JOIN ' . $c->quoteTableName('Message') . ' ON ' . $c->
+            quoteTableName('Message') . '.' . $c->quoteColumnName('id') . ' = ' . $c->quoteTableName('SourceMessage') .
+            '.' . $c->quoteColumnName('id') . ' WHERE ' . $c->quoteTableName('Message') . '.' . $c->quoteColumnName(
+            'language') . ' = ' . $c->quoteValue($language) . ' AND ' . $c->quoteTableName('SourceMessage') . '.' . $c->
+            quoteColumnName('category') . ' = ' . $c->quoteValue($category) . ' AND ' . $c->quoteTableName('Message') .
+            '.' . $c->quoteColumnName('translation') . ' = ' . $c->quoteValue($keyword) . ';';
         $r = $c->createCommand($query);
         $ids = array();
-        foreach($r->queryAll() as $line) {
+        foreach ($r->queryAll() as $line) {
             $ids[] = $line['id'];
-        };
+        }
+        ;
         return $ids;
     }
 
@@ -148,32 +134,33 @@ class SourceMessage extends CActiveRecord {
      */
     public function suggestFromCategory($keyword, $category, $limit = 20) {
         $ids = SourceMessage::searchLike($keyword, $category);
-        if (!count($ids)) return array();
-        
-        $models = $this->findAll(array('condition' => 'id in ('. join(', ', $ids) . ')'));
+        if (!count($ids))
+            return array();
+
+        $models = $this->findAll(array('condition' => 'id in (' . join(', ', $ids) . ')'));
         $suggest = array();
-        foreach($models as $model) {
+        foreach ($models as $model) {
             $suggest[] = array(
-                    'value' => $model->t(),
-                    'label' => $model->t(),
-                    'id' => $model->id,
+                'value' => $model->t(),
+                'label' => $model->t(),
+                'id'    => $model->id,
             );
         }
         return $suggest;
     }
-    
+
     public static function resolveID($name, $category) {
         $id = SourceMessage::searchIt($name, $category);
         return count($id) ? $id[0] : -1;
     }
-    
+
     public static function createMessage($message, $category, $translations, $approved = 1) {
         $model = new SourceMessage();
         $model->message = $message;
         $model->category = $category;
         $model->approved = $approved;
         $model->save();
-        foreach($translations as $l => $t) {
+        foreach ($translations as $l => $t) {
             $message = new Message();
             $message->language = $l;
             $message->translation = $t;
@@ -181,18 +168,18 @@ class SourceMessage extends CActiveRecord {
             $message->save();
         }
         return $model->id;
-    } 
-    
+    }
+
     static public function resolveName($id) {
         $model = SourceMessage::model()->findByPk(intval($id));
         return $model ? $model->t() : '--unexisted--';
     }
-    
+
     public function t($language = '') {
         if (empty($language)) {
             $language = Yii::app()->language;
         }
-        foreach($this->messages as $m) {
+        foreach ($this->messages as $m) {
             if ($m->language == $language) {
                 return $m->translation;
             }
@@ -204,12 +191,12 @@ class SourceMessage extends CActiveRecord {
      */
     public function attributeLabels() {
         return array(
-                'id' => 'Id',
-                'category' => 'Category',
-                'message' => 'Code shortcut',
+            'id'       => 'Id',
+            'category' => 'Category',
+            'message'  => 'Code shortcut',
         );
     }
-    
+
     /**
      * Retrieves a list of models based on the current search/filter conditions.
      * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
@@ -222,7 +209,7 @@ class SourceMessage extends CActiveRecord {
         $criteria->compare('category', $this->category, true);
         $criteria->compare('message', $this->message, true);
         return new CActiveDataProvider('SourceMessage', array(
-                'criteria' => $criteria,
+            'criteria' => $criteria,
         ));
     }
 }

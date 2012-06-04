@@ -89,7 +89,7 @@ $(\'#Participants_birthdate\').attr("value", "yyyy-mm-dd");', CClientScript::POS
 				</div>
 			</div></td>
 		<td></td>
-	
+
 	</tr>
 	<tr>
 		<td><div class="one_input gender">
@@ -169,7 +169,7 @@ $(\'#Participants_birthdate\').attr("value", "yyyy-mm-dd");', CClientScript::POS
     <div class="rowElem" id="alt_organization"  style='display: none;'>
     	<?php echo $form->labelEx($model, 'alt_organization'); ?>
     	<?php echo $form->textField($model, 'alt_organization', array(
-    	        'maxlength' => 255, 
+    	        'maxlength' => 255,
     	        'value' => Yii::app()->messages->translate('Participants', 'alt_organization')
     	        )
             ); ?>
@@ -215,9 +215,18 @@ $(\'#Participants_birthdate\').attr("value", "yyyy-mm-dd");', CClientScript::POS
 <!-- ------------------------------------------------------------- REPORT FORM PART -->
 <div style="display: none;" id="report_form_fields">
 	<?php
+	Yii::log('ParticipantsView::_form~~~~~~~~~~~~~~~~~~~~~~~~:: _reports: ' . count($model->_reports));
 	for ($i = 0; $i < 2; $i++) {
+	    $report = 1;
+	    if (isset($model->_reports[$i])) {
+	        Yii::log('ParticipantsView::_form:: alternative _report selected');
+            $report = $model->_reports[$i];
+	    } else {
+	        Yii::log('ParticipantsView::_form:: order report selected');
+	        $report = isset($model->reports[$i]) ? $model->reports[$i] : new Reports();
+	    }
 	    echo $this->renderPartial('application.views.reports._formContent', array(
-	            'model' => isset($model->reports[$i]) ? $model->reports[$i] : new Reports(),
+	            'model' => $report,
 	            'form' => $form,
 	            'attributeName' => (string)$i,
 	    ));

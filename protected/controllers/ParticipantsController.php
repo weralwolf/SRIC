@@ -15,9 +15,9 @@ class ParticipantsController extends Controller {
     public function filters() {
         /*
          return array(
-                 'accessControl', // perform access control for CRUD operations
+         'accessControl', // perform access control for CRUD operations
          );
-        */
+         */
     }
 
     /**
@@ -27,21 +27,25 @@ class ParticipantsController extends Controller {
      */
     public function accessRules() {
         return array(
-                array('allow', // allow all users to perform 'index' and 'view' actions
-                        'actions' => array('create', 'registrationComplited'),
-                        'users' => array('*'),
-                ),
-                array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                        'actions' => array('update', 'viewMe'),
-                        'users' => array('@'),
-                ),
-                array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                        'actions' => array('index', 'admin', 'delete', 'view'),
-                        'users' => array('root'),
-                ),
-                array('deny', // deny all users
-                        'users' => array('*'),
-                ),
+            array(
+                'allow', // allow all users to perform 'index' and 'view' actions
+                'actions' => array('create', 'registrationComplited'),
+                'users'   => array('*'),
+            ),
+            array(
+                'allow', // allow authenticated user to perform 'create' and 'update' actions
+                'actions' => array('update', 'viewMe'),
+                'users'   => array('@'),
+            ),
+            array(
+                'allow', // allow admin user to perform 'admin' and 'delete' actions
+                'actions' => array('index', 'admin', 'delete', 'view'),
+                'users'   => array('root'),
+            ),
+            array(
+                'deny', // deny all users
+                'users' => array('*'),
+            ),
         );
     }
 
@@ -50,7 +54,7 @@ class ParticipantsController extends Controller {
      */
     public function actionView() {
         $this->render('view', array(
-                'model' => $this->loadModel(),
+            'model' => $this->loadModel(),
         ));
     }
 
@@ -62,56 +66,107 @@ class ParticipantsController extends Controller {
         $model = new Participants;
         $model->no_report = NULL;
 
+        Yii::log("~~~~~~~~~~~~~~~~~~~~~~~" . CVarDumper::dumpAsString($_POST));
         if (isset($_POST['Participants'])) {
+            Yii::log("PartController:: input data exist");
             $model->attributes = $_POST['Participants'];
+            $model->alt_organization = $_POST['Participants']['alt_organization'];
 
+            // Currently both reports are empty, but both of them should be filled by information from POST request
             $report_0 = NULL;
             $report_1 = NULL;
-            
-//             $model->reports = array();
 
+            // Now we will start data base transaction, cause if something will goes wrong we do not want to have
+            // some trash in our data base. Transaction needs cause we have a bit seperated system of saving information
+            Yii::log("PartController:: begin transaction");
+            $transaction = Yii::app()->db->beginTransaction();
+
+            // We ask for reports information only if user have been select `lecturer` type of participation, what means
+            // he will give some lectures
+            $could_be_saved = true;
             if ($model->participation_type == 'lecturer') {
+                Yii::log("PartController:: We have an LECTURER!");
                 $report_0 = Reports::saveFromPOST('0');
                 $report_1 = Reports::saveFromPOST('1');
-            }
-            if (is_null($report_0) && $model->participation_type == 'lecturer') {
-                $model->no_report = Yii::app()->dbMessages->translate('Errors', 'empty_report');
+
+                // If person says what he want to be `lecturer` he should give at least one report information
+                if (is_null($report_0)) {
+                    Yii::log("PartController:: report #0 not exist");
+                    // We couldn't register this person cause he have no any report
+                    $could_be_saved = false;
+                    $model->no_report = Yii::app()->dbMessages->translate('Errors', 'empty_report');
+                } elseif (!$report_0->validate()) { // and report should be valid
+                    Yii::log("PartController:: report #0 not valid");
+                    $could_be_saved = false;
+                }
+
+                // And if he gives other one it also should be valid
+                if (!is_null($report_1) && !$report_1->validate()) {
+                    Yii::log("PartController:: report #1 exist but not valid");
+                    $could_be_saved = false;
+                }
             }
 
-            if ($model->save()) {
+            if ($could_be_saved && $model->validate() && $model->save()) {
+                Yii::log("PartController:: model could be saved && valid && saved");
+                // Both reports are already validated, so we do not need to check it once more
                 if (!is_null($report_0)) {
+                    Yii::log("PartController:: saving report #0");
                     $report_0->participants_id = $model->id;
                     $report_0->save();
+                    Yii::log("PartController:: !!!ATTENTION!!! saving information not verified");
                 }
+
                 if (!is_null($report_1)) {
+                    Yii::log("PartController:: saving report #1");
                     $report_1->participants_id = $model->id;
                     $report_1->save();
+                    Yii::log("PartController:: !!!ATTENTION!!! saving information not verified");
                 }
+
+                // @TODO: we need to check if all information was correctly saved and if not give some message
+
+                $transaction->commit();
+                Yii::log("PartController:: commit transaction");
                 $this->redirect(array('/participants/registrationComplited'));
             } else {
+                // We are trying to clean up all stuff which was saved after this unfair person who won't give us
+                // good information
                 if (!is_null($report_0)) {
+                    Yii::log("PartController:: remove report #0 file");
                     $report_0->file->delete();
                 }
                 if (!is_null($report_1)) {
+                    Yii::log("PartController:: remove report #1 file");
                     $report_1->file->delete();
                 }
-            }
-//             $model->reports[] = $report_0;
-//             $model->reports[] = $report_1;
-        }
-        
-        $model->participation_type = 'listner';
-        $model->report_type = 'plenary';
 
+                // And off course, we need to roll back transaction to clean up data base requests
+                $transaction->rollBack();
+                Yii::log("PartController:: roll back transaction");
+            }
+
+            // Now we give all information about this reports to our model
+            $model->_reports[] = $report_0;
+            $model->_reports[] = $report_1;
+            Yii::log('PartController:: placing reports into $model->_reports[' . count($model->_reports) . ']');
+        } else {
+            Yii::log("PartController:: placing default data for model");
+            // But if there was no any model or data from registration form we just give some default values
+            $model->participation_type = 'listner';
+            $model->report_type = 'plenary';
+        }
+
+        Yii::log("PartController:: before render");
         $this->render('create', array(
-                'model' => $model,
+            'model' => $model,
         ));
     }
 
     public function actionRegistrationComplited() {
         $this->render('registrationComplited');
     }
-    
+
     /**
      * Updates a particular model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -129,7 +184,7 @@ class ParticipantsController extends Controller {
         }
 
         $this->render('update', array(
-                'model' => $model,
+            'model' => $model,
         ));
     }
 
@@ -155,7 +210,7 @@ class ParticipantsController extends Controller {
     public function actionIndex() {
         $dataProvider = new CActiveDataProvider('Participants');
         $this->render('index', array(
-                'dataProvider' => $dataProvider,
+            'dataProvider' => $dataProvider,
         ));
     }
 
@@ -169,7 +224,7 @@ class ParticipantsController extends Controller {
             $model->attributes = $_GET['Participants'];
 
         $this->render('admin', array(
-                'model' => $model,
+            'model' => $model,
         ));
     }
 

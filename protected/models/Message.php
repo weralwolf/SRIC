@@ -13,7 +13,7 @@ class Message extends CActiveRecord {
      * Returns the static model of the specified AR class.
      * @return Message the static model class
      */
-    public static function model($className=__CLASS__) {
+    public static function model($className = __CLASS__) {
         return parent::model($className);
     }
 
@@ -31,12 +31,12 @@ class Message extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-                array('id', 'numerical', 'integerOnly'=>true),
-                array('language', 'length', 'max'=>16),
-                array('translation', 'safe'),
-                // The following rule is used by search().
-                // Please remove those attributes that should not be searched.
-                array('id, language, translation', 'safe', 'on'=>'search'),
+            array('id', 'numerical', 'integerOnly' => true),
+            array('language', 'length', 'max' => 16),
+            array('translation', 'safe'),
+            // The following rule is used by search().
+            // Please remove those attributes that should not be searched.
+            array('id, language, translation', 'safe', 'on' => 'search'),
         );
     }
 
@@ -55,9 +55,9 @@ class Message extends CActiveRecord {
      */
     public function attributeLabels() {
         return array(
-                'id' => 'Id',
-                'language' => 'Language',
-                'translation' => 'Translation',
+            'id'          => 'Id',
+            'language'    => 'Language',
+            'translation' => 'Translation',
         );
     }
 
@@ -69,16 +69,16 @@ class Message extends CActiveRecord {
         // Warning: Please modify the following code to remove attributes that
         // should not be searched.
 
-        $criteria=new CDbCriteria;
+        $criteria = new CDbCriteria;
 
-        $criteria->compare('id',$this->id);
+        $criteria->compare('id', $this->id);
 
-        $criteria->compare('language',$this->language,true);
+        $criteria->compare('language', $this->language, true);
 
-        $criteria->compare('translation',$this->translation,true);
+        $criteria->compare('translation', $this->translation, true);
 
         return new CActiveDataProvider('Message', array(
-                'criteria'=>$criteria,
+            'criteria' => $criteria,
         ));
     }
 }
