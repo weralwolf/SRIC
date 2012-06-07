@@ -66,7 +66,7 @@ Yii::app()->clientScript->registerScript('search', "
                 array(
                         'name' => 'report_type',
                         //'label' => Yii::app()->messages->translate('Participants', 'report_type'),
-                        'value' => 'Yii::app()->dbMessages->translate(\'Participants\', \'report_type_\' . $data->report_type)',
+                        'value' => '$data->participationState()',
                 ),
 
                 array(

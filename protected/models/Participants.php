@@ -58,8 +58,8 @@ class Participants extends CActiveRecord {
     public function reportsButtons() {
         if (!empty($this->reports)) {
             foreach ($this->reports as $report) {
-                return Yii::app()->controller->renderPartial('application.views.files.button', array('model' => $report
-                    ->file,
+                return Yii::app()->controller->renderPartial('application.views.files.button', array(
+                    'model' => $report->file,
                     'title' => $report->title
                 ));
             }
@@ -227,6 +227,14 @@ class Participants extends CActiveRecord {
             'alt_organization'                    => '',
             'report'                              => 'Report',
         );
+    }
+
+    public function participationState() {
+        $state = Yii::app()->dbMessages->translate('Participants', 'participation_type_' . $this->participation_type);
+        if ($this->participation_type != 'listner') {
+            $state .= ' / ' . Yii::app()->dbMessages->translate('Participants', 'report_type_' . $this->report_type);
+        }
+        return $state;
     }
 
     /**
