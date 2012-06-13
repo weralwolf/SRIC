@@ -57,12 +57,16 @@ class Participants extends CActiveRecord {
 
     public function reportsButtons() {
         if (!empty($this->reports)) {
+            $txt = "";
             foreach ($this->reports as $report) {
-                return Yii::app()->controller->renderPartial('application.views.files.button', array(
-                    'model' => $report->file,
-                    'title' => $report->title
-                ));
+                if (!is_null($report)) {
+                    $txt += Yii::app()->controller->renderPartial('application.views.files.button', array(
+                        'model' => $report->file,
+                        'title' => $report->title
+                    ));
+                }
             }
+            return $txt;
         } else {
             return 'No reports';
         }
@@ -186,6 +190,18 @@ class Participants extends CActiveRecord {
         );
     }
 
+    public function resolveSections() {
+        $sections = array();
+        foreach($this->reports as $report) {
+            $sections[] = $report->section->t();
+        }
+        if (empty($sections)) {
+            return "---";
+        } else {
+            return implode(' / ', $sections);
+        }
+    }
+
     /**
      * @return array relational rules.
      */
@@ -193,10 +209,13 @@ class Participants extends CActiveRecord {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
         return array(
-            'room_type' => array(self::BELONGS_TO, 'AccommodationPlacesRoomsTypes',
+            'room_type'    => array(self::BELONGS_TO, 'AccommodationPlacesRoomsTypes',
                 'accommodation_places_rooms_types_id'),
-            'place'     => array(self::BELONGS_TO, 'AccommodationPlaces', 'accommodation_places_id'),
-            'reports'   => array(self::HAS_MANY, 'Reports', 'participants_id'),
+            'place'        => array(self::BELONGS_TO, 'AccommodationPlaces', 'accommodation_places_id'),
+            'reports'      => array(self::HAS_MANY, 'Reports', 'participants_id'),
+#            'organization' => array(self::BELONGS_TO, 'Organizations', 'organizations_id'),
+#            'city'         => array(self::BELONGS_TO, 'Cities', 'cities_id'),
+#            'country'      => array(self::BELONGS_TO, 'Countries', 'contries_id'),
         );
     }
 

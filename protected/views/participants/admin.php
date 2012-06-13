@@ -61,7 +61,12 @@ Yii::app()->clientScript->registerScript('search', "
                         'name' => 'contries_id',
                         //'label' => '`' . Yii::app()->messages->translate('Participants', 'countries_id') . '`, `' .
                         //Yii::app()->messages->translate('Participants', 'cities_id') . '`',
-                        'value' => 'Organizations::resolveName($data->contries_id) . "-" . Organizations::resolveName($data->cities_id)'
+                        'value' => 'Countries::resolveName($data->contries_id) . "-" . Cities::resolveName($data->cities_id)'
+                ),
+                array(
+                        'name' => 'sections_id',
+                        //'label' => Yii::app()->messages->translate('Participants', 'organizations_id'),
+                        'value' => '$data->resolveSections()',
                 ),
                 array(
                         'name' => 'report_type',
