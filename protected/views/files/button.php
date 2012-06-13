@@ -7,3 +7,4 @@ echo CHtml::link(
         )
 ); ?>
 <br />
+<br />

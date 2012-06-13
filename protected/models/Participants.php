@@ -57,16 +57,16 @@ class Participants extends CActiveRecord {
 
     public function reportsButtons() {
         if (!empty($this->reports)) {
-            $txt = "";
+            $txt = array();
             foreach ($this->reports as $report) {
                 if (!is_null($report)) {
-                    $txt += Yii::app()->controller->renderPartial('application.views.files.button', array(
+                    $txt[] = Yii::app()->controller->renderPartial('application.views.files.button', array(
                         'model' => $report->file,
                         'title' => $report->title
                     ));
                 }
             }
-            return $txt;
+            return implode("", $txt);
         } else {
             return 'No reports';
         }
@@ -193,12 +193,14 @@ class Participants extends CActiveRecord {
     public function resolveSections() {
         $sections = array();
         foreach($this->reports as $report) {
-            $sections[] = $report->section->t();
+            $sections[] = Yii::app()->controller->renderPartial('application.views.participants.section', array(
+                        'text' => $report->section->t(),
+                    ));
         }
         if (empty($sections)) {
             return "---";
         } else {
-            return implode(' / ', $sections);
+            return implode(" ", $sections);
         }
     }
 
