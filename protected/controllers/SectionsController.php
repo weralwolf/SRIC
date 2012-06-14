@@ -1,22 +1,41 @@
 <?php
 
 class SectionsController extends SourceMessageController {
+
+    public function accessRules() {
+        return array(
+            array(
+                'allow',
+                'actions' => array('create', 'update', 'index', 'view', 'admin', 'delete'),
+                'users'   => array('root'),
+            ),
+            array(
+                'allow', // allow all users to perform 'index' and 'view' actions
+                'actions' => array('programm'),
+                'users'   => array('*'),
+            ),
+            array(
+                'deny',
+                'users' => array('*'),
+            ),
+        );
+    }
+
     /**
      * @return array action filters
      */
-    public function filters()
-    {
+    public function filters() {
         return array(
-                'accessControl', // perform access control for CRUD operations
-        );
+            'accessControl', // perform access control for CRUD operations
+            );
     }
 
     /**
      * Displays a particular model.
      */
     public function actionView() {
-        $this->render('application.views.sourceMessage.view',array(
-                'model'=>$this->loadModel(),
+        $this->render('application.views.sourceMessage.view', array(
+            'model' => $this->loadModel(),
         ));
     }
 
@@ -27,10 +46,10 @@ class SectionsController extends SourceMessageController {
     public function actionCreate() {
         $model = new Sections;
         $this->_creation($model);
-        $this->render('application.views.sourceMessage.create',array(
-                'model'=>$model,
-                'category' => 'Sections',
-                'textArea' => false,
+        $this->render('application.views.sourceMessage.create', array(
+            'model'    => $model,
+            'category' => 'Sections',
+            'textArea' => false,
         ));
     }
 
@@ -42,10 +61,10 @@ class SectionsController extends SourceMessageController {
 
         $model = $this->loadModel();
         $this->_updating($model);
-        $this->render('application.views.sourceMessage.update',array(
-                'model'=>$model,
-                'category' => 'Sections',
-                'textArea' => false,
+        $this->render('application.views.sourceMessage.update', array(
+            'model'    => $model,
+            'category' => 'Sections',
+            'textArea' => false,
         ));
     }
 
@@ -53,19 +72,16 @@ class SectionsController extends SourceMessageController {
      * Deletes a particular model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      */
-    public function actionDelete()
-    {
-        if(Yii::app()->request->isPostRequest)
-        {
+    public function actionDelete() {
+        if (Yii::app()->request->isPostRequest) {
             // we only allow deletion via POST request
             $this->loadModel()->delete();
 
             // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-            if(!isset($_GET['ajax']))
+            if (!isset($_GET['ajax']))
                 $this->redirect(array('application.views.sourceMessage.index', 'category' => 'Sections'));
-        }
-        else
-            throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+        } else
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
     }
 
     /**
@@ -73,12 +89,12 @@ class SectionsController extends SourceMessageController {
      */
     public function actionIndex() {
         $dataProvider = new CActiveDataProvider('Sections', array(
-                'criteria' => array(
-                        'condition' => 'category=' . Yii::app()->db->quoteValue("Sections")
-                ),
+            'criteria' => array(
+                'condition' => 'category=' . Yii::app()->db->quoteValue("Sections")
+            ),
         ));
-        $this->render('application.views.sourceMessage.index',array(
-                'dataProvider'=>$dataProvider,
+        $this->render('application.views.sourceMessage.index', array(
+            'dataProvider' => $dataProvider,
         ));
     }
 
@@ -88,12 +104,32 @@ class SectionsController extends SourceMessageController {
     public function actionAdmin() {
         $model = new Sections('search');
         $model->unsetAttributes();
-        if(isset($_GET['Sections']))
-            $model->attributes=$_GET['Sections'];
+        if (isset($_GET['Sections']))
+            $model->attributes = $_GET['Sections'];
 
-        $this->render('application.views.sourceMessage.admin',array(
-                'model'=>$model,
-                'creationURl' => array('/sections/create'),
+        $this->render('application.views.sourceMessage.admin', array(
+            'model'       => $model,
+            'creationURl' => array('/sections/create'),
+        ));
+    }
+
+    public function actionProgramm() {
+        $models = Sections::model()->with('messages', 'reports', 'reports.participant'
+        #            'reports.participant.organization.messages',
+        #            'reports.participant.city.messages',
+        #            'reports.participant.country.messages'
+        )->findAll(array(
+#            'order' => 'id ASC',
+            'condition' => 'category = \'Sections\'',
+        ));
+#        print '<pre>';
+#        foreach($models as $model) {
+#            print $model->t() . "\n";
+#        }
+#        die;
+        $this->render('programm', array(
+            'models' => $models,
+            'this'   => $this,
         ));
     }
 }

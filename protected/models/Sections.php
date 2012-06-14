@@ -14,12 +14,20 @@ class Sections extends SourceMessage {
      * Returns the static model of the specified AR class.
      * @return Countries the static model class
      */
-    public static function model($className=__CLASS__) {
+    public static function model($className = __CLASS__) {
         return parent::model($className);
     }
 
     public function suggest($keyword, $limit = 20) {
         return $this->suggestFromCategory($keyword, 'Sections', $limit);
+    }
+
+    public function relations() {
+        // NOTE: you may need to adjust the relation name and the related
+        // class name for the relations automatically generated below.
+        return array_merge(parent::relations(), array(
+            'reports' => array(self::HAS_MANY, 'Reports', 'sections_id'),
+        ));
     }
 
     public function dropDown() {
@@ -37,7 +45,7 @@ class Sections extends SourceMessage {
         $criteria->condition = 'category=' . Yii::app()->db->quoteValue("Sections");
         $criteria->compare('message', $this->message, true);
         return new CActiveDataProvider('SourceMessage', array(
-                'criteria' => $criteria,
+            'criteria' => $criteria,
         ));
     }
 }
