@@ -12,7 +12,8 @@ class ParticipantsController extends Controller {
         'index',
         'view',
         'update',
-        'programm'
+        'programm',
+        'accommodation'
     );
 
     /**
@@ -45,7 +46,7 @@ class ParticipantsController extends Controller {
             ),
             array(
                 'allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('index', 'admin', 'delete', 'view', 'programm'),
+                'actions' => array('index', 'admin', 'delete', 'view', 'programm', 'accommodation'),
                 'users'   => array('root'),
             ),
             array(
@@ -226,6 +227,12 @@ class ParticipantsController extends Controller {
             'condition' => 'category = \'Sections\'',
         ));
         echo $this->renderPartial('programm', array('models' => $models), true);
+        die;
+    }
+
+    public function actionAccommodation() {
+        $models = Participants::model()->with('room_type', 'place')->findAll(array('order' => 'accommodation_places_id ASC'));
+        echo $this->renderPartial('accommodation', array('models' => $models), true);
         die;
     }
 
