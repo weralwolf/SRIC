@@ -42,6 +42,7 @@ Yii::app()->clientScript->registerScript('search', "
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'participants-grid',
+        #'enablePagination' => false,
         'dataProvider'=>$model->search(),
         'filter'=>$model,
         'columns'=>array(

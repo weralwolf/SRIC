@@ -7,7 +7,7 @@ class ParticipantsController extends Controller {
      */
     private $_model;
 
-    public $adminLayoutActions = array('admin', 'index', 'view');
+    public $adminLayoutActions = array('admin', 'index', 'view', 'update');
 
     /**
      * @return array action filters

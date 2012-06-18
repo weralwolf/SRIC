@@ -38,7 +38,7 @@ class Participants extends CActiveRecord {
     }
 
     public function validateCity($attribute, $params) {
-        $this->city = $_POST['cityName'];
+        $this->city = isset($_POST['cityName']) ? $_POST['cityName'] : NULL;
         Yii::log('ParticipantsModel::cityValidate:: resolving id');
         $this->cities_id = Cities::model()->resolveID($this->city, 'Cities');
         if ($this->cities_id == - 1) {
@@ -73,7 +73,7 @@ class Participants extends CActiveRecord {
     }
 
     public function validateCountry($attribute, $params) {
-        $this->country = $_POST['countryName'];
+        $this->country = isset($_POST['countryName']) ? $_POST['countryName'] : NULL;
         $this->contries_id = Countries::model()->resolveID($this->country, 'Countries');
         if ($this->contries_id == - 1) {
             Yii::log('ParticipantsModel::countryValidate:: id == -1');
@@ -95,7 +95,8 @@ class Participants extends CActiveRecord {
             $this->addError("organizations_id", Yii::app()->dbMessages->translate('Errors', 'select_organization'));
         }
 
-        $this->alt_organization = $_POST['Participants']['alt_organization'];
+        $this->alt_organization = isset($_POST['Participants']['alt_organization']) ? $_POST['Participants'][
+            'alt_organization'] : NULL;
         if ($this->organizations_id == - 1) {
             Yii::log('ParticipantsModel::organizationValidate:: id == -1');
             if (trim($this->alt_organization) == Yii::app()->messages->translate('Participants', 'alt_organization')) {
@@ -192,10 +193,10 @@ class Participants extends CActiveRecord {
 
     public function resolveSections() {
         $sections = array();
-        foreach($this->reports as $report) {
+        foreach ($this->reports as $report) {
             $sections[] = Yii::app()->controller->renderPartial('application.views.participants.section', array(
-                        'text' => $report->section->t(),
-                    ));
+                'text' => $report->section->t(),
+            ));
         }
         if (empty($sections)) {
             return "---";
@@ -211,14 +212,14 @@ class Participants extends CActiveRecord {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
         return array(
-            'room_type'    => array(self::BELONGS_TO, 'AccommodationPlacesRoomsTypes',
+            'room_type' => array(self::BELONGS_TO, 'AccommodationPlacesRoomsTypes',
                 'accommodation_places_rooms_types_id'),
-            'place'        => array(self::BELONGS_TO, 'AccommodationPlaces', 'accommodation_places_id'),
-            'reports'      => array(self::HAS_MANY, 'Reports', 'participants_id'),
-#            'organization' => array(self::BELONGS_TO, 'Organizations', 'organizations_id'),
-#            'city'         => array(self::BELONGS_TO, 'Cities', 'cities_id'),
-#            'country'      => array(self::BELONGS_TO, 'Countries', 'contries_id'),
-        );
+            'place'     => array(self::BELONGS_TO, 'AccommodationPlaces', 'accommodation_places_id'),
+            'reports'   => array(self::HAS_MANY, 'Reports', 'participants_id'),
+            #            'organization' => array(self::BELONGS_TO, 'Organizations', 'organizations_id'),
+            #            'city'         => array(self::BELONGS_TO, 'Cities', 'cities_id'),
+            #            'country'      => array(self::BELONGS_TO, 'Countries', 'contries_id'),
+            );
     }
 
     /**
@@ -289,7 +290,10 @@ class Participants extends CActiveRecord {
         $criteria->together = true;
 
         return new CActiveDataProvider('Participants', array(
-            'criteria' => $criteria,
+            'criteria'   => $criteria,
+            'pagination' => array(
+                'pageSize' => 10000,
+            ),
         ));
     }
 }
