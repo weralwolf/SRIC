@@ -7,7 +7,13 @@ class ParticipantsController extends Controller {
      */
     private $_model;
 
-    public $adminLayoutActions = array('admin', 'index', 'view', 'update');
+    public $adminLayoutActions = array(
+        'admin',
+        'index',
+        'view',
+        'update',
+        'programm'
+    );
 
     /**
      * @return array action filters
@@ -39,7 +45,7 @@ class ParticipantsController extends Controller {
             ),
             array(
                 'allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('index', 'admin', 'delete', 'view'),
+                'actions' => array('index', 'admin', 'delete', 'view', 'programm'),
                 'users'   => array('root'),
             ),
             array(
@@ -212,6 +218,15 @@ class ParticipantsController extends Controller {
         $this->render('index', array(
             'dataProvider' => $dataProvider,
         ));
+    }
+
+    public function actionProgramm() {
+        $models = Sections::model()->with('messages', 'reports', 'reports.participant')->findAll(array(
+#            'order'     => 'id ASC',
+            'condition' => 'category = \'Sections\'',
+        ));
+        echo $this->renderPartial('programm', array('models' => $models), true);
+        die;
     }
 
     /**

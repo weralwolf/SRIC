@@ -32,6 +32,8 @@ Yii::app()->clientScript->registerScript('search', "
 	should be done.
 </p>
 
+<?php echo CHtml::link('Programm (print)', array('participants/programm')); ?>
+<br />
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display: none">
 	<?php $this->renderPartial('_search',array(
