@@ -16,11 +16,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'conferences_id'); ?>
-		<?php echo $form->textField($model,'conferences_id',array('size'=>10,'maxlength'=>10)); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'sections_id'); ?>
 		<?php echo $form->textField($model,'sections_id',array('size'=>10,'maxlength'=>10)); ?>
 	</div>

@@ -13,7 +13,8 @@ class ParticipantsController extends Controller {
         'view',
         'update',
         'programm',
-        'accommodation'
+        'accommodation',
+        'participation'
     );
 
     /**
@@ -46,7 +47,7 @@ class ParticipantsController extends Controller {
             ),
             array(
                 'allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('index', 'admin', 'delete', 'view', 'programm', 'accommodation'),
+                'actions' => array('index', 'admin', 'delete', 'view', 'programm', 'accommodation', 'participation'),
                 'users'   => array('root'),
             ),
             array(
@@ -223,7 +224,7 @@ class ParticipantsController extends Controller {
 
     public function actionProgramm() {
         $models = Sections::model()->with('messages', 'reports', 'reports.participant')->findAll(array(
-#            'order'     => 'id ASC',
+            #            'order'     => 'id ASC',
             'condition' => 'category = \'Sections\'',
         ));
         echo $this->renderPartial('programm', array('models' => $models), true);
@@ -231,11 +232,17 @@ class ParticipantsController extends Controller {
     }
 
     public function actionAccommodation() {
-        $models = Participants::model()->with('room_type', 'place')->findAll(array('order' => 'accommodation_places_id ASC'));
+        $models = Participants::model()->with('room_type', 'place')->findAll(array('order' =>
+            'accommodation_places_id ASC'));
         echo $this->renderPartial('accommodation', array('models' => $models), true);
         die;
     }
 
+    public function actionParticipation() {
+        $models = array(NULL);
+        echo $this->renderPartial('participation', array('models' => $models), true);
+        die;
+    }
     /**
      * Manages all models.
      */

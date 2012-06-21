@@ -44,7 +44,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'id',
 		'participants_id',
-		'conferences_id',
 		'sections_id',
 		'files_id',
 		'title',

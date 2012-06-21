@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	'Reports'=>array('index'),
+	'Reports'=>array('admin'),
 	$model->title=>array('view','id'=>$model->id),
 	'Update',
 );
@@ -15,4 +15,4 @@ $this->menu=array(
 
 <h1>Update Reports <?php echo $model->id; ?></h1>
 
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php echo $this->renderPartial('_formUp', array('model'=>$model)); ?>

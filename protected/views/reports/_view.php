@@ -8,10 +8,6 @@
 	<?php echo CHtml::encode($data->participants_id); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('conferences_id')); ?>:</b>
-	<?php echo CHtml::encode($data->conferences_id); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('sections_id')); ?>:</b>
 	<?php echo CHtml::encode($data->sections_id); ?>
 	<br />

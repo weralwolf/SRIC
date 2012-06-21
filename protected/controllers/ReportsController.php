@@ -1,12 +1,13 @@
 <?php
 
-class ReportsController extends Controller
-{
+class ReportsController extends Controller {
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
-    public $layout='//layouts/column2';
+    public $layout = '//layouts/column2';
+
+    public $adminLayoutActions = array('admin', 'update', 'view', 'index');
 
     /**
      * @var CActiveRecord the currently loaded data model instance.
@@ -16,11 +17,10 @@ class ReportsController extends Controller
     /**
      * @return array action filters
      */
-    public function filters()
-    {
+    public function filters() {
         return array(
-                'accessControl', // perform access control for CRUD operations
-        );
+            'accessControl', // perform access control for CRUD operations
+            );
     }
 
     /**
@@ -28,34 +28,32 @@ class ReportsController extends Controller
      * This method is used by the 'accessControl' filter.
      * @return array access control rules
      */
-    public function accessRules()
-    {
+    public function accessRules() {
         return array(
-                array('allow',  // allow all users to perform 'index' and 'view' actions
-                        'actions'=>array('index','view'),
-                        'users'=>array('*'),
-                ),
-                array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                        'actions'=>array('create','update'),
-                        'users'=>array('@'),
-                ),
-                array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                        'actions'=>array('admin','delete', 'download'),
-                        'users'=>array('root'),
-                ),
-                array('deny',  // deny all users
-                        'users'=>array('*'),
-                ),
+            array('allow', // allow all users to perform 'index' and 'view' actions
+            'actions' => array('index', 'view'),
+                'users'   => array('*'),
+            ),
+            array('allow', // allow authenticated user to perform 'create' and 'update' actions
+            'actions' => array(/* 'create' */),
+                'users'   => array('@'),
+            ),
+            array('allow', // allow admin user to perform 'admin' and 'delete' actions
+            'actions' => array('admin', 'delete', 'download', 'update'),
+                'users'   => array('root'),
+            ),
+            array('deny', // deny all users
+            'users' => array('*'),
+            ),
         );
     }
 
     /**
      * Displays a particular model.
      */
-    public function actionView()
-    {
-        $this->render('view',array(
-                'model'=>$this->loadModel(),
+    public function actionView() {
+        $this->render('view', array(
+            'model' => $this->loadModel(),
         ));
     }
 
@@ -66,16 +64,16 @@ class ReportsController extends Controller
     public function actionCreate() {
         $model = new Reports;
 
-        if(isset($_POST['Reports'])) {
+        if (isset($_POST['Reports'])) {
             $model = Reports::saveFromPOST();
             $model->participants_id = 0;
-            if($model->save()) {
-                $this->redirect(array('view','id'=>$model->id));
+            if ($model->save()) {
+                $this->redirect(array('view', 'id' => $model->id));
             }
         }
 
-        $this->render('create',array(
-                'model'=>$model,
+        $this->render('create', array(
+            'model' => $model,
         ));
     }
 
@@ -83,22 +81,20 @@ class ReportsController extends Controller
      * Updates a particular model.
      * If update is successful, the browser will be redirected to the 'view' page.
      */
-    public function actionUpdate()
-    {
-        $model=$this->loadModel();
+    public function actionUpdate() {
+        $model = $this->loadModel();
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        if(isset($_POST['Reports']))
-        {
-            $model->attributes=$_POST['Reports'];
-            if($model->save())
-                $this->redirect(array('view','id'=>$model->id));
+        if (isset($_POST['Reports'])) {
+            $model->attributes = $_POST['Reports'];
+            if ($model->save())
+                $this->redirect(array('view', 'id' => $model->id));
         }
 
-        $this->render('update',array(
-                'model'=>$model,
+        $this->render('update', array(
+            'model' => $model,
         ));
     }
 
@@ -106,44 +102,39 @@ class ReportsController extends Controller
      * Deletes a particular model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      */
-    public function actionDelete()
-    {
-        if(Yii::app()->request->isPostRequest)
-        {
+    public function actionDelete() {
+        if (Yii::app()->request->isPostRequest) {
             // we only allow deletion via POST request
             $this->loadModel()->delete();
 
             // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-            if(!isset($_GET['ajax']))
+            if (!isset($_GET['ajax']))
                 $this->redirect(array('index'));
-        }
-        else
-            throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+        } else
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
     }
 
     /**
      * Lists all models.
      */
-    public function actionIndex()
-    {
-        $dataProvider=new CActiveDataProvider('Reports');
-        $this->render('index',array(
-                'dataProvider'=>$dataProvider,
+    public function actionIndex() {
+        $dataProvider = new CActiveDataProvider('Reports');
+        $this->render('index', array(
+            'dataProvider' => $dataProvider,
         ));
     }
 
     /**
      * Manages all models.
      */
-    public function actionAdmin()
-    {
-        $model=new Reports('search');
-        $model->unsetAttributes();  // clear any default values
-        if(isset($_GET['Reports']))
-            $model->attributes=$_GET['Reports'];
+    public function actionAdmin() {
+        $model = new Reports('search');
+        $model->unsetAttributes(); // clear any default values
+        if (isset($_GET['Reports']))
+            $model->attributes = $_GET['Reports'];
 
-        $this->render('admin',array(
-                'model'=>$model,
+        $this->render('admin', array(
+            'model' => $model,
         ));
     }
 
@@ -151,14 +142,12 @@ class ReportsController extends Controller
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
      */
-    public function loadModel()
-    {
-        if($this->_model===null)
-        {
-            if(isset($_GET['id']))
-                $this->_model=Reports::model()->findbyPk($_GET['id']);
-            if($this->_model===null)
-                throw new CHttpException(404,'The requested page does not exist.');
+    public function loadModel() {
+        if ($this->_model === null) {
+            if (isset($_GET['id']))
+                $this->_model = Reports::model()->findbyPk($_GET['id']);
+            if ($this->_model === null)
+                throw new CHttpException(404, 'The requested page does not exist.');
         }
         return $this->_model;
     }
@@ -167,19 +156,17 @@ class ReportsController extends Controller
      * Performs the AJAX validation.
      * @param CModel the model to be validated
      */
-    protected function performAjaxValidation($model)
-    {
-        if(isset($_POST['ajax']) && $_POST['ajax']==='reports-form')
-        {
+    protected function performAjaxValidation($model) {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'reports-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
     }
 
-public function actionDownload($id)   {
+    public function actionDownload($id) {
         $model = Report::model()->with('file')->findByPk($id);
         $src = $model->file->path;
-        if(file_exists($src)) {
+        if (file_exists($src)) {
             $path_parts = @pathinfo($src);
             $mime = $model->file->mimetype;
             header('Content-Description: File Transfer');

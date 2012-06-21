@@ -38,6 +38,10 @@ class Participants extends CActiveRecord {
     }
 
     public function validateCity($attribute, $params) {
+        if (isset($_POST['Participants']['cities_id'])) {
+            $this->cities_id = $_POST['Participants']['cities_id'];
+            return;
+        }
         $this->city = isset($_POST['cityName']) ? $_POST['cityName'] : NULL;
         Yii::log('ParticipantsModel::cityValidate:: resolving id');
         $this->cities_id = Cities::model()->resolveID($this->city, 'Cities');
@@ -61,8 +65,9 @@ class Participants extends CActiveRecord {
             foreach ($this->reports as $report) {
                 if (!is_null($report)) {
                     $txt[] = Yii::app()->controller->renderPartial('application.views.files.button', array(
-                        'model' => $report->file,
-                        'title' => $report->title
+                        'model'     => $report->file,
+                        'title'     => $report->title,
+                        'report_id' => $report->id,
                     ));
                 }
             }
@@ -73,6 +78,10 @@ class Participants extends CActiveRecord {
     }
 
     public function validateCountry($attribute, $params) {
+        if (isset($_POST['Participants']['contries_id'])) {
+            $this->contries_id = $_POST['Participants']['contries_id'];
+            return;
+        }
         $this->country = isset($_POST['countryName']) ? $_POST['countryName'] : NULL;
         $this->contries_id = Countries::model()->resolveID($this->country, 'Countries');
         if ($this->contries_id == - 1) {

@@ -32,6 +32,10 @@ table {
     {
     border-top: 0;
 }
+
+.table tbody+tbody {
+    border-top: 2px solid #dddddd;
+}
 -->
 </style>
 <center><h1><u>Побажання на поселення</u></h1></center>

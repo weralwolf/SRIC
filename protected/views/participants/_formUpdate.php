@@ -15,8 +15,8 @@ $m = Yii::app()->dbMessages;
                 <?php echo $form->labelEx($model, 'contries_id'); ?>
             </td>
             <td>
-                <?php echo Countries::resolveName($model->contries_id);
-                echo $form->hiddenField($model, 'contries_id', array('size' => 60, 'maxlength' => 255)); ?>
+                <?php echo Countries::resolveName($model->contries_id); ?>
+                <?php echo $form->hiddenField($model, 'contries_id', array('size' => 60, 'maxlength' => 255)); ?>
                 <?php echo $form->error($model, 'contries_id'); ?>
             </td>
         </tr>
@@ -25,8 +25,8 @@ $m = Yii::app()->dbMessages;
                 <?php echo $form->labelEx($model, 'cities_id'); ?>
             </td>
             <td>
-                <?php echo Cities::resolveName($model->cities_id);
-                echo $form->hiddenField($model, 'cities_id', array('size' => 60, 'maxlength' => 255)); ?>
+                <?php echo Cities::resolveName($model->cities_id); ?>
+                <?php echo $form->hiddenField($model, 'cities_id', array('size' => 60, 'maxlength' => 255)); ?>
                 <?php echo $form->error($model, 'cities_id'); ?>
             </td>
         </tr>

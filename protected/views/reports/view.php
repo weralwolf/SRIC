@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	'Reports'=>array('index'),
+	'Reports'=>array('admin'),
 	$model->title,
 );
 
@@ -20,7 +20,6 @@ $this->menu=array(
 	'attributes'=>array(
 		'id',
 		'participants_id',
-		'conferences_id',
 		'sections_id',
 		'files_id',
 		'title',
