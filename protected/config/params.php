@@ -23,6 +23,11 @@ return array(
                         'title_sm_message' => array('MenuLinks', 'registration'),
                         'url' => array('participants/create'),
                 ),
+                array(
+                        'order' => 4,
+                        'title_sm_message' => array('Pages', 'progr_title'),
+                        'url' => array('sections/programm'),
+                ),
         ),
         //relative to 'protected' dir
         'reportsSavePath' => '/../upload/reports',

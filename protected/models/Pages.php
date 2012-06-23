@@ -97,7 +97,10 @@ class Pages extends CActiveRecord {
         }
         if (isset($_REQUEST['r']) && $_REQUEST['r'] == 'participants/create') {
             return true;
-        };
+        }
+        if (isset($_REQUEST['r']) && $_REQUEST['r'] == 'sections/programm') {
+            return true;
+        }
         return false;
     }
 

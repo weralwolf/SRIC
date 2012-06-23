@@ -114,22 +114,22 @@ class SectionsController extends SourceMessageController {
     }
 
     public function actionProgramm() {
-        $models = Sections::model()->with('messages', 'reports', 'reports.participant'
+#        $models = Sections::model()->with('messages', 'reports', 'reports.participant'
         #            'reports.participant.organization.messages',
         #            'reports.participant.city.messages',
         #            'reports.participant.country.messages'
-        )->findAll(array(
+#        )->findAll(array(
 #            'order' => 'id ASC',
-            'condition' => 'category = \'Sections\'',
-        ));
+#            'condition' => 'category = \'Sections\'',
+#        ));
 #        print '<pre>';
 #        foreach($models as $model) {
 #            print $model->t() . "\n";
 #        }
 #        die;
-        $this->render('programm', array(
-            'models' => $models,
-            'this'   => $this,
+        $this->render('_programm', array(
+#            'models' => $models,
+#            'this'   => $this,
         ));
     }
 }

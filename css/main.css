@@ -192,3 +192,43 @@ div.search-form {
 .operations li a:hover {
 	background: #80CFFF;
 }
+
+ol.sectionsList {
+    list-style: decimal;
+}
+
+ol.sectionsList li {
+    color: #0099ff;
+    font-size: 18px;
+    text-align: center;
+};
+
+.sectionName {
+}
+
+ol.reportsList {
+    list-style: decimal;
+}
+
+ol.reportsList li {
+    color: white;
+    font-size: 16px;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.reportAuthors {
+	color: #CCC;
+}
+
+.reportReporter {
+	text-decoration: underline;
+}
+
+.reportTitle {
+}
+
+.reportTime {
+	color: #CCC;
+	font-style: italic;
+};
