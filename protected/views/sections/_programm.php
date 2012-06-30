@@ -221,6 +221,11 @@
                 <span class='reportTitle'>Возмущения в движении микроспутника, связанные с геомагнитными бурями</span>
                 <span class='reportTime'>(15 хв.)</span>
             </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>S. Cheremnykh</span>, V. Yatsenko</span>
+                <span class='reportTitle'>Dynamical approach to space weather prediction using identification and optimization methods</span>
+                <span class='reportTime'>(15 хв.)</span>
+            </li>
         </ol>
     </li>
     <li class='sectionName'>Космічна біологія
@@ -436,11 +441,6 @@
                 <span class='reportTime'>(15 хв)</span>
             </li>
             <li>
-                <span class='reportAuthors'><span class='reportReporter'>Сергей Степанович Щесняк</span></span>
-                <span class='reportTitle' style='color: red;'>пока не известно</span>
-                <span class='reportTime'></span>
-            </li>
-            <li>
                 <span class='reportAuthors'><span class='reportReporter'>А.Г. Лауш</span>, В.С. Купко, Е.М. Занимонский</span>
                 <span class='reportTitle'>Методи взаємного позиціонування об’єктів у навколоземному просторі</span>
                 <span class='reportTime'>(15 хв)</span>
@@ -449,11 +449,6 @@
                 <span class='reportAuthors'>Мурашко Н.И., <span class='reportReporter'>Кореняко С.А.</span></span>
                 <span class='reportTitle'>АЭРОКОСМИЧЕСКАЯ СИСТЕМА МОНИТОРИНГА В БЕЛАРУСИ. СОСТОЯНИЕ И ПЕРСПЕКТИВЫ</span>
                 <span class='reportTime'>(15 хв)</span>
-            </li>
-            <li>
-                <span class='reportAuthors'><span class='reportReporter'>Вадим Георгиевич Гиммельман</span></span>
-                <span class='reportTitle' style='color: red;'>пока не известно</span>
-                <span class='reportTime'></span>
             </li>
             <li>
                 <span class='reportAuthors'><span class='reportReporter'>С.Г. Савчук</span>, В.Б. Керкер</span>
@@ -468,6 +463,51 @@
             <li>
                 <span class='reportAuthors'><span class='reportReporter'>Я.Н. Скакун</span>, О.В. Доценко</span>
                 <span class='reportTitle'>Оценка вероятности повреждения элементов подсистем спутника «Микросат» частицами микрометеоритов и орбитальных осколков</span>
+                <span class='reportTime'>(15 хв)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>Б.М. Рассамакин</span>, Н.Ф. Байсков, С.А. Остапчук, С,М. Хайрнасов, А.С.Менжега, А.Б. Рассамакин, Н.А.Першин, Д.С. Смаковский</span>
+                <span class='reportTitle'>Разработка и исследование подсистем наноспутника НТУУ «КПИ» «PolyITAN-1» с углепластиковыми сотопанелями</span>
+                <span class='reportTime'>(15 хв)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>Є.Ю. Коваленко</span>, А.В. Будьонний, В.Я. Жуйков, Б.М. Рассамакин</span>
+                <span class='reportTitle'>СИСТЕМА ЕЛЕКТРОЗАБЕЗПЕЧЕННЯ НАНОСУПУТНИКА “PolyITAN-1” «НТУУ КПІ»</span>
+                <span class='reportTime'>(15 хв)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'>А.Г.Лауш, Ю.А. Савенкова, Б.М. Рассамакин, <span class='reportReporter'>Н.Ф. Байсков</span>, В.И.Медвежонков С.А. Остапчук, С,М. Хайрнасов, А.С.Менжега, А.Б. Рассамакин, Д.С. Смаковский</span>
+                <span class='reportTitle'>ПРОГРАМНЕ ЗАБЕЗПЕЧЕННЯ ДЛЯ ОБМІНУ ДАНИМИ МОДУЛЯ СН-4706 ТА ПІДСИСТЕМОЮ ОБРОБКИ ДАНИХ НАНОСУПУТНИКА “PolyITAN-1”</span>
+                <span class='reportTime'>(15 хв)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>В.В. Петров</span>, В.О. Медянников, В.Г. Гиммельман</span>
+                <span class='reportTitle'>Разработка системы мониторинга положения контрреф-лектора большой полноповоротной антенны</span>
+                <span class='reportTime'>(15 хв)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'>О.В. Доценко, <span class='reportReporter'>Я.Н. Скакун</span></span>
+                <span class='reportTitle'>Оценка вероятности повреждения элементов подсистем спутника «Микросат» частицами микрометеоритов и орбитальных осколков</span>
+                <span class='reportTime'>(15 хв)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'>А.Л. Макаров, А.Г. Меланченко, <span class='reportReporter'>И.А. Пятак</span>, В.С. Хорошилов</span>
+                <span class='reportTitle'>Обеспечение съемки космическим аппаратом ДЗЗ кадра изображения заданной формы с высокой точностью пространственной привязки снимка</span>
+                <span class='reportTime'>(15 хв)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>В.Г. Гиммельман</span>, А.В. Бондарев, С.С. Щесняк</span>
+                <span class='reportTitle'>Пути повышения эффективности антенной системы комплекса П-2500</span>
+                <span class='reportTime'>(15 хв)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>В.Г. Гиммельман</span>, С.С. Щесняк, Ю.Н. Артеменко</span>
+                <span class='reportTitle'>70-метровый радиотелескоп миллиметрового диапазона. Характеристики, состояние разработки и строительства</span>
+                <span class='reportTime'>(15 хв)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>С.С. Щесняк</span>, В.Г. Гиммельман, С.Б. Глыбовский, В.К. Дубрович</span>
+                <span class='reportTitle'>Анализ влияния механических деформаций и ошибок позиционирования зеркал антенной системы П-2500 в г. Уссурийске методом физической оптики</span>
                 <span class='reportTime'>(15 хв)</span>
             </li>
         </ol>
@@ -556,7 +596,7 @@
             </li>
             <li>
                 <span class='reportAuthors'>Iu. Babyk, <span class='reportReporter'>I. Vavilova</span></span>
-                <span class='reportTitle'>The dark matter content in the X-ray galaxy clusters at 0.01 < z < 1.4 by the Chandra space mission data</span>
+                <span class='reportTitle'>The dark matter content in the X-ray galaxy clusters at 0.01 &lt; z &lt; 1.4 by the Chandra space mission data</span>
                 <span class='reportTime'>(15 хв)</span>
             </li>
             <li>
@@ -576,19 +616,92 @@
             </li>
         </ol>
     </li>
+    <li class='sectionName'>Іоносат
+        <ol class='reportsList'>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>Лизунов Г.В.</span>, Фёдоров О.П., Корепанов В.Е.</span>
+                <span class='reportTitle'>Космический проект «Ионосат-Микро»</span>
+                <span class='reportTime'>(Пленарный доклад – 35 мин)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'>Ахмедов Д.Ш., <span class='reportReporter'>Инчин А.С.</span></span>
+                <span class='reportTitle'>Проект создания казахстанской космической системы научного назначения</span>
+                <span class='reportTime'>(Пленарный доклад – 35 мин.)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>КБ Южное</span></span>
+                <span class='reportTitle'>КА «Микросат» (авторы и название уточняются)</span>
+                <span class='reportTime'>(Пленарный доклад – 35 мин)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>Решетник В.Н.</span>, Кузьмич А.А., Пьянкова Е.В.</span>
+                <span class='reportTitle'>Центр обработки и хранения данных ионосферных спутниковых наблюдений PROMIS</span>
+                <span class='reportTime'>(15 мин.)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>Андреевский С.Е.</span>, Кузнецов В. Д., Синельников В.М.</span>
+                <span class='reportTitle'>GPS/ГЛОНАСС измеритель полного электронного содержания (бортовая аппаратура ПЭС) для ионосферных радиозатменных измерений и позиционирования КА «Микросат»</span>
+                <span class='reportTime'>(15 мин.)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'>Климов С.И., <span class='reportReporter'>Корепанов В.Е.</span>, Беляев С.М., Марусенков А.А., Дудкин Ф.Л., Новиков Д.И.</span>
+                <span class='reportTitle'>Волновой эксперимент на борту спутника ЧИБИС-М – первые результаты</span>
+                <span class='reportTime'>(15 мин.)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>Леонтьев А.Ю.</span>, Шендерук С.Г., Лизунов Г.В.</span>
+                <span class='reportTitle'>Приём научной информации и управление ходом КЭ «Потенциал» на спутнике «Сич-2»</span>
+                <span class='reportTime'>(15 мин.)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>Шувалов В.А.</span>, Корепанов В.Е., Лукенюк А.А., Кочубей Г.С., Лазученков Д.Н.</span>
+                <span class='reportTitle'>Диагностика околоспутниковой среды на КА «Сич-2»</span>
+                <span class='reportTime'>(15 мин.)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>Кобевко Д.</span>, Вариченко Л., Шендерук С.</span>
+                <span class='reportTitle'>Исследование электромагнитной чистоты платформы КА «Січ-2» в летном эксперименте</span>
+                <span class='reportTime'>(15 мин)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>Макаров А.Л.</span>, Шовкопляс Ю.А, Москалев С.И, Колоколов А.А.</span>
+                <span class='reportTitle'>«Мікросат» от концепции к реализации</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>Д.А. Галабурда</span>, А.Л. Макаров, С.И. Москалев, А.Ю. Олейникова, Ю.А. Шовкопляс</span>
+                <span class='reportTitle'>ФОРМИРОВАНИЕ ПРОГРАММЫ ТЕХНОЛОГИЧЕСКИХ ЭКСПЕРИМЕНТОВ КОСМИЧЕСКОГО АППАРАТА «МІКРОСАТ»</span>
+            </li>
+            <li>
+                <span class='reportAuthors'>Ю.А. Шовкопляс, С.И. Москалев, <span class='reportReporter'>В.В. Кавун</span>, М.В. Вайсеро, М.Г. Добрушина</span>
+                <span class='reportTitle'>Особенности компоновки полезной нагрузки КА «Мікросат»» на платформе космического аппарата «Січ-2»</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>Е.О. Лукьянчикова</span>, А.Г. Меланченко</span>
+                <span class='reportTitle'>Управление ориентацией кластера спутников в проекте Ионосат</span>
+            </li>
+        </ol>
+    </li>
     <li class='sectionName'>Участь України в міжнародному проекті «Міліметрон»
         <ol class='reportsList'>
             <li>
-                <span class='reportAuthors'><span class='reportReporter'>Юрий Николаевич Артеменко</span></span>
+                <span class='reportAuthors'><span class='reportReporter'>Артеменко Ю.Н.</span></span>
                 <span class='reportTitle'>Проблемы создания адаптивного радиотелескопа мм диапазона РТ-70 на плато Суффа в Узбекистане и пути их решения</span>
             </li>
             <li>
-                <span class='reportAuthors'><span class='reportReporter'>Юрий Николаевич Артеменко</span></span>
+                <span class='reportAuthors'><span class='reportReporter'>Артеменко Ю.Н.</span></span>
                 <span class='reportTitle'>Вопросы создания Международной радиоастрономической обсерватории на плато Суффа</span>
             </li>
             <li>
-                <span class='reportAuthors'><span class='reportReporter'>Андрей Емельянович Городецкий</span></span>
+                <span class='reportAuthors'>Артеменко Ю.Н, <span class='reportReporter'>Городецкий А.Е.</span>, Дубаренко В.В., Кучмин А.Ю., Агапов В.А.</span>
                 <span class='reportTitle'>Проблемы адаптации зеркальной системы космического радиотелескопа миллиметрового диапазона</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>I.I. Zinchenko</span></span>
+                <span class='reportTitle'>Millimetron in studies of ISM and star formation</span>
+            </li>
+            <li>
+                <span class='reportAuthors'>Н.С. Кардашев, <span class='reportReporter'>С.В. Пилипенко</span></span>
+                <span class='reportTitle'>Научные задачи миссии «Миллиметрон»</span>
             </li>
         </ol>
     </li>
@@ -597,6 +710,36 @@
             <li>
                 <span class='reportAuthors'><span class='reportReporter'>Лопаченко Володимир Володимирович</span></span>
                 <span class='reportTitle'>Сравнение модельного блеска КА «Сич-2» по данным ЦУП с его фотометрическими наблюдениями Украинской сетью УМОС</span>
+            </li>
+        </ol>
+    </li>
+    <li class='sectionName'>Стан та перспективи української мережі оптичних спостережень
+        <ol class='reportsList'>
+            <li>
+                <span class='reportAuthors'>А.В.Шульга, Я.Т.Благодыр, В.П.Епишев, Н.И.Кошкин, В.В.Мурга, С.В.Рыщенко, С.В.Велесь, С.Н.Дронов, В.В.Рыхальский, <span class='reportReporter'>В.В.Лопаченко</span></span>
+                <span class='reportTitle'>Сравнение модельного блеска КА «Сич-2» по данным ЦУП с его фотометрическими наблюдениями Украинской сетью УМОС</span>
+                <span class='reportTime'>(15 хв.)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'>Благодыр Я.Т., Епишев В.П., Кошкин Н.И., Кузьков В.П., Рыхальский В.В., Рыщенко С.В., Мурга В.В., <span class='reportReporter'>Шульга А.В.</span></span>
+                <span class='reportTitle'>О результатах работы Украинской сети оптических станций исследования околоземного космического пространства</span>
+                <span class='reportTime'>(30-40 хв.)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'>Москаленко С.С., Павловский А.Л.<span class='reportReporter'></span></span>
+                <span class='reportTitle'>«Анализ результатов обработки траекторных измерений оптических и оптико-электронных средств по микроспутникам в интересах ЦККП»</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>С.С. Москаленко</span>, А.Н. Богдановский, С.Н. Корниевский</span>
+                <span class='reportTitle'>Ведение каталога геостационарных космических объектов с использованием оптико-электронных и оптических средств Центра контроля и анализа космической обстановки</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>С.С. Москаленко</span>, А.Н. Богдановский, С.Н. Корниевский</span>
+                <span class='reportTitle'>Разработка метода определения местоположения геостационарных космических аппаратов с использованием оптико-электронных и оптических средств Украины</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>И.В. Кара</span></span>
+                <span class='reportTitle'>Программно-математический комплекс "SkyGates" для расчета параметров орбиты околоземных космических объектов и обеспечения функционирования УМОС</span>
             </li>
         </ol>
     </li>
