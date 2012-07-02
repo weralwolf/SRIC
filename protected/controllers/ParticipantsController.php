@@ -71,6 +71,8 @@ class ParticipantsController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
     public function actionCreate() {
+        $this->actionRegistrationComplited();
+        return;
         $model = new Participants;
         $model->no_report = NULL;
 
