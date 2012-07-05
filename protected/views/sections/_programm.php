@@ -1,4 +1,36 @@
 <ol class='sectionsList'>
+    <li class='sectionName'>Пленарні доповіді
+        <ol class='reportsList'>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>Л.М. Зеленый</span></span>
+                <span class='reportTitle'>Российская программа исследования полярных областей  Луны. Прелюдия к Освоению</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>В.Д. Кузнецов</span></span>
+                <span class='reportTitle'>Проект Интергелиозонд для исследований Солнца и внутренней гелиосферы</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>Я.С. Яцкив</span></span>
+                <span class='reportTitle'></span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>M.I. Mishchenko</span>, Ya.S. Yatskiv, V.K. Rosenbush, D.N. Shakhovskoy, I.I. Sinyavsky, G.P. Milinevsky, Yu.S. Ivanov, N.N. Kiselev, V.N. Petukhov, V.О. Danylevsky, A.P. Bovchaliuk, A.V. Grytsai, V.P. Bovchaliuk</span>
+                <span class='reportTitle'>Satellite project «Aerosol-UA»: remote sensing of tropospheric and stratospheric aerosols in terrestrial atmosphere</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>В.Е. Корепанов</span>, Ф.Л. Дудкин</span>
+                <span class='reportTitle'>Ионосферные отклики на мощные наземные события</span>
+            </li>
+            <li>
+                <span class='reportAuthors'>Благодыр Я.Т., Епишев В.П., Кошкин Н.И., Кузьков В.П., Рыхальский В.В., Рыщенко С.В., Мурга В.В.,<span class='reportReporter'>Шульга А.В.</span></span>
+                <span class='reportTitle'>О результатах работы Украинской сети оптических станций исследования околоземного космического пространства</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>Є.Л.Кордюм</span></span>
+                <span class='reportTitle'>Біологія рослин в космосі: наукові здобутки, проблеми та перспективи</span>
+            </li>
+        </ol>
+    </li>
     <li class='sectionName'>Дослідження ближнього космосу (в тому числі Сонця, сонячно-земних зв’язків, магнітосфери, іоносфери та ін.)
         <ol class='reportsList'>
             <li>
@@ -225,6 +257,35 @@
                 <span class='reportAuthors'><span class='reportReporter'>S. Cheremnykh</span>, V. Yatsenko</span>
                 <span class='reportTitle'>Dynamical approach to space weather prediction using identification and optimization methods</span>
                 <span class='reportTime'>(15 хв.)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>S. Cheremnykh</span>, V. Yatsenko</span>
+                <span class='reportTitle'>Dynamical approach to space weather prediction using identification and optimization methods</span>
+                <span class='reportTime'>(15 хв.)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'>Е.С Козелкова, А.Л. Поляков, <span class='reportReporter'>А.Н. Богдановский</span>, А.Л. Павловский</span>
+                <span class='reportTitle'>Анализ результатов обработки траекторных измерений оптических и оптико-электронных средств по микроспутникам</span>
+            </li>
+            <li>
+                <span class='reportAuthors'>А.А. Моргун, <span class='reportReporter'>С.С. Москаленко</span>, А.В. Шульга, А.П. Рачинский</span>
+                <span class='reportTitle'>Ведение каталога геостационарных космических объектов с использованием оптико-электронных и оптических средств Центра контроля и анализа космической обстановки</span>
+            </li>
+            <li>
+                <span class='reportAuthors'>С.В. Козелков, А.Н. Богдановский, С.Е. Ломоносов, <span class='reportReporter'>С.В. Домнин</span></span>
+                <span class='reportTitle'>Разработка метода определения местоположения геостационарных космических аппаратов с использованием оптико-электронных и оптических средств Украины</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>И.В. Кара</span></span>
+                <span class='reportTitle'>Программно-математический комплекс "SkyGates" для расчета параметров орбиты околоземных космических объектов и обеспечения функционирования УМОС</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>А.В. Дудник</span></span>
+                <span class='reportTitle'>Наблюдения трех электронных радиационных поясов в магнитосфере Земли по данным прибора СТЭП-Ф на космическом аппарате «КОРОНАС-ФОТОН»</span>
+            </li>
+            <li>
+                <span class='reportAuthors'>А.В. Шульга, Я.Т. Благодыр, В.П. Епишев, Н.И. Кошкин, В.В. Мурга, С.В. Рыщенко, С.В. Велесь, С.Н. Дронов, В.В. Рыхальский, <span class='reportReporter'>В.В. Лопаченко</span></span>
+                <span class='reportTitle'>Сравнение модельного блеска КА «Сич-2» по данным ЦУП с его фотометрическими наблюдениями Украинской сетью УМОС</span>
             </li>
         </ol>
     </li>
@@ -510,6 +571,24 @@
                 <span class='reportTitle'>Анализ влияния механических деформаций и ошибок позиционирования зеркал антенной системы П-2500 в г. Уссурийске методом физической оптики</span>
                 <span class='reportTime'>(15 хв)</span>
             </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>А.В. Гусынин</span></span>
+                <span class='reportTitle'>Многокритериальная оптимизация процесса выведения на орбиту многорежимной авиационно-космической системы на основе дифференциальных преобразований</span>
+                <span class='reportTime'>(15 хв.)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>Ю.Б. Гірняк</span>, О.В. Івахів, П.В. Неводовський</span>
+                <span class='reportTitle'>Використання штучних нейронних систем для покращення динаміки вузлів та систем</span>
+                <span class='reportTime'>(30-40 хв.)</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>Н.Н. Абросимов</span>, К.Ф. Волох, И.П. Коврижных, Г.Н. Конышева, А.Б. Малков, Л.Е. Плиско</span>
+                <span class='reportTitle'>Космический телекоммуникационный модуль: состав, основные характеристики, варианты применения</span>
+            </li>
+            <li>
+                <span class='reportAuthors'><span class='reportReporter'>O.V. Dudnik</span>, M. Prieto, E.V. Kurbatov, K.G. Titov, V.O. Tarasov, L.A. Andryushenko, S. Sanchez, P. Parra</span>
+                <span class='reportTitle'>Approaches to signal processing from the light scintillation and semiconductor detectors in the compact satellite instrument SIDRA for monitoring of high energy charge particles</span>
+            </li>
         </ol>
     </li>
     <li class='sectionName'>Астрофізика та космологія
@@ -702,14 +781,6 @@
             <li>
                 <span class='reportAuthors'>Н.С. Кардашев, <span class='reportReporter'>С.В. Пилипенко</span></span>
                 <span class='reportTitle'>Научные задачи миссии «Миллиметрон»</span>
-            </li>
-        </ol>
-    </li>
-    <li class='sectionName'>УМОС
-        <ol class='reportsList'>
-            <li>
-                <span class='reportAuthors'><span class='reportReporter'>Лопаченко Володимир Володимирович</span></span>
-                <span class='reportTitle'>Сравнение модельного блеска КА «Сич-2» по данным ЦУП с его фотометрическими наблюдениями Украинской сетью УМОС</span>
             </li>
         </ol>
     </li>
