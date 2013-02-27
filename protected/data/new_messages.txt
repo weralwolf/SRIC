@@ -1,0 +1,5 @@
+ContactInfo tanik_skhorohodik
+ContactInfo phone_1
+ContactInfo phone_2
+ContactInfo email
+ContactInfo foot_phones

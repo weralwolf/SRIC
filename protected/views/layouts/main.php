@@ -55,9 +55,17 @@ if (!Yii::app()->request->isAjaxRequest) {
 				<div class="title">
 					<?php echo Yii::app()->dbMessages->translate("MenuLinks", "contact_person") ?>
 				</div>
-				<span class="grey"><?php echo Yii::app()->dbMessages->translate("MenuLinks", "tanik_skhorohodik") ?>
-				</span><br /> +38 044 2008207<br /> +38 063 4518270<br /> <a
-					href="mailto:SpaceConf2012@gmail.com">SpaceConf2012@gmail.com</a><br />
+				<span class="grey">
+					<?php echo Yii::app()->dbMessages->translate("ContactInfo", "tanik_skhorohodik") ?>
+				</span>
+				<br />
+				<?php echo Yii::app()->dbMessages->translate("ContactInfo", "phone_1") ?>
+				<br />
+				<?php echo Yii::app()->dbMessages->translate("ContactInfo", "phone_2") ?>
+				<br /> <a
+					href="mailto:<?php echo Yii::app()->dbMessages->translate("ContactInfo", "email") ?>">
+					<?php echo Yii::app()->dbMessages->translate("ContactInfo", "email") ?>
+					</a><br />
 				<a href="http://nearspace.ikd.kiev.ua">nearspace.ikd.kiev.ua</a>
 			</div>
 		</div>
@@ -72,7 +80,7 @@ if (!Yii::app()->request->isAjaxRequest) {
 			                'url' => array('pages/view', 'id' => 1),
 			        ),
 			        array(
-			                'label' => "12" . Yii::app()->dbMessages->translate("MenuLinks", "th_conference"),
+			                'label' => "13" . Yii::app()->dbMessages->translate("MenuLinks", "th_conference"),
 			                'url' => Pages::menuLinkURL(),
 			                'active' => Pages::menuLinkActive(),
 			        ),
@@ -131,11 +139,15 @@ if (!Yii::app()->request->isAjaxRequest) {
 		</div>
 		<div class="footer_in">
 			<a href="mailto:spaceConf2012@gmail.com" class="foot_mail"
-				style="font-weight: 100;">spaceConf2012@gmail.com</a> <span>&copy;
+				style="font-weight: 100;">
+				<?php echo Yii::app()->dbMessages->translate("ContactInfo", "email") ?>
+				</a> <span>&copy;
 				2012 Developed in <?php echo CHtml::link('Space Research Institute NASU-NSAU', array('site/admin'), 
 				        array('style' => 'text-decoration: none; color: #cdcfcf; font-size: 12px; font-weight: 100;')); ?><br />
 				<?php //echo Yii::powered(); ?> <!-- 				Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a>  -->
-			</span> <span class="foot_phone">+38(044) 200-82-14, 200-82-07</span>
+			</span> <span class="foot_phone">
+			<?php echo Yii::app()->dbMessages->translate("ContactInfo", "foot_phones") ?>
+			</span>
 		</div>
 	</div>
 </body>
