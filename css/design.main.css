@@ -802,6 +802,10 @@ span.blue {
 	width: 484px !important;
 }
 
+textarea.report_description {
+    width: 484px !important;
+}
+
 .one_input.tezisi {
 	margin: 16px 0;
 	height: 30px;

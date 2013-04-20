@@ -12,22 +12,6 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
             )
     );
     
-    $cs = Yii::app()->clientScript;
-    $cs->registerScript("report_transform", 
-            '$(\'input[name*="Reports"]\').each(function(){
-                    $(this).bind("blur", function() {
-                    	if (this.value == \'\') {
-                    		this.value = \'' . $m->translate('Participants', 'like_in_abstracts') . '\';
-                    	}
-                    });
-                    $(this).bind("focus", function() {
-                            if (this.value == \'' . $m->translate('Participants', 'like_in_abstracts') . '\') {
-                    		    this.value = \'\';
-                    		}
-                    });
-            });',
-            CClientScript::POS_LOAD
-    );
 ?>
 </div>-->
 <?php if (isset($attributeName)) {?>
@@ -37,9 +21,20 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
 <?php }?>
 <div class="one_input wide">
 	<div class="rowElem">
+		<?php echo $form->labelEx($model, 'type'); ?>
+		<?php echo $form->dropDownList($model, 'type', Reports::types(), 
+				array(
+		                'name' => $nameIndex . 'type]',
+		        )
+    ); ?>
+		<?php echo $form->error($model, 'type'); ?>
+	</div>
+</div>
+<div class="one_input wide">
+	<div class="rowElem">
 		<?php echo $form->labelEx($model, 'sections_id'); ?>
 		<?php echo $form->dropDownList($model, 'sections_id', Sections::model()->dropDown(), 
-		        array(
+				array(
 		                'name' => $nameIndex . 'sections_id]',
 		                'style' => 'width: 100%;',
 		        )
@@ -51,12 +46,10 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
 	<div class="rowElem">
 		<?php echo $form->labelEx($model, 'title'); ?>
 		<?php echo $form->textField($model, 'title', 
-		        array('size' => 60,
+				array('size' => 60,
 		                'maxlength' => 255,
 		                'name' => $nameIndex . 'title]',
-		                'value' => $m->translate('Participants', 'like_in_abstracts'),
-// 		                'onfocus' => "this.value='';",
-// 			'onblur' => "if (this.value != '') {this.onfocus = function() {this.style.backgroundColor='#f3fdff';};} else this.value='" . $m->translate('Participants', 'like_in_abstracts') . "';"
+		                'placeholder' => $m->translate('Report', 'title_placeholder'),
 		)); ?>
 		<?php echo $form->error($model, 'title'); ?>
 	</div>
@@ -65,24 +58,27 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
 	<div class="rowElem">
 		<?php echo $form->labelEx($model, 'autors'); ?>
 		<?php echo $form->textField($model, 'autors', 
-		        array('rows' => 6,
-		                'cols' => 50,
+				array(
+						'size' => 6,
+		                'maxlength' => 255,
 		                'name' => $nameIndex. 'autors]',
-		                'value' => $m->translate('Participants', 'like_in_abstracts'),
-// 		                'onfocus' => "this.value='';",
-// 			'onblur' => "if (this.value != '') {this.onfocus = function() {this.style.backgroundColor='#f3fdff';};} else this.value='" . $m->translate('Participants', 'like_in_abstracts') . "';"
+		                'placeholder' => $m->translate('Report', 'autors_placeholder'),
 		)); ?>
 		<?php echo $form->error($model, 'autors'); ?>
 	</div>
 </div>
-<div class="one_input tezisi">
-	<div class="rowElem">
-		<label><?php echo $m->translate('Participants', 'file_upload_note'); ?>
-		</label>
-		<?php $this->renderPartial('application.views.files._formContent', array(
-		        'form' => $form,
-		        'model' => is_null($model->file) ? new Files() : $model->file,
-		        'attributeName' => isset($attributeName) && $attributeName != '' ? $attributeName : '',
-)); ?>
+
+<div class="one_input wide">
+	<div class="rowElem" style="height: 96px; width: 484px;top: -24px;left: 120px;overflow: hidden;outline: 0;padding: 0;border: 0;margin: 0px 8px;">
+		<?php echo $form->labelEx($model, 'description'); ?>
+		<?php echo $form->textArea($model, 'description', 
+				array(
+						'rows' => 6,
+		                'cols' => 50,
+		                'name' => $nameIndex. 'description]',
+						'class' => 'report_description',
+		                'placeholder' => $m->translate('Report', 'description_placeholder'),
+		)); ?>
+		<?php echo $form->error($model, 'autors'); ?>
 	</div>
 </div>
