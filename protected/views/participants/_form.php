@@ -35,6 +35,7 @@ $cs->registerScript('organization changer',
 
 $cs->registerScript("form_mask",
 		"jQuery(function($){ $('#Participants_birthdate').mask('9999-99-99'); });", CClientScript::POS_LOAD);
+
 $cs->registerScript("biethdate_transform",
 		'$(\'#Participants_birthdate\').bind("blur", function() {
 		if (this.value == \'\') {
@@ -43,7 +44,7 @@ $cs->registerScript("biethdate_transform",
 });
 		$(\'#Participants_birthdate\').attr("value", "yyyy-mm-dd");', CClientScript::POS_LOAD);
 
-$cs->registerScript("form_mask",
+$cs->registerScript("OOOOOOOOOO",
 		
 "$('#fileupload').fileupload({
 		url: 'index.php?r=participants/photoUp',

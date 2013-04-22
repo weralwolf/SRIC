@@ -155,6 +155,10 @@ class ParticipantsController extends Controller {
 					$model->no_report = Yii::app()->dbMessages->translate('Errors', 'empty_report');
 				}
 			}
+			
+			if (intval($model->photo_id) == 0) {
+				$could_be_saved = false;
+			}
 
 			if ($could_be_saved && $model->validate() && $model->save()) {
 				Yii::log("PartController:: model could be saved && valid && saved");
