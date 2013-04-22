@@ -8,7 +8,6 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 	border: 0;
 	outline: 0;
 	font-size: 100%;
-	vertical-align: baseline;
 	background: transparent;
 }
 
@@ -803,7 +802,11 @@ span.blue {
 }
 
 textarea.report_description {
-    width: 484px !important;
+    border: #006492 1px solid;
+    background: transparent;
+    color: white;
+    padding-left: 8px;
+    width: 520px;
 }
 
 .one_input.tezisi {
@@ -1170,6 +1173,7 @@ a.jqTransformCheckbox {
 	height: 22px;
 	width: 22px;
 	display: block; /*display: -moz-inline-block;*/
+	border: #006492 1px solid;
 }
 /* -------------
  * Checked - Used for both Radio and Checkbox

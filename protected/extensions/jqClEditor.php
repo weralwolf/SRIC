@@ -21,11 +21,11 @@ class jqClEditor extends CComponent{
 		$aUrl = Yii::app()->getAssetManager()->publish($assets);
 		
 		// first in - first out so we render 2 - 1 scirpts (jquery on top)
-		$cs->registerScriptFile($aUrl. DIRECTORY_SEPARATOR .self::scriptName());
+		$cs->registerScriptFile($aUrl. DIRECTORY_SEPARATOR .'js/jquery.fileupload.js');
 		
 		$cs->registerCoreScript('jquery');
 		
-		$cs->registerCssFile($aUrl . DIRECTORY_SEPARATOR . self::scriptName(true));
+		$cs->registerCssFile($aUrl . DIRECTORY_SEPARATOR . 'css/jquery.fileupload-ui.css');
 	}
 	
 	/**

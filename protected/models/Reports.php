@@ -74,29 +74,20 @@ class Reports extends CActiveRecord {
      * @param string $identifier defines subname of report if there few of them
      * @return Reports if anything is going right and there exists enough information, NULL if not enough information
      * 		   or information is absent
-     * 
-     * public static function saveFromPOST($identifier = '') {
-     *   $model = new Reports();
+     */ 
+     public static function saveFromPOST($identifier = '') {
+        $model = new Reports();
 
         $reportContainer = ($identifier !== '' ? $_POST['Reports'][$identifier] : $_POST['Reports']);
-        $fileContainer = ($identifier !== '' ? $_POST['Files'][$identifier] : $_POST['Files']);
-
-        if (isset($reportContainer) && isset($fileContainer)) {
-            $model->attributes = $reportContainer;
-
-            $file = new Files();
-            $file->attributes = $fileContainer;
-            $file->upload($identifier);
-            if ($file->save()) {
-                $model->files_id = $file->id;
-                return $model;
-            } else {
-                return NULL;
-            }
+        $model->attributes = $reportContainer;
+        if ($model->validate($reportContainer)) {
+        	Yii::log("Report:: report #" . $identifier . " valid");
+        	return $model;
         }
+        Yii::log("Report:: report #" . $identifier . " not valid");
+
         return NULL;
     }
-    */
 
     /**
      * @return array customized attribute labels (name=>label)

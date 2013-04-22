@@ -12,6 +12,7 @@
 class Files extends CActiveRecord {
     private $file;
     private $uploaded = false;
+    public $dist = 'default';
     /**
      * Returns the static model of the specified AR class.
      * @return Files the static model class
@@ -27,8 +28,10 @@ class Files extends CActiveRecord {
         return 'files';
     }
 
-    public function upload($identifier = '') {
-        $name = 'Files' . ($identifier !== '' ? "[$identifier]" : '') . '[file]';
+    public function upload($identifier = '', $name = '') {
+    	if ($name == '') {
+        	$name = 'Files' . ($identifier !== '' ? "[$identifier]" : '') . '[file]';
+    	}
         $this->file = CUploadedFile::getInstanceByName($name);
         $this->uploaded = true;
     }
@@ -40,9 +43,9 @@ class Files extends CActiveRecord {
         }
         $this->original_name = $this->file->name;
         $this->mimetype = $this->file->type;
-        $this->path = Yii::app()->basePath . Yii::app()->params['reportsSavePath'] . '/' . date('d.m.Y.H.i.s') . '_' .
-            $this->original_name;
-        $this->file->saveAs($this->path);
+        $this->path = Yii::app()->params['upload'][$this->dist] . '/' . date('d.m.Y.H.i.s') . '_' .
+           	$this->original_name;
+        $this->file->saveAs(Yii::app()->basePath . $this->path);
         return parent::save($runValidation, $attributes);
     }
 

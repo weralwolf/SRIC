@@ -33,7 +33,12 @@ return array(
 */
     ),
     //relative to 'protected' dir
-    'reportsSavePath'            => '/../upload/reports',
+    'upload' => array(
+    	'default'            => '/../upload',
+	    'reports'            => '/../upload/reports',
+	    'photos'            => '/../upload/photos',
+	    'photos_tmp'            => '/../upload/photos/tmp',
+    ),
 
     'jqClEditor'                 => array(
         'width'      => 500, // width not including margins, borders or padding

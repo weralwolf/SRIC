@@ -10,6 +10,8 @@ Participants	city_placeholder
 Participants	alt_organization
 Participants	phone_placeholder
 Participants	email_placeholder
+Participants    need_accomodation
+Participants    upload_error_placeholder
 Report	title_placeholder
 Report	autors_placeholder
 Report	description_placeholder

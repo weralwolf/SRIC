@@ -252,7 +252,7 @@ class Participants extends CActiveRecord {
 				'email'                               => $m->translate('Participants', 'email'),
 				'phone'                               => $m->translate('Participants', 'phone'),
 				'participation_type'                  => $m->translate('Participants', 'participation_type'),
-				'need_accomodation'             => $m->translate('Participants', '$need_accomodation'),
+				'need_accomodation'             => $m->translate('Participants', 'need_accomodation'),
 				'alt_organization'                    => '',
 				'report'                              => 'Report',
 		);

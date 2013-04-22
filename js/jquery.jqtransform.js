@@ -203,6 +203,8 @@
 	$.fn.jqTransTextarea = function(){
 		return this.each(function(){
 			var textarea = $(this);
+			
+			if( textarea.hasClass('notransform') == true ) { return; }
 	
 			if(textarea.hasClass('jqtransformdone')) {return;}
 			textarea.addClass('jqtransformdone');

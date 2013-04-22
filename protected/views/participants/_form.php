@@ -42,6 +42,31 @@ $cs->registerScript("biethdate_transform",
 }
 });
 		$(\'#Participants_birthdate\').attr("value", "yyyy-mm-dd");', CClientScript::POS_LOAD);
+
+$cs->registerScript("form_mask",
+		
+"$('#fileupload').fileupload({
+		url: 'index.php?r=participants/photoUp',
+		sequentialUploads: true
+	});
+ $('#fileupload').bind('fileuploaddone', function (e, data) {
+		$('#photo_upload').hide();
+		$('#upload_error').hide();
+		var k = data.result.split(',');
+		var id = k[0].split(':')[1].replace(/\\\"/g, '');
+		var path = k[1].split(':')[1].replace(/[\\\"}\\\\]/g, '');
+		
+		$('#uploaded_photo').attr('src', path);
+		$('#uploaded_photo').show();
+		$('#Participants_photo_id').attr('value', id);
+	});
+
+ $('#fileupload').bind('fileuploadfail', function (e, data) {
+		$('#upload_error').show();
+	});", 
+		
+CClientScript::POS_LOAD);
+
 ?>
 <h1>
 	<?php echo $m->translate('Participants', 'personal_data_title'); ?>
@@ -52,7 +77,7 @@ $cs->registerScript("biethdate_transform",
 <!-- <form action="" class="reg_form"> -->
 <table class="personal">
 	<tr>
-		<td width="320"><div class="one_input">
+		<td width="360px"><div class="one_input">
 				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'name'); ?>
 					<?php echo $form->textField($model, 'name', array(
@@ -61,7 +86,26 @@ $cs->registerScript("biethdate_transform",
 							)); ?>
 					<?php echo $form->error($model, 'name'); ?>
 				</div>
-			</div></td>
+			</div>
+		</td>
+		<td rowspan="6" width="320px" height="240px">
+			<div id="participant_photo">
+				<span id='photo_upload'>
+					Photo for<br />
+					passcard
+					<input id="ytfileupload" type="hidden" value="" name="fileupload">
+					<input id="fileupload" type="file" name="fileupload">
+				</span>
+				<span id='upload_error' style='display: none;' >
+					<?php echo $m->translate('Participants', 'upload_error_placeholder') ?>
+				</span>
+				<?php echo $form->hiddenField($model, 'photo_id') ?>
+				<?php echo $form->error($model, 'photo_id'); ?>
+				<img id='uploaded_photo' style='display: none;' src='#'  width="190px" />
+			</div>
+		</td>
+	</tr>
+	<tr>
 		<td width="360"><div class="one_input">
 				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'last_name'); ?>
@@ -71,7 +115,8 @@ $cs->registerScript("biethdate_transform",
 							)); ?>
 					<?php echo $form->error($model, 'last_name'); ?>
 				</div>
-			</div></td>
+			</div>
+		</td>
 	</tr>
 	<tr>
 		<td><div class="one_input gender">
@@ -80,14 +125,18 @@ $cs->registerScript("biethdate_transform",
 					<?php echo $form->dropDownList($model, 'gender', array("0" => "Female", "1" => "Male")); ?>
 					<?php echo $form->error($model, 'gender'); ?>
 				</div>
-			</div></td>
+			</div>
+		</td>
+	</tr>
+	<tr>
 		<td><div class="one_input">
 				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'birthdate'); ?>
 					<?php echo $form->textField($model, 'birthdate', array('maxlength' => 255)); ?>
 					<?php echo $form->error($model, 'birthdate'); ?>
 				</div>
-			</div></td>
+			</div>
+		</td>
 	</tr>
 	<tr>
 		<td><div class="one_input">
@@ -106,7 +155,10 @@ $cs->registerScript("biethdate_transform",
 					?>
 					<?php echo $form->error($model, 'contries_id'); ?>
 				</div>
-			</div></td>
+			</div>
+		</td>
+	</tr>
+	<tr>
 		<td><div class="one_input">
 				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'cities_id'); ?>
@@ -123,7 +175,8 @@ $cs->registerScript("biethdate_transform",
 					?>
 					<?php echo $form->error($model, 'cities_id'); ?>
 				</div>
-			</div></td>
+			</div>
+		</td>
 	</tr>
 	<tr>
 		<td colspan="2">
@@ -192,7 +245,7 @@ $cs->registerScript("biethdate_transform",
 	</div>
 </div>
 <!-- ------------------------------------------------------------- REPORT FORM PART -->
-<div style="display: block;" id="report_form_fields">
+<div style="display: none;" id="report_form_fields">
 	<?php
 	for ($i = 0; $i < 2; $i++) {
 	    $report = 1;
@@ -211,9 +264,7 @@ $cs->registerScript("biethdate_transform",
 	}
 	?>
 </div>
-<p>
-	<?php echo $m->translate('Participants', 'report_note_p3'); ?>
-</p>
+<span class="tez"><?php echo $m->translate('Participants', 'report_note_p3'); ?></span>
 <!-- ------------------------------------------------------------- REPORT FORM PART -->
 <div class="ger_title">
 	<?php echo $m->translate('Participants', 'accommodation_title'); ?>
@@ -221,6 +272,13 @@ $cs->registerScript("biethdate_transform",
 <p>
 	<?php echo $m->translate('Participants', 'accommodation_note'); ?>
 </p>
+<div class="one_input">
+	<div class="rowElem">
+		<?php echo $form->labelEx($model, 'need_accomodation'); ?>
+		<?php echo $form->checkBox($model, 'need_accomodation'); ?>
+		<?php echo $form->error($model, 'need_accomodation'); ?>
+	</div>
+</div>
 <div class="one_input submit">
 	<div class="rowElem">
 		<?php echo CHtml::submitButton($model->isNewRecord ? Yii::app()->messages->translate('Participants', 'register') : 'Save'); ?>

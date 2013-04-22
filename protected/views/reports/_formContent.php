@@ -68,15 +68,17 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
 	</div>
 </div>
 
-<div class="one_input wide">
-	<div class="rowElem" style="height: 96px; width: 484px;top: -24px;left: 120px;overflow: hidden;outline: 0;padding: 0;border: 0;margin: 0px 8px;">
-		<?php echo $form->labelEx($model, 'description'); ?>
+<div class="one_input wide" style="height: 80px;">
+	<div class="rowElem" style="height: 96px; width: 700px;top: -24px;left: 120px;overflow: hidden;outline: 0;padding: 0;border: 0;margin: 0px 8px;">
+		<?php echo $form->labelEx($model, 'description', array(
+				'style' => 'margin-left: -9px;',
+				)); ?>
 		<?php echo $form->textArea($model, 'description', 
 				array(
-						'rows' => 6,
+						'rows' => 4,
 		                'cols' => 50,
 		                'name' => $nameIndex. 'description]',
-						'class' => 'report_description',
+						'class' => 'report_description notransform',
 		                'placeholder' => $m->translate('Report', 'description_placeholder'),
 		)); ?>
 		<?php echo $form->error($model, 'autors'); ?>

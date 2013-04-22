@@ -158,3 +158,17 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 	clear: left;
 	padding-left: 110px;
 }
+
+#participant_photo {
+	border: #006492 1px solid;
+	height: 230px;
+	width: 190px;
+	color: #CCC;
+	font-size: 20;
+	vertical-align: middle;
+	text-align: center;
+}
+
+span.tez p {
+	margin: 26px 0 0 0!important;
+}
