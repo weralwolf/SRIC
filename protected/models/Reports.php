@@ -79,12 +79,16 @@ class Reports extends CActiveRecord {
         $model = new Reports();
 
         $reportContainer = ($identifier !== '' ? $_POST['Reports'][$identifier] : $_POST['Reports']);
-        $model->attributes = $reportContainer;
-        if ($model->validate($reportContainer)) {
-        	Yii::log("Report:: report #" . $identifier . " valid");
+        
+        $model->type = $reportContainer['type'];
+        $model->sections_id = $reportContainer['sections_id'];
+        $model->autors = $reportContainer['autors'];
+        $model->title = $reportContainer['title'];
+        $model->description = $reportContainer['description'];
+        
+        if (!empty($model->title) && !empty($model->description) && !empty($model->autors)) {
         	return $model;
         }
-        Yii::log("Report:: report #" . $identifier . " not valid");
 
         return NULL;
     }

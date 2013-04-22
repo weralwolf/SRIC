@@ -12,6 +12,7 @@ Participants	phone_placeholder
 Participants	email_placeholder
 Participants    need_accomodation
 Participants    upload_error_placeholder
+Participants    pass_card
 Report	title_placeholder
 Report	autors_placeholder
 Report	description_placeholder

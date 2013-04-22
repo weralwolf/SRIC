@@ -91,8 +91,7 @@ CClientScript::POS_LOAD);
 		<td rowspan="6" width="320px" height="240px">
 			<div id="participant_photo">
 				<span id='photo_upload'>
-					Photo for<br />
-					passcard
+					<?php echo $m->translate('Participants', 'pass_card'); ?>
 					<input id="ytfileupload" type="hidden" value="" name="fileupload">
 					<input id="fileupload" type="file" name="fileupload">
 				</span>
@@ -211,7 +210,7 @@ CClientScript::POS_LOAD);
 					<?php echo $form->error($model, 'phone'); ?>
 				</div>
 			</div></td>
-		<td><div class="one_input">
+		<td><div class="one_input" style="margin-left: -44px;">
 				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'email'); ?>
 					<?php echo $form->textField($model, 'email', array(

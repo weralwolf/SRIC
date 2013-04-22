@@ -146,22 +146,13 @@ class ParticipantsController extends Controller {
 				Yii::log("PartController:: We have a LECTURER!");
 				$report_0 = Reports::saveFromPOST('0');
 				$report_1 = Reports::saveFromPOST('1');
-
+				
 				// If person says what he want to be `lecturer` he should give at least one report information
 				if (is_null($report_0)) {
 					Yii::log("PartController:: report #0 not exist");
 					// We couldn't register this person cause he have no any report
 					$could_be_saved = false;
 					$model->no_report = Yii::app()->dbMessages->translate('Errors', 'empty_report');
-				} elseif (!$report_0->validate()) { // and report should be valid
-					Yii::log("PartController:: report #0 not valid");
-					$could_be_saved = false;
-				}
-
-				// And if he gives other one it also should be valid
-				if (!is_null($report_1) && !$report_1->validate()) {
-					Yii::log("PartController:: report #1 exist but not valid");
-					$could_be_saved = false;
 				}
 			}
 
