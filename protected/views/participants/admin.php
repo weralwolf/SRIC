@@ -68,22 +68,20 @@ Yii::app()->clientScript->registerScript('search', "
                         //Yii::app()->messages->translate('Participants', 'cities_id') . '`',
                         'value' => 'Countries::resolveName($data->contries_id) . "-" . Cities::resolveName($data->cities_id)'
                 ),
-                array(
-                        'name' => 'sections_id',
-                        //'label' => Yii::app()->messages->translate('Participants', 'organizations_id'),
+                 array(
+                        'name' => 'section',
                         'value' => '$data->resolveSections()',
                 ),
                 array(
-                        'name' => 'report_type',
-                        //'label' => Yii::app()->messages->translate('Participants', 'report_type'),
+                        'name' => 'repo',
                         'value' => '$data->participationState()',
                 ),
-
+        		/*
                 array(
                         'name' => 'report',
                         'value' => '$data->reportsButtons()',
                 ),
-
+				*/
                 array(
                         'class'=>'CButtonColumn',
                 ),

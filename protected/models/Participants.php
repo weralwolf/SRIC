@@ -27,6 +27,8 @@ class Participants extends CActiveRecord {
 	public $alt_organization;
 	public $no_report;
 	public $report;
+	public $section;
+	public $repo;
 	public $_reports = array();
 	/**
 	 * Returns the static model of the specified AR class.
@@ -214,7 +216,7 @@ class Participants extends CActiveRecord {
 			));
 		}
 		if (empty($sections)) {
-			return "---";
+			return "";
 		} else {
 			return implode(" ", $sections);
 		}
@@ -239,6 +241,8 @@ class Participants extends CActiveRecord {
 		$m = Yii::app()->messages;
 		return array(
 				'id'                                  => $m->translate('Participants', 'id'),
+				'section' 		=> Yii::app()->messages->translate('Reports', 'sections_id'),
+				'repo'			=> $m->translate('Participants', 'participation_type'),
 				'approved'                            => $m->translate('Participants', 'approved'),
 				'contries_id'                         => $m->translate('Participants', 'contries_id'),
 				'cities_id'                           => $m->translate('Participants', 'cities_id'),
@@ -261,7 +265,9 @@ class Participants extends CActiveRecord {
 	public function participationState() {
 		$state = Yii::app()->dbMessages->translate('Participants', 'participation_type_' . $this->participation_type);
 		if ($this->participation_type != 'listner') {
-			$state .= ' / ' . Yii::app()->dbMessages->translate('Participants', 'report_type_' . $this->report_type);
+			foreach ($this->reports as $report) {
+				$state .= " \n " . Yii::app()->messages->translate('Reports', 'type_' . $report->type);
+			}
 		}
 		return $state;
 	}
