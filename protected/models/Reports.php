@@ -9,11 +9,11 @@
  * @property string $sections_id
  * @property string $description
  * @property string $title
- * @property string $autors
  * @property string $type
  */
 class Reports extends CActiveRecord {
     public $enabled = false;
+    private $coauth = array();
     /**
      * Returns the static model of the specified AR class.
      * @return Reports the static model class
@@ -36,7 +36,7 @@ class Reports extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('participants_id, sections_id, description, title, autors, type', 
+            array('participants_id, sections_id, description, title, type', 
             		'required'),
             array('participants_id, sections_id', 'length', 'max' => 10),
             array('title', 'length', 'max' => 255),
@@ -66,6 +66,7 @@ class Reports extends CActiveRecord {
         return array(
             'participant' => array(self::BELONGS_TO, 'Participants', 'participants_id'),
             'section'     => array(self::BELONGS_TO, 'Sections', 'sections_id'),
+        	'coauthors'   => array(self::HAS_MANY, 'ReportAuthors', 'reports_id'),
         );
     }
 
@@ -82,15 +83,35 @@ class Reports extends CActiveRecord {
         
         $model->type = $reportContainer['type'];
         $model->sections_id = $reportContainer['sections_id'];
-        $model->autors = $reportContainer['autors'];
         $model->title = $reportContainer['title'];
         $model->description = $reportContainer['description'];
         
-        if (!empty($model->title) && !empty($model->description) && !empty($model->autors)) {
+        foreach ($reportContainer['coauth'] as $co) {
+        	if ($co['authors'] != '' || $co['department'] != '') {
+        		if ($co['authors'] == '' || $co['department'] == '') {
+        			return NULL;
+        		}
+        		
+        		$ca = new ReportAuthors();
+        		$ca->authors = $co['authors'];
+        		$ca->department = $co['department'];
+        		$model->coauth[] = $ca;
+        	}
+        }
+        
+        if (!empty($model->title) && !empty($model->description)) {
         	return $model;
         }
 
         return NULL;
+    }
+    
+    protected function afterSave() {
+    	foreach ($this->coauth as $co) {
+    		$co->reports_id = $this->id;
+    		$co->save();
+    	}
+    	return parent::afterSave();
     }
 
     /**
@@ -104,7 +125,6 @@ class Reports extends CActiveRecord {
             'sections_id'     => $m->translate('Reports', 'sections_id'),
             'type'        => $m->translate('Reports', 'type'),
             'title'           => $m->translate('Reports', 'title'),
-            'autors'          => $m->translate('Reports', 'autors'),
         	'description'          => $m->translate('Reports', 'description'),
         );
     }

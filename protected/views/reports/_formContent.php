@@ -54,18 +54,31 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
 		<?php echo $form->error($model, 'title'); ?>
 	</div>
 </div>
-<div class="one_input wide">
-	<div class="rowElem">
-		<?php echo $form->labelEx($model, 'autors'); ?>
-		<?php echo $form->textField($model, 'autors', 
-				array(
-						'size' => 6,
-		                'maxlength' => 255,
-		                'name' => $nameIndex. 'autors]',
-		                'placeholder' => $m->translate('Report', 'autors_placeholder'),
-		)); ?>
-		<?php echo $form->error($model, 'autors'); ?>
-	</div>
+<div class="one_input">
+	<table class="coauth">
+		<thead>
+			<tr>
+				<th><?php echo $form->labelEx(ReportAuthors::model(), 'authors'); ?></th>
+				<th><?php echo $form->labelEx(ReportAuthors::model(), 'department'); ?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php for ($i = 0; $i < 5; ++$i) {?>
+			<tr>
+				<td><?php 
+					echo $form->textField(ReportAuthors::model(), 'authors', array(
+								'name' => $nameIndex . 'coauth][' . $i . '][authors]',
+								'placeholder' => $m->translate('Report', 'coauth_authors_placeholder'),
+							));
+				?></td>
+				<td><?php echo $form->textField(ReportAuthors::model(), 'department', array(
+								'name' => $nameIndex . 'coauth][' . $i . '][department]',
+								'placeholder' => $m->translate('Report', 'coauth_department_placeholder'),
+							)); ?></td>
+			</tr>
+			<?php } ?>
+		</tbody>
+	</table>
 </div>
 
 <div class="one_input wide" style="height: 80px;">

@@ -172,3 +172,28 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 span.tez p {
 	margin: 46px 0 0 0!important;
 }
+
+table.coauth {
+	width: 546px;
+    margin-left: 134px;
+}
+
+table.coauth th {
+	width: 50%;
+	border-spacing: 2px;
+	padding: 8px 0px 0px 0px;
+	background: transparent;
+	font-weight: 100;
+}
+
+table.coauth td {
+	padding: 12px 0px 0px 0px;
+}
+
+table.coauth td div.jqTransformInputInner {
+	width: 254px;
+}
+
+table.coauth td input {
+    width: 254px;
+}
