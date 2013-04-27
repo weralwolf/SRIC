@@ -63,7 +63,7 @@ $nameIndex = 'Reports[' . (isset($attributeName) && $attributeName != '' ? $attr
 			</tr>
 		</thead>
 		<tbody>
-			<?php for ($i = 0; $i < 5; ++$i) {?>
+			<?php for ($i = 0; $i < Yii::app()->params['co-auth_count']; ++$i) {?>
 			<tr>
 				<td><?php 
 					echo $form->textField(ReportAuthors::model(), 'authors', array(

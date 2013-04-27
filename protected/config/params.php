@@ -16,7 +16,9 @@ return array(
     'googleAnalyticsTracker'     => '',
     'googleApiKey'               =>
         'ABQIAAAAjU0EJWnWPMv7oQ-jjS7dYxQGj0PqsCtxKvarsoS-iqLdqZSKfxRdmoPmGl7Y9335WLC36wIGYa6o5Q',
-    //upload directory
+
+	'co-auth_count' => 5,
+	//upload directory
     'uploadDir'                  => 'upload/',
     'additionalSideMenuElements' => array(
         array(
