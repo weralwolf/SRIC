@@ -32,9 +32,9 @@ Yii::app()->clientScript->registerScript('search', "
 	should be done.
 </p>
 
-<?php echo CHtml::link('Programm (print)', array('participants/programm')); ?>
+<?php echo CHtml::link('Email (print)', array('participants/email')); ?>
 <br />
-<?php echo CHtml::link('Accommodation (print)', array('participants/accommodation')); ?>
+<?php echo CHtml::link('List (print)', array('participants/list')); ?>
 <br />
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display: none">

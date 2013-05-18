@@ -14,7 +14,9 @@ class ParticipantsController extends Controller {
 			'update',
 			'programm',
 			'accommodation',
-			'participation'
+			'participation',
+			'email',
+			'list'
 	);
 
 	/**
@@ -261,6 +263,26 @@ class ParticipantsController extends Controller {
 				'condition' => 'category = \'Sections\'',
 		));
 		echo $this->renderPartial('programm', array('models' => $models), true);
+		die;
+	}
+	
+	public function actionList() {
+		$models = Participants::model()->with('reports')->findAll(
+				array(
+						'order' => implode(', ', array(
+								'contries_id ASC',
+								'cities_id ASC',
+								'organizations_id ASC'
+								))
+						)
+				);
+		echo $this->renderPartial('list', array('models' => $models), true);
+		die;
+	}
+	
+	public function actionEmail() {
+		$models = Participants::model()->findAll();
+		echo $this->renderPartial('emails', array('models' => $models), true);
 		die;
 	}
 
