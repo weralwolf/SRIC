@@ -35,7 +35,6 @@ $this->menu=array(
                         'value' => Cities::resolveName($model->cities_id)
                 ),
                 'name',
-                'second_name',
                 'last_name',
                 array('label' => Yii::app()->messages->translate('Participants', 'gender'),
                         'type' => 'raw',
@@ -48,15 +47,32 @@ $this->menu=array(
                 ),
                 'email',
                 'phone',
-                'participation_type',
-                'report_type',
-                array('label' => Yii::app()->messages->translate('Participants', 'accommodation_places_id'),
-                        'type' => 'raw',
-                        'value' => Cities::resolveName($model->accommodation_places_id)
-                ),
-                array('label' => Yii::app()->messages->translate('Participants', 'accommodation_places_rooms_types_id'),
-                        'type' => 'raw',
-                        'value' => Cities::resolveName($model->accommodation_places_rooms_types_id)
-                ),
+        		array('label' => Yii::app()->messages->translate('Participants', 'participation_type'),
+        				'type' => 'raw',
+        				'value' => Yii::app()->dbMessages->translate('Participants', 'participation_type_' . $model->participation_type),
+        		),
         ),
-)); ?>
+)); 
+if (count($model->reports)) {
+	foreach ($model->reports as $report) {
+		echo "<hr />";
+		$this->widget('zii.widgets.CDetailView', array(
+			'data'=>$report,
+			'attributes'=>array(
+					'id',
+					array('label' => Yii::app()->messages->translate('Reports', 'sections_id'),
+							'type' => 'raw',
+							'value' => Sections::resolveName($report->sections_id)
+					),
+					array('label' => Yii::app()->messages->translate('Reports', 'type'),
+							'type' => 'raw',
+							'value' => Yii::app()->messages->translate('Reports', 'type_' . $report->type),
+					),
+					'title',
+					'description',
+			),
+		));
+	}
+}
+?>
+
