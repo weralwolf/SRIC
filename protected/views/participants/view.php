@@ -69,7 +69,10 @@ if (count($model->reports)) {
 							'value' => Yii::app()->messages->translate('Reports', 'type_' . $report->type),
 					),
 					'title',
-					'description',
+					array('label' => Yii::app()->messages->translate('Reports', 'description'),
+							'type' => 'html',
+							'value' => '<pre>' . $report->description . '</pre>',
+					),
 			),
 		));
 	}
