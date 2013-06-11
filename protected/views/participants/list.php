@@ -83,7 +83,7 @@ $currnt_org = -1;
 		?>
 		<tr>
 			<td<?php echo $rowspan; ?>><?php echo $model->name . ' ' .
-							$model->second_name ?></td>
+							$model->last_name ?></td>
 			<td<?php echo $rowspan; ?>><?php echo $model->birthdate; ?></td>
 			<?php if (count($model->reports)) {?>
 			<td><?php echo Sections::resolveName($model->reports[0]->sections_id); ?></td>

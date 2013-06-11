@@ -127,7 +127,12 @@ CClientScript::POS_LOAD);
 		<td><div class="one_input gender">
 				<div class="rowElem">
 					<?php echo $form->labelEx($model, 'gender'); ?>
-					<?php echo $form->dropDownList($model, 'gender', array("0" => "Female", "1" => "Male")); ?>
+					<?php 
+					echo $form->dropDownList($model, 'gender', array(
+						"0" => $m->translate('Participants', 'female'), 
+						"1" => $m->translate('Participants', 'male'),
+					)); 
+					?>
 					<?php echo $form->error($model, 'gender'); ?>
 				</div>
 			</div>

@@ -21,6 +21,7 @@ return array(
         'accommodation_places_rooms_types_id' => 'Тип комнаты',
         'register' => 'Зарегистрироваться',
         'alt_organization' => 'Введите название организации',
+		'need_accomodation' => 'Необходимо жилье',
 
         // _form.php translation
 //         'personal_data_title' => 'Персональные данные',
