@@ -75,6 +75,11 @@ CClientScript::POS_LOAD);
 <p>
 	<?php echo $m->translate('Participants', 'personal_data_note'); ?>
 </p>
+<?php if (isset($messageWrong) && $messageWrong) { ?>
+<p>
+	<span style="color: red; font-size: 20px;"><?php echo $m->translate('Participants', 'message_wrong'); ?></span>
+</p>
+<?php } ?>
 <!-- <form action="" class="reg_form"> -->
 <table class="personal">
 	<tr>

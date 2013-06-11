@@ -104,9 +104,6 @@ class ParticipantsController extends Controller {
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate() {
-		//         $this->actionRegistrationComplited();
-		//         return;
-		
 		$cs = Yii::app()->clientScript;
 		
 		
@@ -126,6 +123,8 @@ class ParticipantsController extends Controller {
 				DIRECTORY_SEPARATOR . 'jquery.fileupload-ui.css');
 		$model = new Participants;
 		$model->no_report = NULL;
+		
+		$could_be_saved = true;
 
 		if (isset($_POST['Participants'])) {
 			Yii::log("PartController:: input data exist");
@@ -143,7 +142,6 @@ class ParticipantsController extends Controller {
 
 			// We ask for reports information only if user have been select `lecturer` type of participation, what means
 			// he will give some lectures
-			$could_be_saved = true;
 			if ($model->participation_type == 'lecturer') {
 				Yii::log("PartController:: We have a LECTURER!");
 				$report_0 = Reports::saveFromPOST('0');
@@ -185,6 +183,7 @@ class ParticipantsController extends Controller {
 				Yii::log("PartController:: commit transaction");
 				$this->redirect(array('/participants/registrationComplited'));
 			} else {
+				$could_be_saved = false;
 				// And off course, we need to roll back transaction to clean up data base requests
 				$transaction->rollBack();
 				Yii::log("PartController:: roll back transaction");
@@ -203,6 +202,7 @@ class ParticipantsController extends Controller {
 		Yii::log("PartController:: before render");
 		$this->render('create', array(
 				'model' => $model,
+				'messageWrong' => !$could_be_saved,
 		));
 	}
 
