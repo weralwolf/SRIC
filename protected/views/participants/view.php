@@ -17,7 +17,11 @@ $this->menu=array(
 	View Participants #
 	<?php echo $model->id; ?>
 </h1>
-
+<?php if ($model->photo) {?>
+<table width="100%">
+	<tr>
+		<td width="60%">
+<?php } ?>
 <?php $this->widget('zii.widgets.CDetailView', array(
         'data'=>$model,
         'attributes'=>array(
@@ -52,8 +56,16 @@ $this->menu=array(
         				'value' => Yii::app()->dbMessages->translate('Participants', 'participation_type_' . $model->participation_type),
         		),
         ),
-)); 
-if (count($model->reports)) {
+)); ?>
+<?php if ($model->photo) {?>
+		</td>
+		<td width="40%">
+		<img src="upload<?php echo $model->photo->path; ?>" style="width: 100%" />
+		</td>
+	</tr>
+</table>
+<?php } ?>
+<?php if (count($model->reports)) {
 	foreach ($model->reports as $report) {
 		echo "<hr />";
 		$this->widget('zii.widgets.CDetailView', array(

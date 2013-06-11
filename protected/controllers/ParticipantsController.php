@@ -74,7 +74,7 @@ class ParticipantsController extends Controller {
 	 */
 	public function actionView() {
 		$this->render('view', array(
-				'model' => $this->loadModel(true),
+				'model' => $this->loadModel(array('reports', 'photo')),
 		));
 	}
 	
@@ -316,11 +316,12 @@ class ParticipantsController extends Controller {
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 */
-	public function loadModel($withReports = false) {
+	public function loadModel($with = array()) {
 		if ($this->_model === null) {
+			$with = array();
 			if (isset($_GET['id']))
-				if ($withReports) {
-					$this->_model = Participants::model()->with('reports')->findbyPk($_GET['id']);
+				if (!empty($with)) {
+					$this->_model = Participants::model()->with(implode(' ', $with))->findbyPk($_GET['id']);
 				} else {
 					$this->_model = Participants::model()->findbyPk($_GET['id']);
 				}

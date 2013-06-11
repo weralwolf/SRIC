@@ -228,7 +228,7 @@ class Participants extends CActiveRecord {
 	public function relations() {
 		return array(
 				'reports'   => array(self::HAS_MANY, 'Reports', 'participants_id'),
-				#            'organization' => array(self::BELONGS_TO, 'Organizations', 'organizations_id'),
+				'photo' => array(self::BELONGS_TO, 'Files', 'photo_id'),
 				#            'city'         => array(self::BELONGS_TO, 'Cities', 'cities_id'),
 				#            'country'      => array(self::BELONGS_TO, 'Countries', 'contries_id'),
 		);
