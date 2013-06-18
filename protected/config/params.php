@@ -21,11 +21,11 @@ return array(
 	//upload directory
     'uploadDir'                  => 'upload/',
     'additionalSideMenuElements' => array(
-        array(
-            'order'            => 2,
-            'title_sm_message' => array('MenuLinks', 'registration'),
-            'url'              => array('participants/create'),
-        ),
+//         array(
+//             'order'            => 2,
+//             'title_sm_message' => array('MenuLinks', 'registration'),
+//             'url'              => array('participants/create'),
+//         ),
 /*
         array(
             'order'            => 4,
