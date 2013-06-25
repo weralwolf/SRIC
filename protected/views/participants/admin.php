@@ -4,11 +4,6 @@ $this->breadcrumbs=array(
         'Manage',
 );
 
-$this->menu=array(
-        array('label'=>'List Participants', 'url'=>array('index')),
-        array('label'=>'Create Participants', 'url'=>array('create')),
-);
-
 Yii::app()->clientScript->registerScript('search', "
         $('.search-button').click(function(){
         $('.search-form').toggle();
@@ -31,7 +26,13 @@ Yii::app()->clientScript->registerScript('search', "
 	beginning of each of your search values to specify how the comparison
 	should be done.
 </p>
-
+<br /><br />
+Sections list for chairs:
+<br />
+<?php foreach (Sections::listForChairsLinks() as $link) {
+	echo CHtml::link($link['label'], $link['url']) . '<br />';
+}?>
+<br /><br />
 <?php echo CHtml::link('Email (print)', array('participants/email')); ?>
 <br />
 <?php echo CHtml::link('List (print)', array('participants/list')); ?>

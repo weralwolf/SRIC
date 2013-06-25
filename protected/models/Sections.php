@@ -38,6 +38,18 @@ class Sections extends SourceMessage {
         }
         return $dropDown;
     }
+    
+    public static function listForChairsLinks() {
+    	$rows = Sections::model()->findAll(array('condition' => 'category=' . Yii::app()->db->quoteValue("Sections")));
+    	$links = array();
+    	foreach ($rows as $row) {
+    		$links[] = array(
+    				'label' => Sections::resolveName($row->id),
+    				'url' => array('sections/forChairs', 'id' => $row->id)
+    				);
+    	}
+    	return $links;
+    }
 
     public function search() {
         $criteria = new CDbCriteria;
