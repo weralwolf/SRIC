@@ -1,5 +1,5 @@
-<b><?php Sections::resolveName($models->id) ?>
-</b>
+<h1><b><?php echo Sections::resolveName($models->id) ?>
+</b></h1>
 <hr />
 <?php foreach ($models->reports as $report) {?>
 <?php if (!$report->participant) continue; ?>
@@ -7,15 +7,15 @@
 </span>
 <br />
 
-<span class="report title"><?php echo $report->title ?> </span>
+<h3><span class="report title"><?php echo $report->title ?> </span></h3>
 <br />
 
-<!-- <span class="report reporter_name"><?php echo $report->participant->name . '. ' . 
-	$report->participant->last_name ?></span><br /> -->
+<i><span class="report reporter_name"><?php echo $report->participant->name . '. ' . 
+	$report->participant->last_name ?></span> (<?php echo Organizations::resolveName($report->participant->organizations_id) ?>)<br />
 <span class="report reporter_email"><?php echo $report->participant->email ?>
-</span>
+</span></i>
 <br />
-
+<br />
 <div class="report coauthors">
 	<?php 
 	foreach ($report->coauthors as $co) {
@@ -29,9 +29,10 @@
 			$re_auth[] = $c;
 		}
 	}
-	echo implode(', ', $re_auth) . '(' . $co->department . ')<br />';
+	echo implode(', ', $re_auth) . ' (' . $co->department . ')<br />';
 } ?>
 </div>
+<br />
 
 <div style="width: 100%">
 <pre>
