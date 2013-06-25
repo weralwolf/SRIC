@@ -33,7 +33,7 @@
 } ?>
 </div>
 
-<div style="100%">
+<div style="width: 100%">
 <pre>
 	<?php echo $report->description ?>
 </pre>
