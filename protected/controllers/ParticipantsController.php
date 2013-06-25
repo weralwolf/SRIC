@@ -104,8 +104,8 @@ class ParticipantsController extends Controller {
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate() {
-		$this->redirect(array('/participants/registrationComplited'));
-		die;
+// 		$this->redirect(array('/participants/registrationComplited'));
+// 		die;
 		
 		$cs = Yii::app()->clientScript;
 		

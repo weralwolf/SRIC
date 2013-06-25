@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Participants <?php echo $model->id; ?></h1>
+<h1>"<?php echo $model->name . ' ' . $model->last_name?>" edit</h1>
 
 <?php echo $this->renderPartial('_formUpdate', array('model'=>$model)); ?>

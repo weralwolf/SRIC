@@ -1,6 +1,7 @@
 <?php
 $this->breadcrumbs=array(
-        'Participants'=>array('index'),
+        'Participants' => array('admin'),
+		'Edit' => array('edit', array('id' => $model->id)),
         $model->name,
 );
 
@@ -55,6 +56,10 @@ $this->menu=array(
         				'type' => 'raw',
         				'value' => Yii::app()->dbMessages->translate('Participants', 'participation_type_' . $model->participation_type),
         		),
+				array('label' => Yii::app()->messages->translate('Participants', 'need_accomodation'),
+						'type' => 'raw',
+						'value' => $model->need_accomodation ? 'Yes' : 'No',
+				),
         ),
 )); ?>
 <?php if ($model->photo) {?>
