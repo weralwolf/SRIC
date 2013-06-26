@@ -7,10 +7,10 @@
 </span>
 <br />
 
-<h3><span class="report title"><?php echo $report->title ?> </span></h3>
+<h3 style="text-transform:uppercase;"><span class="report title"><?php echo $report->title ?> </span></h3>
 <br />
 
-<i><span class="report reporter_name"><?php echo $report->participant->name . '. ' . 
+<i><span class="report reporter_name"><?php echo mb_substr($report->participant->name, 0, 1, 'utf-8') . '. ' . 
 	$report->participant->last_name ?></span> (<?php echo Organizations::resolveName($report->participant->organizations_id) ?>)<br />
 <span class="report reporter_email"><?php echo $report->participant->email ?>
 </span></i>
