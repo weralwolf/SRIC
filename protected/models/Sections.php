@@ -45,7 +45,8 @@ class Sections extends SourceMessage {
     	foreach ($rows as $row) {
     		$links[] = array(
     				'label' => Sections::resolveName($row->id),
-    				'url' => array('sections/forChairs', 'id' => $row->id)
+    				'url' => array('sections/forChairs', 'id' => $row->id),
+    				'turl' => array('sections/forChairsTable', 'id' => $row->id),
     				);
     	}
     	return $links;

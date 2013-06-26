@@ -2,13 +2,13 @@
 
 class SectionsController extends SourceMessageController {
 	
-	public $adminLayoutActions = array('admin', 'update', 'create', 'view', 'forChairs');
+	public $adminLayoutActions = array('admin', 'update', 'create', 'view', 'forChairs', 'forChairsTable');
 
     public function accessRules() {
         return array(
             array(
                 'allow',
-                'actions' => array('create', 'update', 'index', 'view', 'admin', 'delete', 'forChairs'),
+                'actions' => array('create', 'update', 'index', 'view', 'admin', 'delete', 'forChairs', 'forChairsTable'),
                 'users'   => array('root'),
             ),
             array(
@@ -119,6 +119,13 @@ class SectionsController extends SourceMessageController {
     	$models = Sections::model()->with('reports', 'reports.participant', 'reports.coauthors')->findByPk($_GET['id']);
     	
     	$this->renderPartial('forChair', array('models' => $models));
+    	die;
+    }
+    
+    public function actionForChairsTable() {
+    	$models = Sections::model()->with('reports', 'reports.participant', 'reports.coauthors')->findByPk($_GET['id']);
+    	 
+    	$this->renderPartial('forChair_table', array('models' => $models));
     	die;
     }
 

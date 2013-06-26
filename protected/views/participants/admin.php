@@ -30,7 +30,7 @@ Yii::app()->clientScript->registerScript('search', "
 Sections list for chairs:
 <br />
 <?php foreach (Sections::listForChairsLinks() as $link) {
-	echo CHtml::link($link['label'], $link['url']) . '<br />';
+	echo '(' . CHtml::link('table', $link['turl']) . ') ' . CHtml::link($link['label'], $link['url']) . '<br />';
 }?>
 <br /><br />
 <?php echo CHtml::link('Email (print)', array('participants/email')); ?>
