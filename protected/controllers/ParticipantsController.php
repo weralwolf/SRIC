@@ -23,11 +23,9 @@ class ParticipantsController extends Controller {
 	 * @return array action filters
 	*/
 	public function filters() {
-		/*
 		 return array(
 		 		'accessControl', // perform access control for CRUD operations
 		 );
-		*/
 	}
 
 	public function actions() {
@@ -48,18 +46,9 @@ class ParticipantsController extends Controller {
 	public function accessRules() {
 		return array(
 				array(
-						'allow', // allow all users to perform 'index' and 'view' actions
-						'actions' => array('create', 'registrationComplited', 'photoUp'),
-						'users'   => array('*'),
-				),
-				array(
-						'allow', // allow authenticated user to perform 'create' and 'update' actions
-						'actions' => array('update', 'viewMe'),
-						'users'   => array('@'),
-				),
-				array(
 						'allow', // allow admin user to perform 'admin' and 'delete' actions
-						'actions' => array('index', 'admin', 'delete', 'view', 'programm', 'accommodation', 'participation'),
+						'actions' => array('index', 'admin', 'delete', 'update', 'viewMe', 
+								'view', 'programm', 'accommodation', 'participation'),
 						'users'   => array('root'),
 				),
 				array(
